@@ -467,6 +467,22 @@ h2{
 .book h3{ font-family:var(--serif); font-weight:var(--head-weight); font-size:15px; line-height:1.22; margin-bottom:2px; }
 .book .author{ font-size:11.5px; color:var(--label); margin-bottom:6px; }
 .book .take{ font-size:12.5px; color:var(--ink-soft); line-height:1.55; }
+/* ✦ MY PICK — recommended books. To mark a book, change class="book reveal"
+   to class="book reveal rec" — that's the whole trick */
+.book.rec{
+  position:relative;
+  border:1px solid rgba(187,143,220,0.45);
+  background:linear-gradient(165deg, rgba(240,215,255,0.4), var(--cream-2) 58%);
+}
+.book.rec::before{
+  content:'✦ my pick';
+  position:absolute; top:18px; right:-1px;
+  background:var(--pink); color:#FAFAF6;
+  font-size:9.5px; font-weight:600; letter-spacing:0.06em;
+  padding:4px 9px 4px 10px; border-radius:8px 0 0 8px;
+  z-index:2;
+}
+[data-theme="dark"] .book.rec{ background:linear-gradient(165deg, rgba(240,215,255,0.08), var(--cream-2) 58%); }
 
 /* connect */
 .connect-grid{ display:grid; grid-template-columns:1fr 1fr; gap:32px; padding-bottom:60px; }
@@ -972,8 +988,10 @@ h2{
                   https://covers.openlibrary.org/b/isbn/PUT-ISBN-HERE-M.jpg
                 ② or right-click any cover on Google Books →
                   "copy image address" → paste as the src
-       STEP 4 → type over the THREE CAPITALISED LINES:
-                BOOK-TITLE-HERE / AUTHOR-NAME / YOUR-ONE-LINE-TAKEAWAY
+       STEP 4 → type over the title / author / takeaway lines
+       STEP 5 → recommending it? change  class="book reveal"  to
+                class="book reveal rec"  → the card gets the lavender
+                wash + the "✦ my pick" tag automatically
 
      TIP: open this file in VS Code (free) and all comments turn
      green automatically — the editable zones become obvious.
@@ -991,12 +1009,22 @@ h2{
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal">
       <img class="cover"
+           src="https://m.media-amazon.com/images/I/71Itl2m9i-L._SL1500_.jpg"
+           alt="book cover">
+      <h3>Sex, Ecology, Spirituality</h3>
+      <div class="author">Ken Wilber · Jun '26</div>
+      <p class="take">currently reading — the takeaway lands when the last page does 📖</p>
+    </div>
+    <!-- └────────────────── END BOOK ─────────────────┘ -->
+
+    <!-- ┌─────────────────── BOOK ───────────────────┐ -->
+    <div class="book reveal">
+      <img class="cover"
            src="https://m.media-amazon.com/images/I/71CjlVzuqAL._SL1500_.jpg"
            alt="book cover">
-      <h3>
-The Defining Decade - Why Your Twenties Matter--And How to Make the Most of Them Now </h3>
+      <h3>The Defining Decade</h3>
       <div class="author">Meg Jay · May '26</div>
-      <p class="take">We think its too late to change but Meg says 20s are the right age to chose your partner, lifestyle, job, happiness and more </p>
+      <p class="take">We think it's too late to change. Meg says the 20s are exactly the right age to choose your partner, lifestyle, work and happiness. Glad I read it inside mine</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
 
@@ -1005,154 +1033,298 @@ The Defining Decade - Why Your Twenties Matter--And How to Make the Most of Them
       <img class="cover"
            src="https://m.media-amazon.com/images/I/81nMSTH6+QL._SL1500_.jpg"
            alt="book cover">
-      <h3> Spies, Lies, and Cybercrime </h3>
-      <div class="author"> Eric O'Neill · Apr '26</div>
-      <p class="take">Wow, scary how we're all vulnerable in this online world. Big fan of Bitwarden after this! </p>
+      <h3>Spies, Lies, and Cybercrime</h3>
+      <div class="author">Eric O'Neill · Apr '26</div>
+      <p class="take">Wow, scary how vulnerable we all are in this online world. Big fan of Bitwarden after this!</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
-    <div class="book reveal">
+    <div class="book reveal rec">
       <img class="cover"
            src="https://m.media-amazon.com/images/I/A1LeKvKdLOL._SL1500_.jpg"
            alt="book cover">
       <h3>Leonardo Da Vinci</h3>
       <div class="author">Walter Isaacson · Mar '26</div>
-      <p class="take">One of my absolute favourite picks! Engineer, Architecht, Artist, Surgeon...list goes on. Wow! only proves how curiosity & flow state could make one push thier limits, proving anything is possible</p>
+      <p class="take">One of my absolute favourite picks! Engineer, architect, artist, surgeon... the list goes on. Proof of how far curiosity and flow state can push one human. Anything is possible</p>
+    </div>
+    <!-- └────────────────── END BOOK ─────────────────┘ -->
+
+    <!-- ┌─────────────────── BOOK ───────────────────┐ -->
+    <div class="book reveal rec">
+      <img class="cover"
+           src="https://m.media-amazon.com/images/I/71+l4BQRNgL._SL1500_.jpg"
+           alt="book cover">
+      <h3>Million Dollar Weekend</h3>
+      <div class="author">Noah Kagan · Feb '26</div>
+      <p class="take">Main idea: find a paying customer, take a deposit, then start building. Your idea gets validated, accountability gets created, and Action &gt; Idea stops being a quote</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal">
       <img class="cover"
-           src="https://m.media-amazon.com/images/I/71+l4BQRNgL._SL1500_.jpg"
-           alt="book cover">
-      <h3>Million Dollar Weekend</h3>
-      <div class="author">Noah Kagan  · Feb '26</div>
-      <p class="take">My personal highly recommended book. Main Idea: Have a paying customer, take a deposit and then get to building. This solves for 3 core problems during building something new. 1: Your Idea is validated as someone is willing to already pay. 2: Accountability created to deliver the promised product / service. 3: Action > Idea </p>
-    </div>
-    <!-- └────────────────── END BOOK ─────────────────┘ -->
- <!-- ┌─────────────────── BOOK ───────────────────┐ -->
-    <div class="book reveal">
-      <img class="cover"
            src="https://m.media-amazon.com/images/I/51N+Ba1mYOL._SX342_SY445_ML2_.jpg"
            alt="book cover">
       <h3>Show Your Work!</h3>
-      <div class="author"> Austin Kleon · Jan '26</div>
-      <p class="take">Quick read. Core Takeaway: What and why are you hiding your work, that you've put your efforts into buidling / making? Push it out into the world. Let people know, build credibility, trust and audience </p>
+      <div class="author">Austin Kleon · Jan '26</div>
+      <p class="take">Quick read. Core takeaway: why are you hiding work you've already put the effort into? Push it into the world. Build credibility, trust and an audience</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
-        <!-- ┌─────────────────── BOOK ───────────────────┐ -->
+
+    <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal">
+      <img class="cover"
+           src="https://m.media-amazon.com/images/I/91cE1AigdcL._SL1500_.jpg"
+           alt="book cover">
+      <h3>The World Atlas of Coffee</h3>
+      <div class="author">James Hoffmann · Dec '25</div>
+      <p class="take">Singapore and my curiosity got the best of me — one weekend, cover to cover, just to understand what coffee people are actually into. Learned an Americano is just espresso with hot water, named for the Americans in Italy who kept asking for it that way</p>
+    </div>
+    <!-- └────────────────── END BOOK ─────────────────┘ -->
+
+    <!-- ┌─────────────────── BOOK ───────────────────┐ -->
+    <div class="book reveal rec">
+      <img class="cover"
+           src="https://m.media-amazon.com/images/I/81dxokiMxoL._SL1500_.jpg"
+           alt="book cover">
+      <h3>The World for Sale</h3>
+      <div class="author">Javier Blas · Nov '25</div>
+      <p class="take">Crazy read! Loved every page. The earth's resources are traded daily behind closed doors by people most of us have never heard of — quietly steering the geopolitics of the world. HIGHLY RECOMMENDED!</p>
+    </div>
+    <!-- └────────────────── END BOOK ─────────────────┘ -->
+
+    <!-- ┌─────────────────── BOOK ───────────────────┐ -->
+    <div class="book reveal">
+      <img class="cover"
+           src="https://m.media-amazon.com/images/I/91ndAmxYeJL._SL1500_.jpg"
+           alt="book cover">
+      <h3>The Four Agreements</h3>
+      <div class="author">Don Miguel Ruiz · Nov '25</div>
+      <p class="take">✏️ takeaway coming — re-reading my notes</p>
+    </div>
+    <!-- └────────────────── END BOOK ─────────────────┘ -->
+
+    <!-- ┌─────────────────── BOOK ───────────────────┐ -->
+    <div class="book reveal rec">
+      <img class="cover"
+           src="https://m.media-amazon.com/images/I/71qWXFEk8aL._SL1500_.jpg"
+           alt="book cover">
+      <h3>Culture Map</h3>
+      <div class="author">Erin Meyer · Jun '25</div>
+      <p class="take">We're all more or less the same humans everywhere. What makes us unique is culture and its nuances. Essential for anyone planning a global career and leading global teams — someone like me</p>
+    </div>
+    <!-- └────────────────── END BOOK ─────────────────┘ -->
+
+    <!-- ┌─────────────────── BOOK ───────────────────┐ -->
+    <div class="book reveal">
+      <img class="cover"
+           src="https://m.media-amazon.com/images/I/81F1QkxVdkL._SL1500_.jpg"
+           alt="book cover">
+      <h3>The Wealth Money Can't Buy</h3>
+      <div class="author">Robin Sharma · Jun '25</div>
+      <p class="take">A good weekend read. The teachings may feel obvious, but it's a solid collection of what actually makes a human the richest in life</p>
+    </div>
+    <!-- └────────────────── END BOOK ─────────────────┘ -->
+
+    <!-- ┌─────────────────── BOOK ───────────────────┐ -->
+    <div class="book reveal">
+      <img class="cover"
+           src="https://m.media-amazon.com/images/I/91k2QB3cI9L._SL1500_.jpg"
+           alt="book cover">
+      <h3>How to Know a Person</h3>
+      <div class="author">David Brooks · Dec '24</div>
+      <p class="take">Look deeper at people. Make them feel heard, make them included — and don't wait for the right moment to know someone better. Every person has a story to tell. I always try to know that story</p>
+    </div>
+    <!-- └────────────────── END BOOK ─────────────────┘ -->
+
+    <!-- ┌─────────────────── BOOK ───────────────────┐ -->
+    <div class="book reveal rec">
+      <img class="cover"
+           src="https://m.media-amazon.com/images/I/71T8JRnMU8L._SL1500_.jpg"
+           alt="book cover">
+      <h3>Taxtopia</h3>
+      <div class="author">The Rebel Accountant · Sept '24</div>
+      <p class="take">Curiosity about how taxation works led me here — and boy, was I shocked and left in awe. Taxes stay complex and jargon-filled for a reason: if everyone understood and started asking questions, the world's gonna be a mayhem</p>
+    </div>
+    <!-- └────────────────── END BOOK ─────────────────┘ -->
+
+    <!-- ┌─────────────────── BOOK ───────────────────┐ -->
+    <div class="book reveal">
+      <img class="cover"
+           src="https://m.media-amazon.com/images/I/71iZi2LqK8L._SL1500_.jpg"
+           alt="book cover">
+      <h3>101 Essays That Will Change The Way You Think</h3>
+      <div class="author">Brianna Wiest · Apr '24</div>
+      <p class="take">Another gem. Biggest takeaway: most of our suffering comes not from our circumstances, but from the way we've been taught to interpret them</p>
+    </div>
+    <!-- └────────────────── END BOOK ─────────────────┘ -->
+
+    <!-- ┌─────────────────── BOOK ───────────────────┐ -->
+    <div class="book reveal rec">
+      <img class="cover"
+           src="https://m.media-amazon.com/images/I/81gC3mdNi5L._SL1500_.jpg"
+           alt="book cover">
+      <h3>The Psychology of Money</h3>
+      <div class="author">Morgan Housel · Nov '23</div>
+      <p class="take">It's the small decisions and the discipline that keep people broke — or quietly build them</p>
+    </div>
+    <!-- └────────────────── END BOOK ─────────────────┘ -->
+
+    <!-- ┌─────────────────── BOOK ───────────────────┐ -->
+    <div class="book reveal rec">
+      <img class="cover"
+           src="https://m.media-amazon.com/images/I/911-BA0y2VL._SL1500_.jpg"
+           alt="book cover">
+      <h3>Night</h3>
+      <div class="author">Elie Wiesel · Sept '23</div>
+      <p class="take">Reinforced the power of hope for survival — and to cherish the life I've been gifted. Death is destined for every one of us, but only a few muster the courage to make the most of it</p>
+    </div>
+    <!-- └────────────────── END BOOK ─────────────────┘ -->
+
+    <!-- ┌─────────────────── BOOK ───────────────────┐ -->
+    <div class="book reveal">
+      <img class="cover"
+           src="https://m.media-amazon.com/images/I/91YBkkTeksL._SL1500_.jpg"
+           alt="book cover">
+      <h3>Becoming Better Grownups</h3>
+      <div class="author">Brad Montague · Feb '23</div>
+      <p class="take">Don't let the mundaneness of adult life get to me. Keep the curiosity of a kid: take risks, see more of the world, appreciate the little things</p>
+    </div>
+    <!-- └────────────────── END BOOK ─────────────────┘ -->
+
+    <!-- ┌─────────────────── BOOK ───────────────────┐ -->
+    <div class="book reveal rec">
       <img class="cover"
            src="https://m.media-amazon.com/images/I/71wSz6VVk6L._SL1500_.jpg"
            alt="book cover">
       <h3>Meditations</h3>
       <div class="author">Marcus Aurelius · Mar '22</div>
-      <p class="take">My Bible. My top most recommended book. First hand POV from the greatest emperor himself: Marcus Aurelius. What makes it more impactful is that all these pagese were the personal rumniations of the emperor and were never meant to be published. This makes it more valuable to see how despite having everything as an emperor all the excuses to pursue vices, get content by pursuing hedonism, he chose purpose over everything. Constant ruminating on the thought : "Momento Mori" - reminder of death</p>
+      <p class="take">My Bible. My most recommended book, period. The private ruminations of the most powerful man of his time — never meant to be published. Every excuse for vice was available to him, and he chose purpose over everything. Memento mori: remember death</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
-        <!-- ┌─────────────────── BOOK ───────────────────┐ -->
-    <div class="book reveal">
-      <img class="cover"
-           src="https://m.media-amazon.com/images/I/71iZi2LqK8L._SL1500_.jpg"
-           alt="book cover">
-      <h3>
-101 Essays That Will Change The Way You Think</h3>
-      <div class="author">Brianna Wiest · Apr '24</div>
-      <p class="take">Another gem. Collection of the authors writings across different eclectic topics. Biggest takeaway: most of our suffering comes not from our circumstances but from the way we've been taught to interpret them </p>
-    </div>
-    <!-- └────────────────── END BOOK ─────────────────┘ -->
-        <!-- ┌─────────────────── BOOK ───────────────────┐ -->
-    <div class="book reveal">
+
+    <!-- ┌─────────────────── BOOK ───────────────────┐ -->
+    <div class="book reveal rec">
       <img class="cover"
            src="https://m.media-amazon.com/images/I/819Pl1nP0ZL._SL1500_.jpg"
            alt="book cover">
-      <h3>Man's Search For Meaning: The classic tribute to hope from the Holocaust</h3>
-      <div class="author"> Viktor E Frankl · Jun '20</div>
-      <p class="take">One of the books that changed my life. Take away: The suffering and pain I used to complain was absolutely nothing compared to what author / people went through during the Holocaust. Showing how powerful "Hope" is depite those unimaginable torturous times. My codolences go to every soul who endured those horrendous times. My complete life POV changed after reading this book</p>
+      <h3>Man's Search For Meaning</h3>
+      <div class="author">Viktor E. Frankl · Jun '20</div>
+      <p class="take">One of the books that changed my life. The suffering I used to complain about was nothing compared to what people endured in the Holocaust — and still, hope survived. My condolences to every soul who lived those times. My whole POV on life changed after this</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
-        <!-- ┌─────────────────── BOOK ───────────────────┐ -->
+
+    <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal">
       <img class="cover"
-           src="xxxxxxxx"
+           src="https://m.media-amazon.com/images/I/719T6yw0zWL._SL1500_.jpg"
            alt="book cover">
-      <h3>BOOK-TITLE-HERE</h3>
-      <div class="author">AUTHOR-NAME · apr '26</div>
-      <p class="take">YOUR-ONE-LINE-TAKEAWAY</p>
+      <h3>Flow</h3>
+      <div class="author">Mihaly Csikszentmihalyi · Dec '19</div>
+      <p class="take">✏️ takeaway coming — re-reading my notes</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
-        <!-- ┌─────────────────── BOOK ───────────────────┐ -->
+
+    <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal">
       <img class="cover"
-           src="xxxxxxxx"
+           src="https://m.media-amazon.com/images/I/81qEgMaVljL._SL1500_.jpg"
            alt="book cover">
-      <h3>BOOK-TITLE-HERE</h3>
-      <div class="author">AUTHOR-NAME · apr '26</div>
-      <p class="take">YOUR-ONE-LINE-TAKEAWAY</p>
+      <h3>Can't Hurt Me</h3>
+      <div class="author">David Goggins · Nov '19</div>
+      <p class="take">Helped me push myself harder — in personal life and professional life alike</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
-        <!-- ┌─────────────────── BOOK ───────────────────┐ -->
+
+    <!-- ┌─────────────────── BOOK ───────────────────┐ -->
+    <div class="book reveal rec">
+      <img class="cover"
+           src="https://m.media-amazon.com/images/I/710C5x4MzwL._SL1200_.jpg"
+           alt="book cover">
+      <h3>Cosmos</h3>
+      <div class="author">Carl Sagan · Oct '19</div>
+      <p class="take">Made me fall in love with space. Cosmic insignificance: race, colour, religion, caste — all man-made. We're not that significant in this vast universe anyway, so take more risks and explore</p>
+    </div>
+    <!-- └────────────────── END BOOK ─────────────────┘ -->
+
+    <!-- ┌─────────────────── BOOK ───────────────────┐ -->
+    <div class="book reveal rec">
+      <img class="cover"
+           src="https://m.media-amazon.com/images/I/71TUmY1RDNL._SL1500_.jpg"
+           alt="book cover">
+      <h3>The Kite Runner</h3>
+      <div class="author">Khaled Hosseini · Aug '19</div>
+      <p class="take">The book that instilled in my teenage world the idea of seeing more of it — go travel</p>
+    </div>
+    <!-- └────────────────── END BOOK ─────────────────┘ -->
+
+    <!-- ┌─────────────────── BOOK ───────────────────┐ -->
+    <div class="book reveal rec">
+      <img class="cover"
+           src="https://m.media-amazon.com/images/I/817nqpGoWbL._SL1500_.jpg"
+           alt="book cover">
+      <h3>Deep Work</h3>
+      <div class="author">Cal Newport · Oct '18</div>
+      <p class="take">My first step into conscious digital consumption. The algorithms are not your friends — and the ability to FOCUS is what will set one apart</p>
+    </div>
+    <!-- └────────────────── END BOOK ─────────────────┘ -->
+
+    <!-- ┌─────────────────── BOOK ───────────────────┐ -->
+    <div class="book reveal rec">
+      <img class="cover"
+           src="https://m.media-amazon.com/images/I/61VORVVJdkL._SL1500_.jpg"
+           alt="book cover">
+      <h3>Quiet</h3>
+      <div class="author">Susan Cain · Apr '18</div>
+      <p class="take">One of the books that changed my life, found at exactly the right time — late teens, still trying to understand myself and my personality. That's where I met the word ambivert. I guess I am one</p>
+    </div>
+    <!-- └────────────────── END BOOK ─────────────────┘ -->
+
+    <!-- ┌─────────────────── BOOK ───────────────────┐ -->
+    <div class="book reveal rec">
+      <img class="cover"
+           src="https://m.media-amazon.com/images/I/81EOCTUSCLL._SL1500_.jpg"
+           alt="book cover">
+      <h3>Sapiens</h3>
+      <div class="author">Yuval Noah Harari · Mar '18</div>
+      <p class="take">Came into my life right when I was asking the existential questions: who am I? why are we here? Sure, I'm here today — but how did we get here? Our lifespans are a blink against Earth's origins</p>
+    </div>
+    <!-- └────────────────── END BOOK ─────────────────┘ -->
+
+    <!-- ┌─────────────────── BOOK ───────────────────┐ -->
+    <div class="book reveal rec">
+      <img class="cover"
+           src="https://m.media-amazon.com/images/I/71gnpaf4CGL._SL1500_.jpg"
+           alt="book cover">
+      <h3>Thinking, Fast and Slow</h3>
+      <div class="author">Daniel Kahneman · Feb '18</div>
+      <p class="take">This book rewired my brain — how I perceive the world and every interaction in it. It exposed how vulnerable our minds are to bias. I now consciously catch myself, daily</p>
+    </div>
+    <!-- └────────────────── END BOOK ─────────────────┘ -->
+
+    <!-- ┌─────────────────── BOOK ───────────────────┐ -->
+    <div class="book reveal rec">
+      <img class="cover"
+           src="https://m.media-amazon.com/images/I/81iss3ldpLL._SL1500_.jpg"
+           alt="book cover">
+      <h3>Atomic Habits</h3>
+      <div class="author">James Clear · Jan '18</div>
+      <p class="take">The power of consistency. Small actions, compounding over time</p>
+    </div>
+    <!-- └────────────────── END BOOK ─────────────────┘ -->
+
+    <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal">
       <img class="cover"
-           src="xxxxxxxx"
+           src="https://m.media-amazon.com/images/I/81YWPX3dToL._SL1500_.jpg"
            alt="book cover">
-      <h3>BOOK-TITLE-HERE</h3>
-      <div class="author">AUTHOR-NAME · apr '26</div>
-      <p class="take">YOUR-ONE-LINE-TAKEAWAY</p>
+      <h3>Get Smart!</h3>
+      <div class="author">Brian Tracy · Nov '17</div>
+      <p class="take">My first ever book! Found by pure chance, back when I didn't even know how a library worked. It opened my mind to endless possibilities — and teenage me believed every single word</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
-        <!-- ┌─────────────────── BOOK ───────────────────┐ -->
-    <div class="book reveal">
-      <img class="cover"
-           src="xxxxxxxx"
-           alt="book cover">
-      <h3>BOOK-TITLE-HERE</h3>
-      <div class="author">AUTHOR-NAME · apr '26</div>
-      <p class="take">YOUR-ONE-LINE-TAKEAWAY</p>
-    </div>
-    <!-- └────────────────── END BOOK ─────────────────┘ -->
-        <!-- ┌─────────────────── BOOK ───────────────────┐ -->
-    <div class="book reveal">
-      <img class="cover"
-           src="xxxxxxxx"
-           alt="book cover">
-      <h3>BOOK-TITLE-HERE</h3>
-      <div class="author">AUTHOR-NAME · apr '26</div>
-      <p class="take">YOUR-ONE-LINE-TAKEAWAY</p>
-    </div>
-    <!-- └────────────────── END BOOK ─────────────────┘ -->
-        <!-- ┌─────────────────── BOOK ───────────────────┐ -->
-    <div class="book reveal">
-      <img class="cover"
-           src="xxxxxxxx"
-           alt="book cover">
-      <h3>BOOK-TITLE-HERE</h3>
-      <div class="author">AUTHOR-NAME · apr '26</div>
-      <p class="take">YOUR-ONE-LINE-TAKEAWAY</p>
-    </div>
-    <!-- └────────────────── END BOOK ─────────────────┘ -->
-        <!-- ┌─────────────────── BOOK ───────────────────┐ -->
-    <div class="book reveal">
-      <img class="cover"
-           src="xxxxxxxx"
-           alt="book cover">
-      <h3>BOOK-TITLE-HERE</h3>
-      <div class="author">AUTHOR-NAME · apr '26</div>
-      <p class="take">YOUR-ONE-LINE-TAKEAWAY</p>
-    </div>
-    <!-- └────────────────── END BOOK ─────────────────┘ -->
-        <!-- ┌─────────────────── BOOK ───────────────────┐ -->
-    <div class="book reveal">
-      <img class="cover"
-           src="xxxxxxxx"
-           alt="book cover">
-      <h3>BOOK-TITLE-HERE</h3>
-      <div class="author">AUTHOR-NAME · apr '26</div>
-      <p class="take">YOUR-ONE-LINE-TAKEAWAY</p>
-    </div>
-    <!-- └────────────────── END BOOK ─────────────────┘ -->
+
   </div>
 </section>
 
@@ -1462,9 +1634,7 @@ document.getElementById('dotEgg').addEventListener('click', e => {
 });
 </script>
 
-<!-- 🔑 ANALYTICS (free): sign up at goatcounter.com → pick a code
-     (e.g. "karthik") → replace MY-CODE below → delete the two
-     comment arrows around the script line to switch it on.
+<!-- 🔑 ANALYTICS — live. Your GoatCounter dashboard: karthikonteddu.goatcounter.com -->
 <script data-goatcounter="https://karthikonteddu.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 
