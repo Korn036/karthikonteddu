@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <!-- ================================================================
-     KARTHIKONTEDDU.COM — LAUNCH BUILD v5
+     KARTHIKONTEDDU.COM · LAUNCH BUILD v5
      ----------------------------------------------------------------
      YOU NEVER NEED TO KNOW CODE. Three rules:
      1. Search  ✏️ EDIT  → type over the text → save → refresh
@@ -20,14 +20,14 @@
         Cal.com · Substack · Buy Me a Coffee · Buy Me a Chai · email
         (LinkedIn is already wired: linkedin.com/in/ornkarthik)
      C. og.png (the social preview image) must sit in the SAME folder
-        as this file — drag the whole folder into Netlify
-     D. Optional: switch on free analytics — search 🔑 ANALYTICS
+        as this file · drag the whole folder into Netlify
+     D. Optional: switch on free analytics · search 🔑 ANALYTICS
      ================================================================ -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- ✏️ EDIT: browser tab title + Google description -->
-<title>Karthik Onteddu — a curious soul who solves problems</title>
+<title>Karthik Onteddu · a curious soul who solves problems</title>
 <meta name="description" content="Engineer turned salesperson turned strategist. 5 countries lived in. Every conversation funds a child's education.">
 
 <!-- favicon: the little "k." in the browser tab (no extra file needed) -->
@@ -35,7 +35,7 @@
 
 <!-- social preview: the card LinkedIn/WhatsApp show when you share the link.
      NOTE: keep og.png in the same folder as this file when deploying -->
-<meta property="og:title" content="Karthik Onteddu — a curious soul">
+<meta property="og:title" content="Karthik Onteddu · a curious soul">
 <meta property="og:description" content="Engineer → salesperson → strategist. 5 countries lived in. Every conversation funds a child's education.">
 <meta property="og:image" content="https://karthikonteddu.com/og.png">
 <meta property="og:url" content="https://karthikonteddu.com">
@@ -52,7 +52,7 @@
   "name": "Karthik Onteddu",
   "alternateName": "O.R.N. Karthik",
   "url": "https://karthikonteddu.com",
-  "jobTitle": "Sales & Strategy — Global Outperformer",
+  "jobTitle": "Sales & Strategy · Global Outperformer",
   "description": "Engineer turned salesperson turned strategist. Lived and worked in 5 countries. Every conversation funds a child's education.",
   "knowsLanguage": ["English", "Telugu", "German"],
   "sameAs": [
@@ -68,7 +68,7 @@
 
 <style>
 /* =================================================================
-   1. DESIGN SYSTEM — light + dark. Change a hex once, applies everywhere
+   1. DESIGN SYSTEM · light + dark. Change a hex once, applies everywhere
    ================================================================= */
 :root{
   --cream:      #FAFAF6;
@@ -77,9 +77,9 @@
   --ink-soft:   #6B6963;
   --ink-faint:  #A8A69C;
   --label:      #8B8980;
-  --lav:        #F0D7FF;          /* EXACT Wispr lavender (sampled) — fills, hovers, washes */
+  --lav:        #F0D7FF;          /* EXACT Wispr lavender (sampled) · fills, hovers, washes */
   --pink:       #BB8FDC;          /* deeper lavender for small text/periods so it stays readable */
-  --green:      #045145;          /* EXACT Wispr deep green (sampled) — CTA + accents */
+  --green:      #045145;          /* EXACT Wispr deep green (sampled) · CTA + accents */
   --hairline:   rgba(42,41,37,0.09);
   --glow-pink:  rgba(240,215,255,0.5);
   --glow-green: rgba(4,81,69,0.08);
@@ -89,7 +89,7 @@
   --head-weight: 600;
   --max-width: 1100px;
 }
-/* dark mode — same soul, late-evening palette */
+/* dark mode · same soul, late-evening palette */
 [data-theme="dark"]{
   --cream:      #1E1D1A;
   --cream-2:    #28261F;
@@ -106,7 +106,7 @@
 }
 
 /* =================================================================
-   2. BASE — bigger type so content leads, distraction-free
+   2. BASE · bigger type so content leads, distraction-free
    ================================================================= */
 *{ margin:0; padding:0; box-sizing:border-box; }
 html{ scroll-behavior:smooth; }
@@ -116,7 +116,7 @@ body{
   -webkit-font-smoothing:antialiased;
   transition:background .35s ease, color .35s ease;
 }
-/* faint paper grain — the "not flat" secret */
+/* faint paper grain · the "not flat" secret */
 body::before{
   content:''; position:fixed; inset:0; pointer-events:none; z-index:1;
   opacity:0.5;
@@ -170,7 +170,7 @@ header{
 .reveal.in{ opacity:1; transform:none; }
 
 /* =================================================================
-   5. HOME — breathing hero
+   5. HOME · breathing hero
    ================================================================= */
 .hero-grid{
   display:grid; grid-template-columns:1.5fr 1fr; gap:44px;
@@ -197,7 +197,7 @@ h1{
   letter-spacing:-0.022em; margin-bottom:22px;
 }
 h1 .dot, h2 .dot{ color:var(--pink); }
-/* the living phrase — clean sans in deep Wispr green, no italics */
+/* the living phrase · clean sans in deep Wispr green, no italics */
 #living{
   display:inline; font-family:var(--sans); font-style:normal;
   font-weight:600; font-size:0.78em; letter-spacing:-0.012em;
@@ -257,7 +257,7 @@ a.w:hover{ transform:translateY(-3px); box-shadow:0 8px 18px var(--hairline); }
 
 .rule{ height:0.5px; background:var(--hairline); }
 
-/* CTA — the color-popping button */
+/* CTA · the color-popping button */
 .cta-grid{ display:grid; grid-template-columns:1fr 1.1fr; gap:44px; padding:42px 0; }
 .btn{
   display:inline-block; background:var(--green); color:#FAFAF6;
@@ -467,8 +467,8 @@ h2{
 .book h3{ font-family:var(--serif); font-weight:var(--head-weight); font-size:15px; line-height:1.22; margin-bottom:2px; }
 .book .author{ font-size:11.5px; color:var(--label); margin-bottom:6px; }
 .book .take{ font-size:12.5px; color:var(--ink-soft); line-height:1.55; }
-/* ✦ MY PICK — recommended books. To mark a book, change class="book reveal"
-   to class="book reveal rec" — that's the whole trick */
+/* ✦ MY PICK · recommended books. To mark a book, change class="book reveal"
+   to class="book reveal rec" · that's the whole trick */
 .book.rec{
   position:relative;
   border:1px solid rgba(187,143,220,0.45);
@@ -557,10 +557,10 @@ h2{
 
   <div class="hero-grid">
     <div>
-      <!-- time-aware greeting — city is editable in the ENGINE ROOM config -->
+      <!-- time-aware greeting · city is editable in the ENGINE ROOM config -->
       <div class="greeting" id="greeting">hello from manchester</div>
 
-      <!-- ✏️ EDIT: the static part of the hero. The green phrase rotates —
+      <!-- ✏️ EDIT: the static part of the hero. The green phrase rotates -
            edit the phrases in the SAFE CONFIG block at the bottom -->
       <h1>A curious soul<br>who thinks <span id="living">education can fix the world</span><span class="dot">.</span></h1>
 
@@ -589,7 +589,7 @@ h2{
         <div class="metric-num"><span data-count="21">0</span><span class="plus">+</span></div>
         <div class="metric-label">countries traveled &amp; counting</div>
       </div>
-      <!-- widget 3 ✏️ EDIT: total books — tapping it opens the bookshelf -->
+      <!-- widget 3 ✏️ EDIT: total books · tapping it opens the bookshelf -->
       <a class="w" data-page="books" href="#books">
         <div class="metric-num"><span data-count="50">0</span><span class="plus">+</span></div>
         <div class="metric-label">books read</div>
@@ -615,7 +615,7 @@ h2{
   </div>
 
   <div class="rule rule-wool">
-    <!-- the red wool ball — hover (or tap on phones) and it unwinds along the line.
+    <!-- the red wool ball · hover (or tap on phones) and it unwinds along the line.
          to remove it someday: delete from <div class="wool"> to its </div> -->
     <div class="wool" id="wool" aria-hidden="true">
       <svg viewBox="0 0 380 62" width="380" height="62" xmlns="http://www.w3.org/2000/svg">
@@ -642,7 +642,7 @@ h2{
 
     <div class="recent reveal">
       <div class="recent-label">recent learnings <span class="sparkle">✦</span></div>
-      <!-- 📋 TEMPLATE — RECENT LINK ▼ copy START→END, paste on top, edit title + URL. Keep best 3 -->
+      <!-- 📋 TEMPLATE · RECENT LINK ▼ copy START→END, paste on top, edit title + URL. Keep best 3 -->
       <!-- START recent link -->
       <a href="https://www.linkedin.com/posts/ornkarthik_sales-lesson-7-8-months-of-work-5-hour-activity-7463951878817550336-kwQL" target="_blank" rel="noopener"><span>sales lesson #7 · 8 months of work, 5 hours</span><span>→</span></a>
       <!-- END recent link -->
@@ -666,7 +666,7 @@ h2{
   </div>
 
   <!-- ================================================================
-       ✦ THE BREAK — tic-tac-toe vs the site. You play deep-green X,
+       ✦ THE BREAK · tic-tac-toe vs the site. You play deep-green X,
        the site plays lavender O. To remove the game someday: delete
        from <div class="break-zone"> down to its closing comment.
        ================================================================ -->
@@ -722,7 +722,7 @@ h2{
 </section>
 
 <!-- ================================================================
-     PAGE: JOURNEY — 📋 TEMPLATE: copy a chapter block for a new era
+     PAGE: JOURNEY · 📋 TEMPLATE: copy a chapter block for a new era
      ================================================================ -->
 <section class="page" id="journey">
   <div class="page-head">
@@ -774,7 +774,7 @@ h2{
 </section>
 
 <!-- ================================================================
-     PAGE: WRITING — the 2-minute routine after every LinkedIn post:
+     PAGE: WRITING · the 2-minute routine after every LinkedIn post:
      copy 📋 TEMPLATE START→END, paste at TOP, edit date/title/summary/URL
      ================================================================ -->
 <section class="page" id="writing">
@@ -784,7 +784,7 @@ h2{
   </div>
 
   <!-- ===== ORIGINALS: essays that live on this site =====
-       📋 TEMPLATE — to add essay #2:
+       📋 TEMPLATE · to add essay #2:
        1. copy a <a class="tile..."> block below, paste beside it,
           change data-page + href to "essay-2" and edit the words
        2. copy the whole <section id="essay-1"> at the bottom of this
@@ -805,7 +805,7 @@ h2{
 
   <div class="recent-label" style="margin:26px 0 0;">from linkedin <span class="sparkle">✦</span></div>
   <div class="posts">
-    <!-- 📋 TEMPLATE — POST ▼ copy this block, paste under the right
+    <!-- 📋 TEMPLATE · POST ▼ copy this block, paste under the right
          category heading (newest on top), edit title + URL:
     <a class="post reveal" href="https://www.linkedin.com/posts/YOUR-POST" target="_blank" rel="noopener">
       <div class="meta">sales lessons</div>
@@ -915,7 +915,7 @@ h2{
 </section>
 
 <!-- ================================================================
-     ESSAY PAGE 01 — ✏️ EDIT: replace every paragraph with your piece.
+     ESSAY PAGE 01 · ✏️ EDIT: replace every paragraph with your piece.
      copy this whole section + a tile above to add more essays
      ================================================================ -->
 <section class="page essay" id="essay-1">
@@ -929,7 +929,7 @@ h2{
 </section>
 
 <!-- ================================================================
-     PAGE: NOW — ✏️ EDIT the date each time you update
+     PAGE: NOW · ✏️ EDIT the date each time you update
      ================================================================ -->
 <section class="page" id="now">
   <div class="page-head">
@@ -949,7 +949,7 @@ h2{
     <div class="tag">running</div>
     <div>
       <h3>Cheshire autumn half marathon</h3>
-      <!-- the countdown fills itself in daily — race date lives in the CONFIG block below -->
+      <!-- the countdown fills itself in daily · race date lives in the CONFIG block below -->
       <p><span class="countdown" id="countdown"></span> early alarms, long sundays, one stubborn goal</p>
     </div>
   </div>
@@ -973,7 +973,7 @@ h2{
 </section>
 
 <!-- ████████████████████████████████████████████████████████████████
-     ████  PAGE: BOOKS — YOUR EDITING ZONE  ████████████████████████
+     ████  PAGE: BOOKS · YOUR EDITING ZONE  ████████████████████████
      ████████████████████████████████████████████████████████████████
 
      HOW TO ADD A BOOK (90 seconds, 4 steps):
@@ -982,7 +982,7 @@ h2{
                 ┌── BOOK ──┐  and  └── END BOOK ──┘
        STEP 2 → paste it directly BELOW the └── END BOOK ──┘ line
                 (newest book goes on top)
-       STEP 3 → cover image — pick the easiest option:
+       STEP 3 → cover image · pick the easiest option:
                 ① ISBN trick: find the ISBN on the book's back cover
                   or Amazon page, put it in this address:
                   https://covers.openlibrary.org/b/isbn/PUT-ISBN-HERE-M.jpg
@@ -994,7 +994,7 @@ h2{
                 wash + the "✦ my pick" tag automatically
 
      TIP: open this file in VS Code (free) and all comments turn
-     green automatically — the editable zones become obvious.
+     green automatically · the editable zones become obvious.
      ████████████████████████████████████████████████████████████████ -->
 <section class="page" id="books">
   <div class="page-head">
@@ -1013,7 +1013,7 @@ h2{
            alt="book cover">
       <h3>Sex, Ecology, Spirituality</h3>
       <div class="author">Ken Wilber · Jun '26</div>
-      <p class="take">currently reading — the takeaway lands when the last page does 📖</p>
+      <p class="take">currently reading · the takeaway lands when the last page does 📖</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
 
@@ -1079,7 +1079,7 @@ h2{
            alt="book cover">
       <h3>The World Atlas of Coffee</h3>
       <div class="author">James Hoffmann · Dec '25</div>
-      <p class="take">Singapore and my curiosity got the best of me — one weekend, cover to cover, just to understand what coffee people are actually into. Learned an Americano is just espresso with hot water, named for the Americans in Italy who kept asking for it that way</p>
+      <p class="take">Singapore and my curiosity got the best of me. One weekend, cover to cover, just to understand what coffee people are actually into. Learned an Americano is just espresso with hot water, named for the Americans in Italy who kept asking for it that way</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
 
@@ -1090,7 +1090,7 @@ h2{
            alt="book cover">
       <h3>The World for Sale</h3>
       <div class="author">Javier Blas · Nov '25</div>
-      <p class="take">Crazy read! Loved every page. The earth's resources are traded daily behind closed doors by people most of us have never heard of — quietly steering the geopolitics of the world. HIGHLY RECOMMENDED!</p>
+      <p class="take">Crazy read! Loved every page. The earth's resources are traded daily behind closed doors by people most of us have never heard of, quietly steering the geopolitics of the world. HIGHLY RECOMMENDED!</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
 
@@ -1101,7 +1101,7 @@ h2{
            alt="book cover">
       <h3>The Four Agreements</h3>
       <div class="author">Don Miguel Ruiz · Nov '25</div>
-      <p class="take">✏️ takeaway coming — re-reading my notes</p>
+      <p class="take">✏️ takeaway coming, re-reading my notes</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
 
@@ -1112,7 +1112,7 @@ h2{
            alt="book cover">
       <h3>Culture Map</h3>
       <div class="author">Erin Meyer · Jun '25</div>
-      <p class="take">We're all more or less the same humans everywhere. What makes us unique is culture and its nuances. Essential for anyone planning a global career and leading global teams — someone like me</p>
+      <p class="take">We're all more or less the same humans everywhere. What makes us unique is culture and its nuances. Essential for anyone planning a global career and leading global teams. Someone like me</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
 
@@ -1134,7 +1134,7 @@ h2{
            alt="book cover">
       <h3>How to Know a Person</h3>
       <div class="author">David Brooks · Dec '24</div>
-      <p class="take">Look deeper at people. Make them feel heard, make them included — and don't wait for the right moment to know someone better. Every person has a story to tell. I always try to know that story</p>
+      <p class="take">Look deeper at people. Make them feel heard, make them included. And don't wait for the right moment to know someone better. Every person has a story to tell. I always try to know that story</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
 
@@ -1145,7 +1145,7 @@ h2{
            alt="book cover">
       <h3>Taxtopia</h3>
       <div class="author">The Rebel Accountant · Sept '24</div>
-      <p class="take">Curiosity about how taxation works led me here — and boy, was I shocked and left in awe. Taxes stay complex and jargon-filled for a reason: if everyone understood and started asking questions, the world's gonna be a mayhem</p>
+      <p class="take">Curiosity about how taxation works led me here, and boy, was I shocked and left in awe. Taxes stay complex and jargon-filled for a reason: if everyone understood and started asking questions, the world's gonna be a mayhem</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
 
@@ -1167,7 +1167,7 @@ h2{
            alt="book cover">
       <h3>The Psychology of Money</h3>
       <div class="author">Morgan Housel · Nov '23</div>
-      <p class="take">It's the small decisions and the discipline that keep people broke — or quietly build them</p>
+      <p class="take">It's the small decisions and the discipline that keep people broke, or quietly build them</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
 
@@ -1178,7 +1178,7 @@ h2{
            alt="book cover">
       <h3>Night</h3>
       <div class="author">Elie Wiesel · Sept '23</div>
-      <p class="take">Reinforced the power of hope for survival — and to cherish the life I've been gifted. Death is destined for every one of us, but only a few muster the courage to make the most of it</p>
+      <p class="take">Reinforced the power of hope for survival, and to cherish the life I've been gifted. Death is destined for every one of us, but only a few muster the courage to make the most of it</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
 
@@ -1200,7 +1200,7 @@ h2{
            alt="book cover">
       <h3>Meditations</h3>
       <div class="author">Marcus Aurelius · Mar '22</div>
-      <p class="take">My Bible. My most recommended book, period. The private ruminations of the most powerful man of his time — never meant to be published. Every excuse for vice was available to him, and he chose purpose over everything. Memento mori: remember death</p>
+      <p class="take">My Bible. My most recommended book, period. The private ruminations of the most powerful man of his time, never meant to be published. Every excuse for vice was available to him, and he chose purpose over everything. Memento mori: remember death</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
 
@@ -1211,7 +1211,7 @@ h2{
            alt="book cover">
       <h3>Man's Search For Meaning</h3>
       <div class="author">Viktor E. Frankl · Jun '20</div>
-      <p class="take">One of the books that changed my life. The suffering I used to complain about was nothing compared to what people endured in the Holocaust — and still, hope survived. My condolences to every soul who lived those times. My whole POV on life changed after this</p>
+      <p class="take">One of the books that changed my life. The suffering I used to complain about was nothing compared to what people endured in the Holocaust. And still, hope survived. My condolences to every soul who lived those times. My whole POV on life changed after this</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
 
@@ -1222,7 +1222,7 @@ h2{
            alt="book cover">
       <h3>Flow</h3>
       <div class="author">Mihaly Csikszentmihalyi · Dec '19</div>
-      <p class="take">✏️ takeaway coming — re-reading my notes</p>
+      <p class="take">✏️ takeaway coming, re-reading my notes</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
 
@@ -1233,7 +1233,7 @@ h2{
            alt="book cover">
       <h3>Can't Hurt Me</h3>
       <div class="author">David Goggins · Nov '19</div>
-      <p class="take">Helped me push myself harder — in personal life and professional life alike</p>
+      <p class="take">Helped me push myself harder, in personal life and professional life alike</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
 
@@ -1244,7 +1244,7 @@ h2{
            alt="book cover">
       <h3>Cosmos</h3>
       <div class="author">Carl Sagan · Oct '19</div>
-      <p class="take">Made me fall in love with space. Cosmic insignificance: race, colour, religion, caste — all man-made. We're not that significant in this vast universe anyway, so take more risks and explore</p>
+      <p class="take">Made me fall in love with space. Cosmic insignificance: race, colour, religion, caste, all man-made. We're not that significant in this vast universe anyway, so take more risks and explore</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
 
@@ -1255,7 +1255,7 @@ h2{
            alt="book cover">
       <h3>The Kite Runner</h3>
       <div class="author">Khaled Hosseini · Aug '19</div>
-      <p class="take">The book that instilled in my teenage world the idea of seeing more of it — go travel</p>
+      <p class="take">The book that instilled in my teenage world the idea of seeing more of it. Go travel</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
 
@@ -1266,7 +1266,7 @@ h2{
            alt="book cover">
       <h3>Deep Work</h3>
       <div class="author">Cal Newport · Oct '18</div>
-      <p class="take">My first step into conscious digital consumption. The algorithms are not your friends — and the ability to FOCUS is what will set one apart</p>
+      <p class="take">My first step into conscious digital consumption. The algorithms are not your friends, and the ability to FOCUS is what will set one apart</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
 
@@ -1277,7 +1277,7 @@ h2{
            alt="book cover">
       <h3>Quiet</h3>
       <div class="author">Susan Cain · Apr '18</div>
-      <p class="take">One of the books that changed my life, found at exactly the right time — late teens, still trying to understand myself and my personality. That's where I met the word ambivert. I guess I am one</p>
+      <p class="take">One of the books that changed my life, found at exactly the right time. Late teens, still trying to understand myself and my personality. That's where I met the word ambivert. I guess I am one</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
 
@@ -1288,7 +1288,7 @@ h2{
            alt="book cover">
       <h3>Sapiens</h3>
       <div class="author">Yuval Noah Harari · Mar '18</div>
-      <p class="take">Came into my life right when I was asking the existential questions: who am I? why are we here? Sure, I'm here today — but how did we get here? Our lifespans are a blink against Earth's origins</p>
+      <p class="take">Came into my life right when I was asking the existential questions: who am I? why are we here? Sure, I'm here today, but how did we get here? Our lifespans are a blink against Earth's origins</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
 
@@ -1299,7 +1299,7 @@ h2{
            alt="book cover">
       <h3>Thinking, Fast and Slow</h3>
       <div class="author">Daniel Kahneman · Feb '18</div>
-      <p class="take">This book rewired my brain — how I perceive the world and every interaction in it. It exposed how vulnerable our minds are to bias. I now consciously catch myself, daily</p>
+      <p class="take">This book rewired my brain, how I perceive the world and every interaction in it. It exposed how vulnerable our minds are to bias. I now consciously catch myself, daily</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
 
@@ -1321,7 +1321,7 @@ h2{
            alt="book cover">
       <h3>Get Smart!</h3>
       <div class="author">Brian Tracy · Nov '17</div>
-      <p class="take">My first ever book! Found by pure chance, back when I didn't even know how a library worked. It opened my mind to endless possibilities — and teenage me believed every single word</p>
+      <p class="take">My first ever book! Found by pure chance, back when I didn't even know how a library worked. It opened my mind to endless possibilities. And teenage me believed every single word</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
 
@@ -1359,7 +1359,7 @@ h2{
     </div>
   </div>
 
-  <!-- ✂️ KIND WORDS (testimonials) — hidden for now.
+  <!-- ✂️ KIND WORDS (testimonials) · hidden for now.
        When you have 2 real quotes from calls:
        1. delete the line above that starts with ✂️ KIND WORDS (the whole comment-opening line)
        2. delete the line below that says ✂️ END KIND WORDS
@@ -1383,14 +1383,14 @@ h2{
 </main>
 
 <!-- ================================================================
-     🚫 ENGINE ROOM — animations, dark mode, countdown, greeting.
-     You never NEED to touch anything below — EXCEPT the small
+     🚫 ENGINE ROOM · animations, dark mode, countdown, greeting.
+     You never NEED to touch anything below · EXCEPT the small
      ✏️ SAFE CONFIG block right here, which is yours to edit:
      ================================================================ -->
 <script>
 /* ================= ✏️ SAFE CONFIG (edit freely) ================= */
 const CONFIG = {
-  /* the rotating hero phrases — they complete "A curious soul who thinks ___."
+  /* the rotating hero phrases · they complete "A curious soul who thinks ___."
      keep them under ~6 words so the heading stays clean */
   phrases: [
     "education can fix the world",
@@ -1403,13 +1403,13 @@ const CONFIG = {
   /* your city, shown in the greeting */
   city: "manchester",
 
-  /* race day for the countdown (year, month, day) — month is written
+  /* race day for the countdown (year, month, day) · month is written
      normally here, e.g. 9 = september */
   raceDate: { y: 2026, m: 9, d: 13 },
   /* what the countdown line says after race day has passed */
   afterRace: "race done ✦ next quest loading.",
 
-  /* footer quips — one is picked at random per visit */
+  /* footer quips · one is picked at random per visit */
   quips: [
     "same destination, different currency",
     "built between 5am runs",
@@ -1417,7 +1417,7 @@ const CONFIG = {
     "written from country number five"
   ]
 };
-/* ============== end of safe config — machinery below ============== */
+/* ============== end of safe config · machinery below ============== */
 
 /* page switching */
 const pages = document.querySelectorAll('.page');
@@ -1450,7 +1450,7 @@ function observeReveals(){
 }
 observeReveals();
 
-/* living hero — first, lock the heading height to the TALLEST phrase so
+/* living hero · first, lock the heading height to the TALLEST phrase so
    nothing below it ever moves when the text rotates */
 const living = document.getElementById('living');
 const heroH1 = living.closest('h1');
@@ -1482,13 +1482,13 @@ setInterval(() => {
 
 /* time-aware greeting (visitor's local clock) */
 const h = new Date().getHours();
-const slot = h < 5 ? ["it's late — hello from", "🌙"] :
+const slot = h < 5 ? ["it's late · hello from", "🌙"] :
              h < 12 ? ["good morning from", "☀️"] :
              h < 18 ? ["good afternoon from", "🌤"] :
                       ["good evening from", "🌙"];
 document.getElementById('greeting').textContent = `${slot[1]} ${slot[0]} ${CONFIG.city}`;
 
-/* count-up metrics — animates every element that has a data-count number */
+/* count-up metrics · animates every element that has a data-count number */
 function countUp(el){
   const target = parseInt(el.dataset.count, 10);
   if(isNaN(target)) return;            /* safety: skip anything misconfigured */
@@ -1573,7 +1573,7 @@ if(tttCells){
       after.innerHTML = 'sharp minds make great conversations. <a href="https://cal.com/kihtrak-ulta-ryirrl" target="_blank" rel="noopener">book 30 minutes →</a>';
     } else if(w==='O'){
       tttStatus.textContent = "the site wins this one 🫖";
-      after.innerHTML = 'lost to a website? redeem yourself — <a href="https://cal.com/kihtrak-ulta-ryirrl" target="_blank" rel="noopener">out-think me on a call →</a>';
+      after.innerHTML = 'lost to a website? redeem yourself, <a href="https://cal.com/kihtrak-ulta-ryirrl" target="_blank" rel="noopener">out-think me on a call →</a>';
     } else {
       tttStatus.textContent = "a draw. very diplomatic";
       after.innerHTML = 'diplomatic people fund education too :) <a href="https://buymeachai.ezee.li/Karthikonteddu" target="_blank" rel="noopener">a chai for a child →</a>';
@@ -1634,7 +1634,7 @@ document.getElementById('dotEgg').addEventListener('click', e => {
 });
 </script>
 
-<!-- 🔑 ANALYTICS — live. Your GoatCounter dashboard: karthikonteddu.goatcounter.com -->
+<!-- 🔑 ANALYTICS · live. Your GoatCounter dashboard: karthikonteddu.goatcounter.com -->
 <script data-goatcounter="https://karthikonteddu.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
 
