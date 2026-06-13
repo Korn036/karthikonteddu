@@ -281,6 +281,93 @@ a.w:hover{ transform:translateY(-3px); box-shadow:0 8px 18px var(--hairline); }
 .cta-note a{ color:var(--pink); font-style:normal; }
 .cta-note a:hover{ text-decoration:underline; }
 
+/* ===== the essence block - replaces the homepage CTA. soft, typographic, no buttons ===== */
+.essence{ max-width:380px; }
+.essence-quote{
+  font-family:var(--serif); font-weight:var(--head-weight);
+  font-size:24px; line-height:1.45; letter-spacing:-0.012em;
+  color:var(--ink); margin-bottom:22px;
+}
+.essence-quote .dot{ color:var(--pink); }
+.essence-why{
+  font-size:14px; line-height:1.7; color:var(--ink-soft);
+}
+.essence-why .why-open{
+  display:block; margin-bottom:22px;
+  padding:6px 0 6px 18px;
+  border-left:3px solid var(--green);
+}
+.essence-why .why-open .why-label{
+  font-family:var(--sans); font-style:normal;
+  font-size:11px; letter-spacing:0.1em; text-transform:uppercase;
+  font-weight:600; color:var(--pink);
+  display:block; margin-bottom:8px;
+}
+.essence-why .why-open .why-label::before{ content:'✦ '; }
+.essence-why .why-open .why-belief{
+  font-family:var(--serif); font-style:normal; font-weight:500;
+  font-size:18px; line-height:1.55; letter-spacing:-0.005em;
+  color:var(--ink); display:block;
+}
+.essence-why .why-mech{ display:block; max-width:380px; }
+.essence-why a{
+  color:var(--pink); border-bottom:0.5px dashed var(--pink);
+  padding-bottom:1px; transition:color .2s, border-color .2s;
+}
+.essence-why a:hover{ color:var(--green); border-bottom-color:var(--green); }
+
+/* the homepage hero button - same green/lavender pattern as Connect's button */
+.hero-btn{ margin:6px 0 22px; }
+
+/* ===== Connect nav · just a small blinking pink dot to the right of the word.
+   Subtle signal that this is the "active warm" tab. ===== */
+.nav-links a[data-page="connect"]{
+  display:inline-flex; align-items:center; gap:7px;
+}
+.nav-links a[data-page="connect"]::after{
+  content:''; width:6px; height:6px; border-radius:50%;
+  background:var(--pink);
+  position:static; transform:none; padding:0;
+  animation:connectBlink 2.2s ease-in-out infinite;
+  flex-shrink:0;
+}
+.nav-links a[data-page="connect"]:hover::after{ background:var(--pink); }
+@keyframes connectBlink{
+  0%, 60%, 100% { opacity:1; transform:scale(1); }
+  30%           { opacity:0.35; transform:scale(0.75); }
+}
+
+/* ===== transparency card on Connect page - the matching story, clearly told ===== */
+.transparent-card{
+  background:linear-gradient(165deg, rgba(240,215,255,0.35), var(--cream-2) 60%);
+  border:1px solid rgba(187,143,220,0.35);
+  border-radius:16px; padding:30px;
+  margin:8px 0 28px;
+  box-shadow:0 1px 0 var(--hairline);
+  max-width:none;
+}
+[data-theme="dark"] .transparent-card{
+  background:linear-gradient(165deg, rgba(240,215,255,0.08), var(--cream-2) 60%);
+}
+.transparent-card h3{
+  font-family:var(--serif); font-weight:var(--head-weight);
+  font-size:22px; margin-bottom:10px;
+}
+.transparent-card h3 span{ color:var(--pink); }
+.transparent-card p{ font-size:14.5px; line-height:1.75; color:var(--ink); margin-bottom:14px; }
+.transparent-card p:last-child{ margin-bottom:0; }
+.transparent-card strong{ color:var(--ink); font-weight:600; }
+.transparent-card .match-line{
+  font-family:var(--serif); font-style:italic; font-size:17px; color:var(--green);
+  padding:10px 0 4px;
+}
+.transparent-card .why-personal{
+  font-family:var(--serif); font-style:italic; font-size:17px;
+  color:var(--ink); line-height:1.55;
+  padding-bottom:6px; border-left:2px solid var(--pink);
+  padding-left:14px; margin:-4px 0 16px;
+}
+
 .recent-label{
   font-size:11.5px; letter-spacing:0.04em; color:var(--label);
   margin-bottom:5px; display:flex; align-items:center; gap:6px;
@@ -523,11 +610,16 @@ h2{
   .widgets{ grid-template-columns:repeat(3,1fr); gap:9px; }
   .w{ padding:13px 11px; border-radius:14px; }
   .metric-num{ font-size:29px; }
+  .essence-quote{ font-size:21px; }
+  .essence{ max-width:none; }
   .tile-grid, .kind-grid{ grid-template-columns:1fr; }
   .wool{ left:24px; width:300px; }
 }
 @media (max-width:430px){ .book-grid{ grid-template-columns:1fr 1fr; } }
 
+@media (max-width:760px){
+  .essence-why .why-open .why-belief{ font-size:15px; line-height:1.55; }
+}
 @media (prefers-reduced-motion:reduce){
   *{ animation:none !important; transition:none !important; }
   .reveal{ opacity:1; transform:none; }
@@ -570,8 +662,9 @@ h2{
            edit the phrases in the SAFE CONFIG block at the bottom -->
       <h1>A curious soul<br>who thinks <span id="living">education can fix the world</span><span class="dot">.</span></h1>
 
-      <!-- ✏️ EDIT: mission line -->
-      <p class="mission">because if one thing can fix the world's biggest problems, it's <strong>access to education</strong></p>
+      <!-- ✦ the gentle homepage door. Same green styling as Connect button,
+           but worded warmly. Routes to Connect page (no Cal.com from homepage). -->
+      <a class="btn hero-btn" data-page="connect" href="#connect">bring a coffee, let's talk →</a>
 
       <div class="socials">
         <a href="https://www.linkedin.com/in/ornkarthik" target="_blank" rel="noopener" aria-label="LinkedIn">
@@ -639,11 +732,23 @@ h2{
   </div>
 
   <div class="cta-grid">
-    <div class="reveal">
-      <!-- 🔗 LINK: your Cal.com URL -->
-      <a class="btn" href="https://cal.com/kihtrak-ulta-ryirrl" target="_blank" rel="noopener">book a 30-min call →</a>
-      <p class="cta-note">every conversation funds a child's education.
-        <a data-page="connect" href="#connect">see what we've funded →</a></p>
+    <!-- ✦ THE ESSENCE - the heart of the homepage. No buttons here, no booking. Just
+         the brand soul in three lines, plus the why. Booking lives on the Connect page only. -->
+    <div class="essence reveal">
+      <p class="essence-quote">
+        there is a shelf of books<br>
+        there are stories from the road<br>
+        stay a while<span class="dot">.</span>
+      </p>
+      <p class="essence-why">
+        <span class="why-open">
+          <span class="why-label">here's my why</span>
+          <span class="why-belief">I believe access to education and knowledge is one of the easiest solutions to the world's biggest problems.</span>
+        </span>
+        <span class="why-mech">
+          the call is free. if it helped, fund a child's education, and I match it from mine. <a data-page="connect" href="#connect">everything, transparent</a>.
+        </span>
+      </p>
     </div>
 
     <div class="recent reveal">
@@ -1340,28 +1445,37 @@ h2{
 <section class="page" id="connect">
   <div class="page-head">
     <h2>Let's talk<span class="dot">.</span></h2>
-    <p class="page-intro">careers, sales, moving countries, building things. if I can help, book a slot</p>
+    <p class="page-intro">careers, sales, moving countries, books, building things. if I can help, let's connect. no agenda, no fee</p>
+  </div>
+
+  <!-- ✦ the transparency card - the matching story, told clearly. This is the soul of the page. -->
+  <div class="transparent-card reveal">
+    <h3>How this works, transparently<span>.</span></h3>
+    <p class="why-personal">I was once in your shoes, looking for someone willing to actually talk and guide. giving back is the why.</p>
+    <p>Every call here is <strong>free</strong>. 15, 20, or 30 minutes, your agenda, genuinely no fee. We talk, and if any of it gave you something real, a small contribution toward a child's education is <strong>optional</strong>. only if you felt the value.</p>
+    <p class="match-line">whatever you contribute, I match. one-for-one, from my own pocket.</p>
+    <p>£1 from you becomes £2 toward a child's education. I do this because I believe in it, and because the matching keeps me honest. it pushes me to do my best work for you, every call. the counter below counts conversations funded, not money raised. counted from day one.</p>
   </div>
 
   <div class="connect-grid">
     <div class="connect-card reveal">
-      <h3>Book a conversation</h3>
-      <p>30 minutes, your agenda. every paid session is donated to children's education, fully and quietly</p>
+      <h3>Pick my brains</h3>
+      <p>15, 20, or 30 minutes on your calendar, free. ask anything. sales, moving countries, books, getting unstuck, or just a chat over coffee somewhere in the world</p>
       <!-- 🔗 LINK: your Cal.com URL -->
-      <a class="btn" href="https://cal.com/kihtrak-ulta-ryirrl" target="_blank" rel="noopener">book a 30-min call →</a>
+      <a class="btn" href="https://cal.com/kihtrak-ulta-ryirrl" target="_blank" rel="noopener">grab a slot on my calendar →</a>
       <!-- ✏️ EDIT: bump this number as sessions happen -->
-      <p class="funded-note"><strong>1 conversations funded so far</strong> · counting from day one, honestly</p>
+      <p class="funded-note"><strong>4 conversations funded so far</strong> · counted honestly, from day one</p>
     </div>
 
     <div class="connect-card reveal">
-      <h3>Or just say thanks</h3>
-      <p>if something here helped you, a coffee or a chai goes to the same place: a child's education</p>
+      <h3>If it helped, only if</h3>
+      <p>found something worth the time? a coffee or a chai is optional, and matched by me one-for-one. every contribution sponsors a child's learning together</p>
       <div class="tip-btns">
         <!-- 🔗 LINK: your BMC + BMAC URLs -->
         <a class="btn-soft" href="https://buymeacoffee.com/YOUR-PAGE" target="_blank" rel="noopener">☕ buy me a coffee</a>
         <a class="btn-soft" href="https://buymeachai.ezee.li/Karthikonteddu" target="_blank" rel="noopener">🫖 buy me a chai</a>
       </div>
-      <p class="funded-note">international cards → coffee · UPI from india → chai</p>
+      <p class="funded-note">international cards → coffee · UPI from india → chai · same purpose, both</p>
     </div>
   </div>
 
@@ -1576,13 +1690,13 @@ if(tttCells){
     const after = document.getElementById('tttAfter');
     if(w==='X'){
       tttStatus.textContent = "you won. okay, you're sharp ✦";
-      after.innerHTML = 'sharp minds make great conversations. <a href="https://cal.com/kihtrak-ulta-ryirrl" target="_blank" rel="noopener">book 30 minutes →</a>';
+      after.innerHTML = 'sharp minds make great conversations. <a href="#connect" data-page="connect">oh, let\'s actually talk →</a>';
     } else if(w==='O'){
       tttStatus.textContent = "the site wins this one 🫖";
-      after.innerHTML = 'lost to a website? redeem yourself, <a href="https://cal.com/kihtrak-ulta-ryirrl" target="_blank" rel="noopener">out-think me on a call →</a>';
+      after.innerHTML = 'lost to a website? <a href="#connect" data-page="connect">okay, redeem yourself →</a>';
     } else {
       tttStatus.textContent = "a draw. very diplomatic";
-      after.innerHTML = 'diplomatic people fund education too :) <a href="https://buymeachai.ezee.li/Karthikonteddu" target="_blank" rel="noopener">a chai for a child →</a>';
+      after.innerHTML = 'diplomatic people fund education too :) <a href="#connect" data-page="connect">come see how →</a>';
     }
     after.classList.add('in');
     return true;
@@ -1641,5 +1755,32 @@ document.getElementById('dotEgg').addEventListener('click', e => {
 </script>
 
 <!-- 🔑 ANALYTICS · live. Your GoatCounter dashboard: karthikonteddu.goatcounter.com -->
-<!-- GoatCounter analytics — privacy-clean, free, dashboard at karthikonteddu.goatcounter.com -->
-<!-- per-page tracking: counts the initial
+<!-- GoatCounter analytics - privacy-clean, free, dashboard at karthikonteddu.goatcounter.com -->
+<!-- per-page tracking: counts the initial load PLUS every tab switch (#journey, #writing,
+     #books, #connect, #essay-1, etc) so each section gets its own row in Pages.
+     uses GoatCounter's official no_onload pattern so visits are never double-counted. -->
+<script>
+  window.goatcounter = {
+    no_onload: true,
+    allow_local: false
+  };
+  function gcPath(){
+    var h = location.hash.replace('#',''); 
+    return h ? '/' + h : '/';
+  }
+  window.addEventListener('load', function(){
+    if(window.goatcounter && window.goatcounter.count){
+      window.goatcounter.count({ path: gcPath() });
+    }
+  });
+  window.addEventListener('hashchange', function(){
+    if(window.goatcounter && window.goatcounter.count){
+      window.goatcounter.count({ path: gcPath() });
+    }
+  });
+</script>
+<script data-goatcounter="https://karthikonteddu.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+</body>
+</html>
