@@ -586,6 +586,51 @@ h2{
 .funded-note{ font-size:13px; font-style:italic; color:var(--ink-soft); margin-top:16px; }
 .funded-note strong{ color:var(--ink); font-style:normal; }
 
+/* ===== projects · the apps Karthik designs + ships (icon cards) =====
+   reuses the same cream-2 tile, hover-lift, serif heading and pink
+   accent language as the rest of the site, so it feels native. */
+.apps-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; padding-bottom:60px; }
+.app-card{
+  display:flex; gap:18px; align-items:flex-start;
+  background:var(--cream-2); border-radius:16px; padding:24px;
+  box-shadow:0 1px 0 var(--hairline);
+  transition:transform .2s, box-shadow .2s;
+}
+a.app-card{ cursor:pointer; }
+a.app-card:hover{ transform:translateY(-3px); box-shadow:0 10px 22px var(--hairline); }
+.app-icon{ flex-shrink:0; }
+.app-icon svg{
+  width:60px; height:60px; display:block; border-radius:14px;
+  box-shadow:0 4px 12px rgba(42,41,37,0.18);
+}
+.app-body{ flex:1; min-width:0; }
+.app-top{ display:flex; align-items:center; gap:10px; margin-bottom:7px; }
+.app-top h3{
+  font-family:var(--serif); font-weight:var(--head-weight);
+  font-size:22px; letter-spacing:-0.01em; line-height:1.1;
+}
+.app-card p{ font-size:13.5px; color:var(--ink-soft); line-height:1.6; margin-bottom:12px; }
+.app-go{ font-size:13px; color:var(--pink); }
+a.app-card:hover .app-go{ text-decoration:underline; }
+.app-pill{
+  font-size:9.5px; font-weight:600; letter-spacing:0.06em; text-transform:lowercase;
+  padding:3px 10px; border-radius:20px; white-space:nowrap; flex-shrink:0;
+}
+.app-pill.live{ background:var(--pink); color:#FAFAF6; }
+.app-pill.soon{ background:var(--cream); color:var(--label); border:1px solid var(--hairline); }
+.app-pill.tag{ background:var(--cream); color:var(--label); border:1px solid var(--hairline); }
+.app-icon.logo{
+  width:60px; height:60px; border-radius:14px; background:#fff;
+  border:1px solid var(--hairline); display:flex; align-items:center; justify-content:center;
+  box-shadow:0 4px 12px rgba(42,41,37,0.18);
+}
+.app-icon.logo img{ width:32px; height:32px; }
+.app-group{
+  font-size:11.5px; letter-spacing:0.04em; color:var(--label);
+  padding:30px 0 12px; display:flex; align-items:center; gap:6px;
+}
+@media (max-width:760px){ .apps-grid{ grid-template-columns:1fr; } }
+
 /* =================================================================
    7. MOBILE
    ================================================================= */
@@ -637,7 +682,7 @@ h2{
         <a data-page="writing" href="#writing">writing</a>
         <a data-page="now" href="#now">now</a>
         <a data-page="books" href="#books">books</a>
-        <!-- <a data-page="stack" href="#stack">stack</a> -->
+        <a data-page="toolkit" href="#toolkit">toolkit</a>
         <!-- <a data-page="lab" href="#lab">lab</a> -->
         <a data-page="connect" href="#connect">connect</a>
       </nav>
@@ -701,7 +746,7 @@ h2{
           <span class="pulse"></span>
           <span class="city">Manchester</span>
         </div>
-        <div class="sub-line">training for cheshire half · Sep '26</div>
+        <div class="sub-line">learning german · slow and steady</div>
       </div>
       <!-- wide tile: currently reading ✏️ EDIT book + author -->
       <div class="w w-wide">
@@ -1057,15 +1102,6 @@ h2{
   </div>
 
   <div class="now-item reveal">
-    <div class="tag">running</div>
-    <div>
-      <h3>Cheshire autumn half marathon</h3>
-      <!-- the countdown fills itself in daily · race date lives in the CONFIG block below -->
-      <p><span class="countdown" id="countdown"></span> early alarms, long sundays, one stubborn goal</p>
-    </div>
-  </div>
-
-  <div class="now-item reveal">
     <div class="tag">language</div>
     <div>
       <h3>German, targeting Goethe A2</h3>
@@ -1329,6 +1365,28 @@ h2{
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal">
       <img class="cover"
+           src="https://covers.openlibrary.org/b/isbn/9780349140438-L.jpg"
+           alt="book cover">
+      <h3>Steve Jobs</h3>
+      <div class="author">Walter Isaacson · Jun '20</div>
+      <p class="take">Invention, I learned, isn't only a matter of technical skill. The real magic happens where engineering meets creativity, taste and art — and that intersection is exactly where Jobs chose to stand</p>
+    </div>
+    <!-- └────────────────── END BOOK ─────────────────┘ -->
+
+    <!-- ┌─────────────────── BOOK ───────────────────┐ -->
+    <div class="book reveal">
+      <img class="cover"
+           src="https://covers.openlibrary.org/b/isbn/9780062301239-L.jpg"
+           alt="book cover">
+      <h3>Elon Musk</h3>
+      <div class="author">Ashlee Vance · Feb '20</div>
+      <p class="take">The lesson that stuck: find something you're genuinely passionate about, hold a vision bigger than feels reasonable, and push yourself past every limit to reach it — no matter what it takes</p>
+    </div>
+    <!-- └────────────────── END BOOK ─────────────────┘ -->
+
+    <!-- ┌─────────────────── BOOK ───────────────────┐ -->
+    <div class="book reveal">
+      <img class="cover"
            src="https://m.media-amazon.com/images/I/719T6yw0zWL._SL1500_.jpg"
            alt="book cover">
       <h3>Flow</h3>
@@ -1439,6 +1497,133 @@ h2{
   </div>
 </section>
 
+<!-- ████████████████████████████████████████████████████████████████
+     ████  PAGE: TOOLKIT · APPS KARTHIK RECOMMENDS  ███████████████
+     ████████████████████████████████████████████████████████████████
+
+     HOW TO ADD AN APP (45 seconds):
+       STEP 1 → copy everything between  ┌── APP ──┐  and  └── END APP ──┘
+       STEP 2 → paste it below the └── END APP ──┘ line
+       STEP 3 → change the link (href + the little domain text), the
+                name, the category tag, and the one-line why
+       STEP 4 → the LOGO loads itself from the app's own website — just
+                set  domain=THEIRSITE.com  in the <img> src. that's it
+     ████████████████████████████████████████████████████████████████ -->
+<section class="page" id="toolkit">
+  <div class="page-head">
+    <h2>My toolkit<span class="dot">.</span></h2>
+    <p class="page-intro">the apps I actually use and recommend — the few that earned a permanent spot on my home screen. ✏️ the one-liners are placeholders, make them yours</p>
+  </div>
+
+  <!-- 📋 to add an app: copy one  <a class="app-card">…</a>  block and drop it under
+       the right category. to add a whole new category, copy a  <div class="app-group">…</div>
+       label line + the  <div class="apps-grid">…</div>  that follows it. -->
+
+  <!-- ═════════ category: health & training ═════════ -->
+  <div class="app-group reveal" style="padding-top:4px">health &amp; training <span class="sparkle">✦</span></div>
+  <div class="apps-grid">
+    <a class="app-card reveal" href="https://www.strava.com" target="_blank" rel="noopener">
+      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=strava.com&sz=128" alt="Strava logo" loading="lazy"></div>
+      <div class="app-body">
+        <div class="app-top"><h3>Strava</h3><span class="app-pill tag">running</span></div>
+        <p>every run, ride and walk, logged. my training journal and the nudge to actually lace up</p>
+        <span class="app-go">strava.com →</span>
+      </div>
+    </a>
+    <a class="app-card reveal" href="https://www.hevyapp.com" target="_blank" rel="noopener">
+      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=hevyapp.com&sz=128" alt="Hevy logo" loading="lazy"></div>
+      <div class="app-body">
+        <div class="app-top"><h3>Hevy</h3><span class="app-pill tag">gym</span></div>
+        <p>clean, no-nonsense workout tracking. logs every set so progress is impossible to fake</p>
+        <span class="app-go">hevyapp.com →</span>
+      </div>
+    </a>
+    <a class="app-card reveal" href="https://www.myfitnesspal.com" target="_blank" rel="noopener">
+      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=myfitnesspal.com&sz=128" alt="MyFitnessPal logo" loading="lazy"></div>
+      <div class="app-body">
+        <div class="app-top"><h3>MyFitnessPal</h3><span class="app-pill tag">nutrition</span></div>
+        <p>the calorie and macro diary. keeps me honest about what actually goes in</p>
+        <span class="app-go">myfitnesspal.com →</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- ═════════ category: money ═════════ -->
+  <div class="app-group reveal">money <span class="sparkle">✦</span></div>
+  <div class="apps-grid">
+    <a class="app-card reveal" href="https://wise.com" target="_blank" rel="noopener">
+      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=wise.com&sz=128" alt="Wise logo" loading="lazy"></div>
+      <div class="app-body">
+        <div class="app-top"><h3>Wise</h3><span class="app-pill tag">transfers</span></div>
+        <p>moving money across borders without the ugly fees. a quiet lifesaver when life happens in five countries</p>
+        <span class="app-go">wise.com →</span>
+      </div>
+    </a>
+    <a class="app-card reveal" href="https://realbyte.co.kr" target="_blank" rel="noopener">
+      <!-- 🔗 if this logo is blank, change domain= to Money Manager / Realbyte's real site -->
+      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=realbyte.co.kr&sz=128" alt="Money Manager logo" loading="lazy"></div>
+      <div class="app-body">
+        <div class="app-top"><h3>Money Manager</h3><span class="app-pill tag">budgeting</span></div>
+        <p>by Realbyte. where every rupee and pound goes — simple expense tracking that actually sticks</p>
+        <span class="app-go">realbyte.co.kr →</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- ═════════ category: mind · learn, read, reflect ═════════ -->
+  <div class="app-group reveal">mind · learn, read, reflect <span class="sparkle">✦</span></div>
+  <div class="apps-grid">
+    <a class="app-card reveal" href="https://www.duolingo.com" target="_blank" rel="noopener">
+      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=duolingo.com&sz=128" alt="Duolingo logo" loading="lazy"></div>
+      <div class="app-body">
+        <div class="app-top"><h3>Duolingo</h3><span class="app-pill tag">language</span></div>
+        <p>a few minutes of language a day. how I'm slowly chipping away at German, one stubborn streak at a time</p>
+        <span class="app-go">duolingo.com →</span>
+      </div>
+    </a>
+    <a class="app-card reveal" href="https://journey.cloud" target="_blank" rel="noopener">
+      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=journey.cloud&sz=128" alt="Journey logo" loading="lazy"></div>
+      <div class="app-body">
+        <div class="app-top"><h3>Journey</h3><span class="app-pill tag">journaling</span></div>
+        <p>a quiet place to journal. where the day gets a few honest lines before it slips away</p>
+        <span class="app-go">journey.cloud →</span>
+      </div>
+    </a>
+    <a class="app-card reveal" href="https://z-lib.io" target="_blank" rel="noopener">
+      <!-- 🔗 Z-Library mirrors move often — update this href + domain= if it's down -->
+      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=z-lib.io&sz=128" alt="Z-Library logo" loading="lazy"></div>
+      <div class="app-body">
+        <div class="app-top"><h3>Z-Library</h3><span class="app-pill tag">books</span></div>
+        <p>the curious reader's back pocket — almost any book, a search away</p>
+        <span class="app-go">z-lib.io →</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- ═════════ category: work & play ═════════ -->
+  <div class="app-group reveal">work &amp; play <span class="sparkle">✦</span></div>
+  <div class="apps-grid">
+    <a class="app-card reveal" href="https://wisprflow.ai" target="_blank" rel="noopener">
+      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=wisprflow.ai&sz=128" alt="Wispr Flow logo" loading="lazy"></div>
+      <div class="app-body">
+        <div class="app-top"><h3>Wispr Flow</h3><span class="app-pill tag">dictation</span></div>
+        <p>talk, and it types. turns thinking out loud into clean text — fun fact, this site's colours are borrowed from it</p>
+        <span class="app-go">wisprflow.ai →</span>
+      </div>
+    </a>
+    <a class="app-card reveal" href="https://music.youtube.com" target="_blank" rel="noopener">
+      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=music.youtube.com&sz=128" alt="YouTube Music logo" loading="lazy"></div>
+      <div class="app-body">
+        <div class="app-top"><h3>YouTube Music</h3><span class="app-pill tag">music</span></div>
+        <p>the soundtrack to runs, deep work, and everything between</p>
+        <span class="app-go">music.youtube.com →</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- ✏️ MORE: send any other apps (+ a one-line why) and I'll slot them into the right category -->
+</section>
+
 <!-- ================================================================
      PAGE: CONNECT
      ================================================================ -->
@@ -1523,16 +1708,10 @@ const CONFIG = {
   /* your city, shown in the greeting */
   city: "manchester",
 
-  /* race day for the countdown (year, month, day) · month is written
-     normally here, e.g. 9 = september */
-  raceDate: { y: 2026, m: 9, d: 13 },
-  /* what the countdown line says after race day has passed */
-  afterRace: "race done ✦ next quest loading.",
-
   /* footer quips · one is picked at random per visit */
   quips: [
     "same destination, different currency",
-    "built between 5am runs",
+    "built in the margins of the day",
     "no cookies here, just chai",
     "written from country number five"
   ]
@@ -1622,15 +1801,7 @@ function countUp(el){
 }
 document.querySelectorAll('[data-count]').forEach(countUp);
 
-/* race countdown */
-const cd = document.getElementById('countdown');
-if(cd){
-  const race = new Date(CONFIG.raceDate.y, CONFIG.raceDate.m - 1, CONFIG.raceDate.d);
-  const days = Math.ceil((race - new Date()) / 86400000);
-  cd.textContent = days > 1 ? `${days} days to race day.` :
-                   days === 1 ? "race day is tomorrow." :
-                   days === 0 ? "race day is today ✦" : CONFIG.afterRace;
-}
+/* (race countdown removed) */
 
 /* rotating footer quip */
 const quipEl = document.getElementById('quip');
