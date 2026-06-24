@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <!-- ================================================================
-     KARTHIKONTEDDU.COM · LAUNCH BUILD v5
+     KARTHIKONTEDDU.COM · LAUNCH BUILD v6 · retina pass
      ----------------------------------------------------------------
      YOU NEVER NEED TO KNOW CODE. Three rules:
      1. Search  ✏️ EDIT  → type over the text → save → refresh
@@ -89,6 +89,9 @@
   --hairline:   rgba(42,41,37,0.09);
   --glow-pink:  rgba(240,215,255,0.5);
   --glow-green: rgba(4,81,69,0.08);
+  /* retina depth · a tight contact shadow + a soft ambient one (iOS material) */
+  --shadow-tile:   0 1px 2px rgba(42,41,37,0.05), 0 8px 20px rgba(42,41,37,0.07);
+  --shadow-tile-h: 0 2px 6px rgba(42,41,37,0.07), 0 16px 34px rgba(42,41,37,0.11);
 
   --serif: 'Fraunces', Georgia, serif;
   --sans:  'Inter', -apple-system, sans-serif;
@@ -109,6 +112,8 @@
   --hairline:   rgba(242,240,232,0.10);
   --glow-pink:  rgba(240,215,255,0.10);
   --glow-green: rgba(46,140,116,0.10);
+  --shadow-tile:   0 1px 2px rgba(0,0,0,0.40), 0 10px 24px rgba(0,0,0,0.32);
+  --shadow-tile-h: 0 2px 8px rgba(0,0,0,0.45), 0 18px 38px rgba(0,0,0,0.40);
 }
 
 /* =================================================================
@@ -229,12 +234,16 @@ h1 .dot, h2 .dot{ color:var(--pink); }
 /* ===== the widget grid (iPhone-style) ===== */
 .widgets{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
 .w{
-  background:var(--cream-2); border-radius:18px; padding:18px 16px;
-  box-shadow:0 1px 0 var(--hairline); display:block;
+  background:linear-gradient(180deg, color-mix(in srgb, var(--cream-2) 92%, #ffffff), var(--cream-2));
+  border-radius:20px; padding:18px 16px;
+  box-shadow:var(--shadow-tile); display:block;
   transition:transform .2s, box-shadow .2s;
 }
+[data-theme="dark"] .w{
+  background:linear-gradient(180deg, color-mix(in srgb, var(--cream-2) 86%, #ffffff), var(--cream-2));
+}
 a.w{ cursor:pointer; }
-a.w:hover{ transform:translateY(-3px); box-shadow:0 8px 18px var(--hairline); }
+a.w:hover{ transform:translateY(-3px); box-shadow:var(--shadow-tile-h); }
 .w-wide{ grid-column:1 / -1; }
 .metric-num{
   font-family:var(--serif); font-weight:var(--head-weight);
@@ -269,7 +278,7 @@ a.w:hover{ transform:translateY(-3px); box-shadow:0 8px 18px var(--hairline); }
   display:inline-block; background:var(--green); color:#FAFAF6;
   font-weight:600; font-size:14.5px; padding:14px 28px; border-radius:12px;
   border:1.5px solid transparent; cursor:pointer; letter-spacing:0.02em;
-  box-shadow:0 4px 14px var(--glow-green);
+  box-shadow:0 1px 1px rgba(4,81,69,0.18), 0 6px 16px rgba(4,81,69,0.22), inset 0 1px 0 rgba(255,255,255,0.18);
   transition:background .25s, color .25s, border-color .25s, transform .2s, box-shadow .25s;
 }
 .btn:hover{
@@ -343,7 +352,7 @@ a.w:hover{ transform:translateY(-3px); box-shadow:0 8px 18px var(--hairline); }
   border:1px solid rgba(187,143,220,0.35);
   border-radius:16px; padding:30px;
   margin:8px 0 28px;
-  box-shadow:0 1px 0 var(--hairline);
+  box-shadow:var(--shadow-tile);
   max-width:none;
 }
 [data-theme="dark"] .transparent-card{
@@ -387,7 +396,7 @@ a.w:hover{ transform:translateY(-3px); box-shadow:0 8px 18px var(--hairline); }
   background:var(--cream-2); border-radius:16px;
   padding:32px 34px; margin:8px 0 42px;
   display:flex; align-items:center; justify-content:space-between; gap:28px;
-  box-shadow:0 1px 0 var(--hairline);
+  box-shadow:var(--shadow-tile);
 }
 .capture h3{
   font-family:var(--serif); font-weight:var(--head-weight);
@@ -478,10 +487,10 @@ footer .left{ display:flex; align-items:center; gap:16px; }
 .tile-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:14px; }
 .tile{
   background:var(--cream-2); border-radius:16px; padding:26px;
-  box-shadow:0 1px 0 var(--hairline); display:block;
+  box-shadow:var(--shadow-tile); display:block;
   transition:transform .2s, box-shadow .2s;
 }
-.tile:hover{ transform:translateY(-3px); box-shadow:0 10px 22px var(--hairline); }
+.tile:hover{ transform:translateY(-3px); box-shadow:var(--shadow-tile-h); }
 .tile .t-meta{ font-size:11.5px; letter-spacing:0.04em; color:var(--label); margin-bottom:8px; }
 .tile h3{
   font-family:var(--serif); font-weight:var(--head-weight);
@@ -505,7 +514,7 @@ footer .left{ display:flex; align-items:center; gap:16px; }
 .kind-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; padding-bottom:60px; }
 .kind{
   background:var(--cream-2); border-radius:16px; padding:24px;
-  box-shadow:0 1px 0 var(--hairline);
+  box-shadow:var(--shadow-tile);
 }
 .kind p{ font-family:var(--serif); font-size:17px; line-height:1.6; margin-bottom:12px; }
 .kind .who{ font-size:12.5px; color:var(--label); }
@@ -551,11 +560,12 @@ h2{
 
 /* books */
 .book-grid{ display:grid; grid-template-columns:repeat(4, 1fr); gap:18px; padding-bottom:60px; }
-.book{ background:var(--cream-2); border-radius:12px; padding:12px; transition:transform .2s, box-shadow .2s; }
-.book:hover{ transform:translateY(-4px); box-shadow:0 8px 20px var(--hairline); }
+.book{ background:var(--cream-2); border-radius:14px; padding:12px; box-shadow:var(--shadow-tile); transition:transform .2s, box-shadow .2s; }
+.book:hover{ transform:translateY(-4px); box-shadow:var(--shadow-tile-h); }
 .book .cover{
   width:100%; aspect-ratio:2/3; border-radius:7px; object-fit:cover;
   background:var(--cream); border:0.5px solid var(--hairline); margin-bottom:10px;
+  box-shadow:0 2px 8px rgba(42,41,37,0.14);  /* the cover lifts off its card */
 }
 .book h3{ font-family:var(--serif); font-weight:var(--head-weight); font-size:15px; line-height:1.22; margin-bottom:2px; }
 .book .author{ font-size:11.5px; color:var(--label); margin-bottom:6px; }
@@ -579,7 +589,7 @@ h2{
 
 /* connect */
 .connect-grid{ display:grid; grid-template-columns:1fr 1fr; gap:32px; padding-bottom:60px; }
-.connect-card{ background:var(--cream-2); border-radius:16px; padding:30px; box-shadow:0 1px 0 var(--hairline); }
+.connect-card{ background:var(--cream-2); border-radius:16px; padding:30px; box-shadow:var(--shadow-tile); }
 .connect-card h3{ font-family:var(--serif); font-weight:var(--head-weight); font-size:24px; margin-bottom:9px; }
 .connect-card p{ font-size:14.5px; color:var(--ink-soft); margin-bottom:18px; }
 .tip-btns{ display:flex; gap:12px; flex-wrap:wrap; }
@@ -593,11 +603,11 @@ h2{
 .app-card{
   display:flex; gap:18px; align-items:flex-start;
   background:var(--cream-2); border-radius:16px; padding:24px;
-  box-shadow:0 1px 0 var(--hairline);
+  box-shadow:var(--shadow-tile);
   transition:transform .2s, box-shadow .2s;
 }
 a.app-card{ cursor:pointer; }
-a.app-card:hover{ transform:translateY(-3px); box-shadow:0 10px 22px var(--hairline); }
+a.app-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-tile-h); }
 .app-icon{ flex-shrink:0; }
 .app-icon svg{
   width:60px; height:60px; display:block; border-radius:14px;
@@ -620,11 +630,18 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 .app-pill.soon{ background:var(--cream); color:var(--label); border:1px solid var(--hairline); }
 .app-pill.tag{ background:var(--cream); color:var(--label); border:1px solid var(--hairline); }
 .app-icon.logo{
-  width:60px; height:60px; border-radius:14px; background:#fff;
-  border:1px solid var(--hairline); display:flex; align-items:center; justify-content:center;
-  box-shadow:0 4px 12px rgba(42,41,37,0.18);
+  width:60px; height:60px; border-radius:13.5px; background:#fff;
+  display:flex; align-items:center; justify-content:center;
+  clip-path:url(#ios-squircle); -webkit-clip-path:url(#ios-squircle);  /* iOS squircle */
+  box-shadow:
+    inset 0 0 0 1px rgba(42,41,37,0.05),       /* crisp edge */
+    inset 0 1.6px 1.4px rgba(255,255,255,0.85), /* top highlight · lit from above */
+    inset 0 -4px 7px rgba(42,41,37,0.045);      /* soft inner floor */
+  filter:
+    drop-shadow(0 4px 8px rgba(42,41,37,0.22))
+    drop-shadow(0 1px 2px rgba(42,41,37,0.16)); /* squircle-shaped contact shadow */
 }
-.app-icon.logo img{ width:32px; height:32px; }
+.app-icon.logo img{ width:34px; height:34px; }
 .app-group{
   font-size:11.5px; letter-spacing:0.04em; color:var(--label);
   padding:30px 0 12px; display:flex; align-items:center; gap:6px;
@@ -672,6 +689,12 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 </style>
 </head>
 <body>
+
+<!-- iOS squircle (superellipse) clip shape · gives the home-screen icons their
+     continuous "Apple" corner instead of a plain rounded square. Used by .app-icon.logo -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs><clipPath id="ios-squircle" clipPathUnits="objectBoundingBox"><path d="M1.00000 0.50000L0.99924 0.68840L0.99695 0.74822L0.99311 0.79118L0.98771 0.82553L0.98071 0.85428L0.97204 0.87893L0.96165 0.90032L0.94944 0.91898L0.93528 0.93528L0.91898 0.94944L0.90032 0.96165L0.87893 0.97204L0.85428 0.98071L0.82553 0.98771L0.79118 0.99311L0.74822 0.99695L0.68840 0.99924L0.50000 1.00000L0.31160 0.99924L0.25178 0.99695L0.20882 0.99311L0.17447 0.98771L0.14572 0.98071L0.12107 0.97204L0.09968 0.96165L0.08102 0.94944L0.06472 0.93528L0.05056 0.91898L0.03835 0.90032L0.02796 0.87893L0.01929 0.85428L0.01229 0.82553L0.00689 0.79118L0.00305 0.74822L0.00076 0.68840L0.00000 0.50000L0.00076 0.31160L0.00305 0.25178L0.00689 0.20882L0.01229 0.17447L0.01929 0.14572L0.02796 0.12107L0.03835 0.09968L0.05056 0.08102L0.06472 0.06472L0.08102 0.05056L0.09968 0.03835L0.12107 0.02796L0.14572 0.01929L0.17447 0.01229L0.20882 0.00689L0.25178 0.00305L0.31160 0.00076L0.50000 0.00000L0.68840 0.00076L0.74822 0.00305L0.79118 0.00689L0.82553 0.01229L0.85428 0.01929L0.87893 0.02796L0.90032 0.03835L0.91898 0.05056L0.93528 0.06472L0.94944 0.08102L0.96165 0.09968L0.97204 0.12107L0.98071 0.14572L0.98771 0.17447L0.99311 0.20882L0.99695 0.25178L0.99924 0.31160L1.00000 0.50000Z"/></clipPath></defs>
+</svg>
 
 <header>
   <div class="wrap nav">
@@ -1523,7 +1546,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
   <div class="app-group reveal" style="padding-top:4px">health &amp; training <span class="sparkle">✦</span></div>
   <div class="apps-grid">
     <a class="app-card reveal" href="https://www.strava.com" target="_blank" rel="noopener">
-      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=strava.com&sz=128" alt="Strava logo" loading="lazy"></div>
+      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=strava.com&sz=256" alt="Strava logo" loading="lazy"></div>
       <div class="app-body">
         <div class="app-top"><h3>Strava</h3><span class="app-pill tag">running</span></div>
         <p>every run, ride and walk, logged. my training journal and the nudge to actually lace up</p>
@@ -1531,7 +1554,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
       </div>
     </a>
     <a class="app-card reveal" href="https://www.hevyapp.com" target="_blank" rel="noopener">
-      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=hevyapp.com&sz=128" alt="Hevy logo" loading="lazy"></div>
+      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=hevyapp.com&sz=256" alt="Hevy logo" loading="lazy"></div>
       <div class="app-body">
         <div class="app-top"><h3>Hevy</h3><span class="app-pill tag">gym</span></div>
         <p>clean, no-nonsense workout tracking. logs every set so progress is impossible to fake</p>
@@ -1539,7 +1562,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
       </div>
     </a>
     <a class="app-card reveal" href="https://www.myfitnesspal.com" target="_blank" rel="noopener">
-      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=myfitnesspal.com&sz=128" alt="MyFitnessPal logo" loading="lazy"></div>
+      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=myfitnesspal.com&sz=256" alt="MyFitnessPal logo" loading="lazy"></div>
       <div class="app-body">
         <div class="app-top"><h3>MyFitnessPal</h3><span class="app-pill tag">nutrition</span></div>
         <p>the calorie and macro diary. keeps me honest about what actually goes in</p>
@@ -1552,7 +1575,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
   <div class="app-group reveal">money <span class="sparkle">✦</span></div>
   <div class="apps-grid">
     <a class="app-card reveal" href="https://wise.com" target="_blank" rel="noopener">
-      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=wise.com&sz=128" alt="Wise logo" loading="lazy"></div>
+      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=wise.com&sz=256" alt="Wise logo" loading="lazy"></div>
       <div class="app-body">
         <div class="app-top"><h3>Wise</h3><span class="app-pill tag">transfers</span></div>
         <p>moving money across borders without the ugly fees. a quiet lifesaver when life happens in five countries</p>
@@ -1573,7 +1596,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
   <div class="app-group reveal">mind · learn, read, reflect <span class="sparkle">✦</span></div>
   <div class="apps-grid">
     <a class="app-card reveal" href="https://www.duolingo.com" target="_blank" rel="noopener">
-      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=duolingo.com&sz=128" alt="Duolingo logo" loading="lazy"></div>
+      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=duolingo.com&sz=256" alt="Duolingo logo" loading="lazy"></div>
       <div class="app-body">
         <div class="app-top"><h3>Duolingo</h3><span class="app-pill tag">language</span></div>
         <p>a few minutes of language a day. how I'm slowly chipping away at German, one stubborn streak at a time</p>
@@ -1581,7 +1604,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
       </div>
     </a>
     <a class="app-card reveal" href="https://journey.cloud" target="_blank" rel="noopener">
-      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=journey.cloud&sz=128" alt="Journey logo" loading="lazy"></div>
+      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=journey.cloud&sz=256" alt="Journey logo" loading="lazy"></div>
       <div class="app-body">
         <div class="app-top"><h3>Journey</h3><span class="app-pill tag">journaling</span></div>
         <p>a quiet place to journal. where the day gets a few honest lines before it slips away</p>
@@ -1589,7 +1612,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
       </div>
     </a>
     <a class="app-card reveal" href="https://books.apple.com" target="_blank" rel="noopener">
-      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=books.apple.com&sz=128" alt="Apple Books logo" loading="lazy"></div>
+      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=books.apple.com&sz=256" alt="Apple Books logo" loading="lazy"></div>
       <div class="app-body">
         <div class="app-top"><h3>Apple Books</h3><span class="app-pill tag">books</span></div>
         <p>where my reading lives: highlights, samples, and the next book always a tap away</p>
@@ -1602,7 +1625,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
   <div class="app-group reveal">work &amp; play <span class="sparkle">✦</span></div>
   <div class="apps-grid">
     <a class="app-card reveal" href="https://wisprflow.ai" target="_blank" rel="noopener">
-      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=wisprflow.ai&sz=128" alt="Wispr Flow logo" loading="lazy"></div>
+      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=wisprflow.ai&sz=256" alt="Wispr Flow logo" loading="lazy"></div>
       <div class="app-body">
         <div class="app-top"><h3>Wispr Flow</h3><span class="app-pill tag">dictation</span></div>
         <p>talk, and it types. turns thinking out loud into clean text. fun fact, this site's colours are borrowed from it</p>
@@ -1610,7 +1633,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
       </div>
     </a>
     <a class="app-card reveal" href="https://claude.ai" target="_blank" rel="noopener">
-      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=128" alt="Claude logo" loading="lazy"></div>
+      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=256" alt="Claude logo" loading="lazy"></div>
       <div class="app-body">
         <div class="app-top"><h3>Claude</h3><span class="app-pill tag">coding</span></div>
         <p>my pair-programmer and thinking partner. it built most of this very site, line by line</p>
@@ -1618,7 +1641,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
       </div>
     </a>
     <a class="app-card reveal" href="https://calendar.google.com" target="_blank" rel="noopener">
-      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=calendar.google.com&sz=128" alt="Google Calendar logo" loading="lazy"></div>
+      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=calendar.google.com&sz=256" alt="Google Calendar logo" loading="lazy"></div>
       <div class="app-body">
         <div class="app-top"><h3>Google Calendar</h3><span class="app-pill tag">planning</span></div>
         <p>if it isn't on the calendar, it doesn't happen. the backbone of how I run a week</p>
@@ -1627,7 +1650,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
     </a>
     <a class="app-card reveal" href="https://tasks.google.com" target="_blank" rel="noopener">
       <!-- 🔗 if this logo is blank, Google Tasks has no standalone site, point domain= at calendar.google.com -->
-      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=tasks.google.com&sz=128" alt="Google Tasks logo" loading="lazy"></div>
+      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=tasks.google.com&sz=256" alt="Google Tasks logo" loading="lazy"></div>
       <div class="app-body">
         <div class="app-top"><h3>Google Tasks</h3><span class="app-pill tag">to-dos</span></div>
         <p>a dead-simple to-do list that syncs everywhere. no frills, just the next thing to do</p>
@@ -1635,7 +1658,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
       </div>
     </a>
     <a class="app-card reveal" href="https://music.youtube.com" target="_blank" rel="noopener">
-      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=music.youtube.com&sz=128" alt="YouTube Music logo" loading="lazy"></div>
+      <div class="app-icon logo"><img src="https://www.google.com/s2/favicons?domain=music.youtube.com&sz=256" alt="YouTube Music logo" loading="lazy"></div>
       <div class="app-body">
         <div class="app-top"><h3>YouTube Music</h3><span class="app-pill tag">music</span></div>
         <p>the soundtrack to runs, deep work, and everything between</p>
