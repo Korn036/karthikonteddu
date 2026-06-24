@@ -1,6 +1,6 @@
 # karthikonteddu.com
 
-The personal-brand site of **Karthik Onteddu** — a single, self-contained web page
+The personal-brand site of **Karthik Onteddu** - a single, self-contained web page
 intended to be owned and maintained for the long term (a decade or more).
 
 This README is the front door for any **new person or AI agent**: read it first and
@@ -14,7 +14,7 @@ you can navigate, edit, secure, and ship the whole project with confidence.
   all CSS (in one `<style>`), and all JavaScript (in one `<script>` "engine room")
   live in that single file. No build step, no framework, no backend.
 - **Why single-file?** Durability. Plain static HTML is the most long-lived format
-  on the web — it has no dependencies to rot, can be hosted anywhere, and will still
+  on the web - it has no dependencies to rot, can be hosted anywhere, and will still
   render in ten years. This is a deliberate choice, not an accident; keep it that way.
 - **Hosting:** Cloudflare (static assets, configured in [`wrangler.toml`](wrangler.toml),
   serving the repo root `./`). **Pushing to `main` auto-deploys** the live site.
@@ -36,7 +36,7 @@ README.md         ← you are here
 ## 2. Map of `index.html` (how to find anything)
 
 The file is organised top-to-bottom. Use your editor's search for the tags in the
-**Search for** column — every landmark has a unique, greppable marker.
+**Search for** column - every landmark has a unique, greppable marker.
 
 | Region | What's there | Search for |
 | --- | --- | --- |
@@ -50,9 +50,9 @@ The file is organised top-to-bottom. Use your editor's search for the tags in th
 
 **Editing conventions used throughout the file** (so non-coders can edit safely):
 
-- `✏️ EDIT` — type over the text right there.
-- `📋 TEMPLATE` — copy the block between `START` / `END` to add a post, book, app, or chapter.
-- `🚫 ENGINE ROOM` — everything below this line is machinery; you never need to touch it.
+- `✏️ EDIT` - type over the text right there.
+- `📋 TEMPLATE` - copy the block between `START` / `END` to add a post, book, app, or chapter.
+- `🚫 ENGINE ROOM` - everything below this line is machinery; you never need to touch it.
 
 ---
 
@@ -75,7 +75,7 @@ explanation). In short:
 
 - A strict **Content-Security-Policy** allow-lists exactly the few external services
   the site uses (Google Fonts, GoatCounter analytics, logo/cover image hosts, Formspree)
-  and blocks everything else — the primary defence against script injection / XSS.
+  and blocks everything else - the primary defence against script injection / XSS.
 - **HSTS** (force HTTPS), **X-Frame-Options/frame-ancestors** (anti-clickjacking),
   **nosniff**, a tight **Permissions-Policy**, and a sensible **Referrer-Policy**.
 - The newsletter form carries a hidden `_gotcha` **honeypot** to deter spam bots.
@@ -98,12 +98,12 @@ blocked. Verify the live result at <https://securityheaders.com>.
   any bucket in minutes.
 
 **Don't**
-- Don't add live/API-dependent widgets (now-playing, GitHub activity) — external APIs
+- Don't add live/API-dependent widgets (now-playing, GitHub activity) - external APIs
   rot and need secrets a static site shouldn't hold.
-- Don't add stateful features (guestbook, comments) casually — each is a backend +
+- Don't add stateful features (guestbook, comments) casually - each is a backend +
   spam liability.
 - **Known fragility to fix:** book covers are hotlinked from Amazon and app logos from
-  Google's favicon service. These can break over time — the durable fix is to download
+  Google's favicon service. These can break over time - the durable fix is to download
   them into the repo and reference local files. (Tracked as future work.)
 
 ---
