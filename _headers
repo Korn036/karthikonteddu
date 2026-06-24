@@ -1,0 +1,46 @@
+# ==========================================================================
+# Security headers for karthikonteddu.com  ·  Cloudflare static-assets / Pages
+# --------------------------------------------------------------------------
+# This file is read by Cloudflare and applied to every response. It adds the
+# site's security layer WITHOUT touching index.html, so it is easy to audit
+# and instantly revertable (delete this file to roll back).
+#
+# WHAT EACH LINE DOES (plain English):
+#   Content-Security-Policy  the big one. A strict allow-list of where the page
+#                            may load code, styles, fonts, images and send data.
+#                            Anything not listed is blocked, which neuters most
+#                            injection / cross-site-scripting attacks. The list
+#                            below is the EXACT set of services the site uses:
+#                              · Google Fonts (styles + font files)
+#                              · GoatCounter analytics (gc.zgo.at + your subdomain)
+#                              · logos from Google's favicon service + realbyteapps
+#                              · book covers from Amazon + Open Library
+#                              · the newsletter form posts to Formspree
+#                            'unsafe-inline' is allowed for the inline <style>/<script>
+#                            this single-file site relies on; it is an accepted
+#                            trade-off because the site renders NO user-supplied
+#                            content (nothing an attacker could inject through).
+#   X-Content-Type-Options   stops the browser guessing/" sniffing" file types.
+#   Referrer-Policy          shares only the origin (not full URL) when leaving.
+#   Permissions-Policy       turns OFF camera, mic, geolocation, etc. — unused here.
+#   X-Frame-Options + frame-ancestors  forbid embedding the site in an iframe
+#                            (anti-clickjacking).
+#   Strict-Transport-Security  forces HTTPS for a year (anti-downgrade).
+#   Cross-Origin-Opener-Policy isolates the tab from other windows.
+#   X-XSS-Protection: 0      disables a legacy, buggy browser filter (modern best
+#                            practice is to rely on the CSP above instead).
+#
+# AFTER DEPLOY: check it worked at https://securityheaders.com (aim for an A).
+# If a logo / font / cover ever disappears, a new service was added that is not
+# on the allow-list above — add its domain to the matching directive.
+# ==========================================================================
+
+/*
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data: https://www.google.com https://m.media-amazon.com https://www.realbyteapps.com https://covers.openlibrary.org https://karthikonteddu.goatcounter.com https://gc.zgo.at; script-src 'self' 'unsafe-inline' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://karthikonteddu.goatcounter.com https://gc.zgo.at; form-action https://formspree.io; manifest-src 'self'; upgrade-insecure-requests
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=(), usb=(), interest-cohort=()
+  X-Frame-Options: DENY
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Cross-Origin-Opener-Policy: same-origin
+  X-XSS-Protection: 0
