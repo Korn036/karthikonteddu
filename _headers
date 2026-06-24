@@ -22,7 +22,7 @@
 #                            content (nothing an attacker could inject through).
 #   X-Content-Type-Options   stops the browser guessing/" sniffing" file types.
 #   Referrer-Policy          shares only the origin (not full URL) when leaving.
-#   Permissions-Policy       turns OFF camera, mic, geolocation, etc. — unused here.
+#   Permissions-Policy       turns OFF camera, mic, geolocation, etc. - unused here.
 #   X-Frame-Options + frame-ancestors  forbid embedding the site in an iframe
 #                            (anti-clickjacking).
 #   Strict-Transport-Security  forces HTTPS for a year (anti-downgrade).
@@ -32,7 +32,7 @@
 #
 # AFTER DEPLOY: check it worked at https://securityheaders.com (aim for an A).
 # If a logo / font / cover ever disappears, a new service was added that is not
-# on the allow-list above — add its domain to the matching directive.
+# on the allow-list above - add its domain to the matching directive.
 # ==========================================================================
 
 /*
