@@ -102,9 +102,12 @@ blocked. Verify the live result at <https://securityheaders.com>.
   rot and need secrets a static site shouldn't hold.
 - Don't add stateful features (guestbook, comments) casually - each is a backend +
   spam liability.
-- **Known fragility to fix:** book covers are hotlinked from Amazon and app logos from
-  Google's favicon service. These can break over time - the durable fix is to download
-  them into the repo and reference local files. (Tracked as future work.)
+- **Assets are self-hosted, not hotlinked.** Book covers and app logos live in
+  [`/img`](img/) (covers in `img/covers`, logos in `img/logos`), committed to the repo,
+  so they cannot rot. **Rule for every new image: download the file into `/img`, then
+  link the local path. Never hotlink an external URL.** The CSP enforces this (the page
+  may only load images from itself). To add one, ask Claude and it will download, resize,
+  save, and link it.
 
 ---
 
