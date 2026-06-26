@@ -1,0 +1,14 @@
+# security.txt for karthikonteddu.com  ·  RFC 9116
+# Spec: https://www.rfc-editor.org/rfc/rfc9116  ·  Helper: https://securitytxt.org
+#
+# This is a personal / portfolio site. There is no paid bug-bounty program,
+# but responsible disclosure is genuinely appreciated and will be acknowledged.
+# If you have found a security issue, please email the contact below.
+#
+# NOTE: the Expires date must stay in the future. Bump it ~once a year
+# (keep it under 12 months out per the spec) and re-deploy.
+
+Contact: mailto:karthikonteddu306@gmail.com
+Expires: 2027-06-26T23:59:59.000Z
+Preferred-Languages: en
+Canonical: https://karthikonteddu.com/.well-known/security.txt
