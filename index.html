@@ -46,8 +46,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- ✏️ EDIT: browser tab title + Google description -->
-<title>Karthik Onteddu, a curious soul</title>
-<meta name="description" content="A curious mind in sales and marketing strategy, shaped by 5 countries lived in, 21+ traveled, and a 50+ book shelf. Honest field notes, deep conversations, driven by one why: access to education and knowledge.">
+<title>Karthik Onteddu — Sales &amp; Strategy, Curious Soul</title>
+<meta name="description" content="Sales and strategy, shaped by five countries lived in and a 50+ book shelf. Honest field notes on selling, moving countries, and why education can change the world.">
 
 <!-- favicon: the little "k." in the browser tab (no extra file needed) -->
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
@@ -56,11 +56,14 @@
 <!-- social preview: the card LinkedIn/WhatsApp show when you share the link.
      NOTE: keep og.png in the same folder as this file when deploying -->
 <meta property="og:title" content="Karthik Onteddu · a curious soul">
-<meta property="og:description" content="A curious mind in sales and marketing strategy. Shaped by 5 countries lived, 21+ traveled, 50+ books. Driven by one why: access to education and knowledge.">
+<meta property="og:description" content="Sales and strategy across five countries and a 50+ book shelf. Field notes on selling, moving, and why education matters.">
 <meta property="og:image" content="https://karthikonteddu.com/og.png">
 <meta property="og:url" content="https://karthikonteddu.com">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Karthik Onteddu — Sales &amp; Strategy, Curious Soul">
+<meta name="twitter:description" content="Sales and strategy across five countries and a 50+ book shelf. Field notes on selling, moving, and why education matters.">
+<meta name="twitter:image" content="https://karthikonteddu.com/og.png">
 <link rel="canonical" href="https://karthikonteddu.com/">
 <meta name="theme-color" content="#FAFAF6">
 
@@ -73,6 +76,7 @@
   "alternateName": "O.R.N. Karthik",
   "url": "https://karthikonteddu.com",
   "jobTitle": "Sales and Marketing Strategist",
+  "image": "https://karthikonteddu.com/og.png",
   "description": "A curious mind in sales and marketing strategy. Shaped by 5 countries lived in, 21+ traveled, and a 50+ book shelf. Driven by one why: access to education and knowledge.",
   "knowsAbout": ["Sales Strategy", "Marketing Strategy", "Global Business", "Personal Development", "Books and Reading"],
   "knowsLanguage": ["English", "Telugu", "German"],
@@ -122,7 +126,7 @@
   --cream:      #1E1D1A;
   --cream-2:    #28261F;
   --ink:        #F2F0E8;
-  --ink-soft:   #B5B2A8;
+  --ink-soft:   #C4C1B7;          /* lifted for WCAG AA body-text contrast on dark */
   --ink-faint:  #7E7B72;
   --label:      #8B8980;
   --lav:        #F0D7FF;
@@ -175,12 +179,12 @@ header{
 .nav-right{ display:flex; align-items:center; gap:20px; }
 .nav-links{ display:flex; gap:20px; font-size:13.5px; color:var(--ink-soft); }
 .nav-links a{ position:relative; padding-bottom:3px; cursor:pointer; transition:color .2s; }
-.nav-links a::after{
+.nav-links a:not([data-page="connect"])::after{
   content:''; position:absolute; left:0; bottom:0; width:0; height:1.5px;
   background:var(--pink); transition:width .25s;
 }
 .nav-links a:hover{ color:var(--pink); }
-.nav-links a:hover::after{ width:100%; }
+.nav-links a:not([data-page="connect"]):hover::after{ width:100%; }
 .nav-links a.active{ color:var(--ink); font-weight:500; }
 .theme-btn{
   width:34px; height:34px; border-radius:50%; border:1px solid var(--hairline);
@@ -364,6 +368,8 @@ a.w:hover{ transform:translateY(-3px); box-shadow:var(--shadow-tile-h); }
   0%, 60%, 100% { opacity:1; transform:scale(1); }
   30%           { opacity:0.35; transform:scale(0.75); }
 }
+/* stop the dot blinking once you're actually on the Connect tab */
+.nav-links a.active[data-page="connect"]::after{ animation:none; opacity:1; transform:none; }
 
 /* ===== transparency card on Connect page - the matching story, clearly told ===== */
 .transparent-card{
@@ -430,7 +436,7 @@ a.w:hover{ transform:translateY(-3px); box-shadow:var(--shadow-tile-h); }
   border-radius:10px; padding:13px 16px; width:240px;
   transition:border-color .2s;
 }
-.capture input:focus{ outline:none; border-color:var(--green); }
+.capture input:focus{ outline:2px solid var(--green); outline-offset:2px; border-color:var(--green); }
 .capture input::placeholder{ color:var(--ink-faint); }
 
 /* ===== tic-tac-toe break zone ===== */
@@ -705,9 +711,65 @@ a.app-card:hover .app-go{ text-decoration:underline; }
   *{ animation:none !important; transition:none !important; }
   .reveal{ opacity:1; transform:none; }
 }
+
+/* =================================================================
+   8. ACCESSIBILITY · keyboard focus, skip link, screen-reader helpers
+   ================================================================= */
+/* a visible focus ring on every interactive element (was missing site-wide) */
+a:focus-visible, button:focus-visible, input:focus-visible,
+[tabindex]:focus-visible, [role="button"]:focus-visible{
+  outline:2.5px solid var(--green); outline-offset:3px; border-radius:4px;
+}
+[data-theme="dark"] a:focus-visible, [data-theme="dark"] button:focus-visible,
+[data-theme="dark"] input:focus-visible, [data-theme="dark"] [tabindex]:focus-visible,
+[data-theme="dark"] [role="button"]:focus-visible{ outline-color:var(--pink); }
+/* skip-to-content · hidden until a keyboard user tabs to it */
+.skip-link{
+  position:absolute; left:12px; top:-52px; z-index:100;
+  background:var(--green); color:#FAFAF6; padding:10px 16px;
+  border-radius:10px; font-size:13.5px; font-weight:600; transition:top .2s ease;
+}
+.skip-link:focus{ top:12px; }
+/* screen-reader-only text */
+.sr-only{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+}
+/* wordmark is now a real <button> · strip native button chrome */
+button.wordmark{ background:none; border:none; padding:0; color:inherit; text-align:left; }
+/* secondary hero link · quiet path for high-intent visitors */
+.hero-secondary{
+  display:inline-block; margin-left:18px; font-size:13.5px; color:var(--ink-soft);
+  border-bottom:1px dashed var(--hairline); padding-bottom:1px;
+  transition:color .2s, border-color .2s;
+}
+.hero-secondary:hover{ color:var(--pink); border-color:var(--pink); }
+/* toolkit closing line */
+.toolkit-cta{
+  font-size:15.5px; color:var(--ink-soft);
+  padding:30px 0 8px; margin-top:24px; border-top:0.5px solid var(--hairline);
+}
+.toolkit-cta a{ color:var(--pink); border-bottom:1px dashed var(--pink); }
+.toolkit-cta a:hover{ color:var(--green); border-color:var(--green); }
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<div id="route-announce" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+<!-- fallback for crawlers / visitors with JavaScript off (the tabs need JS to switch) -->
+<noscript>
+  <div class="wrap" style="padding:40px 36px;">
+    <h1>Karthik Onteddu</h1>
+    <p>Sales &amp; strategy across five countries — an engineer who learned to sell, now building things and writing about it.</p>
+    <p>This site uses JavaScript to move between sections. In the meantime, you can reach me here:</p>
+    <ul>
+      <li><a href="https://www.linkedin.com/in/ornkarthik" rel="noopener noreferrer">LinkedIn — writing &amp; field notes</a></li>
+      <li><a href="https://substack.com/@criouscoffeebean" rel="noopener noreferrer">Substack — the newsletter</a></li>
+      <li><a href="mailto:karthikonteddu306@gmail.com">Email</a></li>
+    </ul>
+  </div>
+</noscript>
 
 <!-- iOS squircle (superellipse) clip shape · gives the home-screen icons their
      continuous "Apple" corner instead of a plain rounded square. Used by .app-icon.logo -->
@@ -717,7 +779,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 
 <header>
   <div class="wrap nav">
-    <div class="wordmark" data-page="home">karthikonteddu<span class="dot" id="dotEgg">.</span></div>
+    <button type="button" class="wordmark" data-page="home" aria-label="Karthik Onteddu — go to home">karthikonteddu<span class="dot" id="dotEgg" aria-hidden="true">.</span></button>
     <div class="nav-right">
       <nav class="nav-links">
         <a data-page="journey" href="#journey">journey</a>
@@ -725,15 +787,17 @@ a.app-card:hover .app-go{ text-decoration:underline; }
         <a data-page="now" href="#now">now</a>
         <a data-page="books" href="#books">books</a>
         <a data-page="toolkit" href="#toolkit">toolkit</a>
+        <!-- builds: un-comment the line below (and the BUILDS section near the bottom) when ready -->
+        <!-- <a data-page="builds" href="#builds">builds</a> -->
         <!-- <a data-page="lab" href="#lab">lab</a> -->
         <a data-page="connect" href="#connect">connect</a>
       </nav>
-      <button class="theme-btn" id="themeBtn" aria-label="toggle dark mode">☾</button>
+      <button class="theme-btn" id="themeBtn" aria-pressed="false" aria-label="Switch to dark mode">☾</button>
     </div>
   </div>
 </header>
 
-<main class="wrap">
+<main class="wrap" id="main-content" tabindex="-1">
 
 <!-- ================================================================
      PAGE: HOME
@@ -749,16 +813,20 @@ a.app-card:hover .app-go{ text-decoration:underline; }
            edit the phrases in the SAFE CONFIG block at the bottom -->
       <h1>A curious soul<br>who thinks <span id="living">education can fix the world</span><span class="dot">.</span></h1>
 
+      <!-- ✏️ EDIT: one-line descriptor so a first-time visitor instantly knows what you do -->
+      <p class="mission">sales &amp; strategy across five countries — an <strong>engineer who learned to sell</strong>, now building things and writing about it.</p>
+
       <!-- ✦ the gentle homepage door. Same green styling as Connect button,
            but worded warmly. Routes to Connect page (no Cal.com from homepage). -->
       <a class="btn hero-btn" data-page="connect" href="#connect">bring a coffee, let's talk →</a>
+      <a class="hero-secondary" data-page="journey" href="#journey">or the short version →</a>
 
       <div class="socials">
-        <a href="https://www.linkedin.com/in/ornkarthik" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <a href="https://www.linkedin.com/in/ornkarthik" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
           <svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg>
         </a>
         <!-- 🔗 LINK: your Substack URL -->
-        <a href="https://substack.com/@criouscoffeebean" target="_blank" rel="noopener" aria-label="Substack">
+        <a href="https://substack.com/@criouscoffeebean" target="_blank" rel="noopener noreferrer" aria-label="Substack">
           <svg viewBox="0 0 24 24"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
         </a>
       </div>
@@ -842,10 +910,10 @@ a.app-card:hover .app-go{ text-decoration:underline; }
       <div class="recent-label">recent learnings <span class="sparkle">✦</span></div>
       <!-- 📋 TEMPLATE · RECENT LINK ▼ copy START→END, paste on top, edit title + URL. Keep best 3 -->
       <!-- START recent link -->
-      <a href="https://www.linkedin.com/posts/ornkarthik_sales-lesson-7-8-months-of-work-5-hour-activity-7463951878817550336-kwQL" target="_blank" rel="noopener"><span>sales lesson #7 · 8 months of work, 5 hours</span><span>→</span></a>
+      <a href="https://www.linkedin.com/posts/ornkarthik_sales-lesson-7-8-months-of-work-5-hour-activity-7463951878817550336-kwQL" target="_blank" rel="noopener noreferrer"><span>sales lesson #7 · 8 months of work, 5 hours</span><span>→</span></a>
       <!-- END recent link -->
-      <a href="https://www.linkedin.com/posts/ornkarthik_a-small-realization-from-working-across-countries-activity-7461732261198200832-rb5W" target="_blank" rel="noopener"><span>a small realization from working across countries</span><span>→</span></a>
-      <a href="https://www.linkedin.com/posts/ornkarthik_the-feedback-was-always-the-same-slow-down-activity-7458759789054046208-FpHb" target="_blank" rel="noopener"><span>the note I kept getting: slow down</span><span>→</span></a>
+      <a href="https://www.linkedin.com/posts/ornkarthik_a-small-realization-from-working-across-countries-activity-7461732261198200832-rb5W" target="_blank" rel="noopener noreferrer"><span>a small realization from working across countries</span><span>→</span></a>
+      <a href="https://www.linkedin.com/posts/ornkarthik_the-feedback-was-always-the-same-slow-down-activity-7458759789054046208-FpHb" target="_blank" rel="noopener noreferrer"><span>the note I kept getting: slow down</span><span>→</span></a>
       <a class="see-all" data-page="writing" href="#writing">see all learnings →</a>
     </div>
   </div>
@@ -858,7 +926,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
     </div>
     <form action="https://formspree.io/f/mgobnlyo" method="POST">
       <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-      <input type="email" name="email" placeholder="your@email.com" required>
+      <input type="email" name="email" placeholder="your@email.com" aria-label="Your email address" required>
       <button class="btn" type="submit">count me in →</button>
     </form>
   </div>
@@ -872,7 +940,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
     <div class="recent-label">a 20-second break <span class="sparkle">✦</span></div>
     <div class="ttt-row">
       <div class="ttt-wrap">
-        <svg id="ttt" viewBox="0 0 240 240" width="240" height="240" xmlns="http://www.w3.org/2000/svg">
+        <svg id="ttt" viewBox="0 0 240 240" width="240" height="240" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="Tic-tac-toe — you play green; tap a square or focus it and press Enter">
           <!-- the brush-stroke grid: two rough verticals, two rough horizontals -->
           <path d="M84 14 C 87 70, 81 160, 85 226" fill="none" stroke="#045145" stroke-width="5" stroke-linecap="round" opacity="0.8"/>
           <path d="M156 12 C 153 80, 159 170, 155 228" fill="none" stroke="#045145" stroke-width="4.4" stroke-linecap="round" opacity="0.8"/>
@@ -883,7 +951,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
         </svg>
       </div>
       <div class="ttt-side">
-        <p class="ttt-status" id="tttStatus">you're green. tap a square</p>
+        <p class="ttt-status" id="tttStatus" role="status" aria-live="polite">you're green. tap or press Enter on a square</p>
         <button class="btn-soft" id="tttReset">play again ↺</button>
         <!-- this line appears only after a game finishes -->
         <p class="ttt-after" id="tttAfter"></p>
@@ -897,8 +965,8 @@ a.app-card:hover .app-go{ text-decoration:underline; }
   <div class="tips reveal">
     <!-- chai (BMAC) is wired. COFFEE PAUSED until a Buy Me a Coffee page exists:
          re-add by uncommenting the next line and pasting the real URL. -->
-    <!-- <a class="btn-soft" href="https://buymeacoffee.com/YOUR-PAGE" target="_blank" rel="noopener">☕ buy me a coffee</a> -->
-    <a class="btn-soft" href="https://buymeachai.ezee.li/Karthikonteddu" target="_blank" rel="noopener">🫖 buy me a chai</a>
+    <!-- <a class="btn-soft" href="https://buymeacoffee.com/YOUR-PAGE" target="_blank" rel="noopener noreferrer">☕ buy me a coffee</a> -->
+    <a class="btn-soft" href="https://buymeachai.ezee.li/Karthikonteddu" target="_blank" rel="noopener noreferrer">🫖 buy me a chai</a>
     <span class="quip" id="quip">same destination, different currency</span>
   </div>
 
@@ -906,11 +974,11 @@ a.app-card:hover .app-go{ text-decoration:underline; }
     <div class="left">
       <span>karthikonteddu.com</span>
       <div class="socials">
-        <a href="https://www.linkedin.com/in/ornkarthik" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <a href="https://www.linkedin.com/in/ornkarthik" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
           <svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg>
         </a>
         <!-- 🔗 LINK: Substack again -->
-        <a href="https://substack.com/@criouscoffeebean" target="_blank" rel="noopener" aria-label="Substack">
+        <a href="https://substack.com/@criouscoffeebean" target="_blank" rel="noopener noreferrer" aria-label="Substack">
           <svg viewBox="0 0 24 24"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
         </a>
       </div>
@@ -990,122 +1058,125 @@ a.app-card:hover .app-go{ text-decoration:underline; }
           writing section, paste below it, change its id to "essay-2",
           and write your piece in the <p> paragraphs
   -->
+  <!-- ORIGINALS · on-site essays. Hidden until the first one is written so visitors
+       never land on a placeholder. The LinkedIn list below still shows. To bring it
+       back: write the piece in the #essay-1 section (kept below, also commented),
+       then remove this comment wrapper and the one around #essay-1.
   <div class="recent-label" style="margin-bottom:10px;">originals · field notes <span class="sparkle">✦</span></div>
   <div class="tile-grid">
-    <!-- START tile -->
     <a class="tile reveal" data-page="essay-1" href="#essay-1">
       <div class="t-meta">field note · 01</div>
       <h3>What five countries taught me about how people decide</h3>
       <p>the same product, the same pitch, five different countries. what actually changes is everything around the decision</p>
       <span class="read">read here →</span>
     </a>
-    <!-- END tile -->
   </div>
+  -->
 
   <div class="recent-label" style="margin:26px 0 0;">from linkedin <span class="sparkle">✦</span></div>
   <div class="posts">
     <!-- 📋 TEMPLATE · POST ▼ copy this block, paste under the right
          category heading (newest on top), edit title + URL:
-    <a class="post reveal" href="https://www.linkedin.com/posts/YOUR-POST" target="_blank" rel="noopener">
+    <a class="post reveal" href="https://www.linkedin.com/posts/YOUR-POST" target="_blank" rel="noopener noreferrer">
       <div class="meta">sales lessons</div>
       <h3>Post title here</h3>
       <span class="read">read on linkedin →</span>
     </a>
     -->
     <div class="post-group reveal">sales lessons <span class="sparkle">✦</span></div>
-    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_sales-lesson-7-8-months-of-work-5-hour-activity-7463951878817550336-kwQL" target="_blank" rel="noopener">
+    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_sales-lesson-7-8-months-of-work-5-hour-activity-7463951878817550336-kwQL" target="_blank" rel="noopener noreferrer">
       <div class="meta">sales lessons</div>
       <h3>Sales lesson #7 · 8 months of work, 5 hours</h3>
       <span class="read">read on linkedin →</span>
     </a>
-    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_sales-hilti-activity-7326249043079086080-TWwa" target="_blank" rel="noopener">
+    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_sales-hilti-activity-7326249043079086080-TWwa" target="_blank" rel="noopener noreferrer">
       <div class="meta">sales lessons</div>
       <h3>Notes from the field · on selling</h3>
       <span class="read">read on linkedin →</span>
     </a>
-    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_sales-lesson-5-always-aim-for-the-vito-activity-7315738011541884928-xLzu" target="_blank" rel="noopener">
+    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_sales-lesson-5-always-aim-for-the-vito-activity-7315738011541884928-xLzu" target="_blank" rel="noopener noreferrer">
       <div class="meta">sales lessons</div>
       <h3>Sales lesson #5 · always aim for the VITO</h3>
       <span class="read">read on linkedin →</span>
     </a>
-    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_sales-hilti-careerlessons-activity-7294348073512677376-qZXJ" target="_blank" rel="noopener">
+    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_sales-hilti-careerlessons-activity-7294348073512677376-qZXJ" target="_blank" rel="noopener noreferrer">
       <div class="meta">sales lessons</div>
       <h3>Career lessons from the sales floor</h3>
       <span class="read">read on linkedin →</span>
     </a>
-    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_sales-closing-productivity-activity-7282378636219842560-deUS" target="_blank" rel="noopener">
+    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_sales-closing-productivity-activity-7282378636219842560-deUS" target="_blank" rel="noopener noreferrer">
       <div class="meta">sales lessons</div>
       <h3>On closing, and protecting your time</h3>
       <span class="read">read on linkedin →</span>
     </a>
-    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_sales-engineering-hilti-activity-7253281729120030720-wgEb" target="_blank" rel="noopener">
+    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_sales-engineering-hilti-activity-7253281729120030720-wgEb" target="_blank" rel="noopener noreferrer">
       <div class="meta">sales lessons</div>
       <h3>When an engineer learns to sell</h3>
       <span class="read">read on linkedin →</span>
     </a>
-    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_sales-lesson-3-ever-wondered-why-the-problem-activity-7251421254476271616-KMoj" target="_blank" rel="noopener">
+    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_sales-lesson-3-ever-wondered-why-the-problem-activity-7251421254476271616-KMoj" target="_blank" rel="noopener noreferrer">
       <div class="meta">sales lessons</div>
       <h3>Sales lesson #3 · why the problem matters more</h3>
       <span class="read">read on linkedin →</span>
     </a>
-    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_sales-lesson-2-collaborate-reach-out-activity-7247276172831518723-OL7M" target="_blank" rel="noopener">
+    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_sales-lesson-2-collaborate-reach-out-activity-7247276172831518723-OL7M" target="_blank" rel="noopener noreferrer">
       <div class="meta">sales lessons</div>
       <h3>Sales lesson #2 · collaborate, reach out</h3>
       <span class="read">read on linkedin →</span>
     </a>
-    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_sales-lesson-1-demonstrate-your-product-activity-7245992969814577153-wrqa" target="_blank" rel="noopener">
+    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_sales-lesson-1-demonstrate-your-product-activity-7245992969814577153-wrqa" target="_blank" rel="noopener noreferrer">
       <div class="meta">sales lessons</div>
       <h3>Sales lesson #1 · demonstrate your product</h3>
       <span class="read">read on linkedin →</span>
     </a>
 
     <div class="post-group reveal">life &amp; learnings <span class="sparkle">✦</span></div>
-    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_a-small-realization-from-working-across-countries-activity-7461732261198200832-rb5W" target="_blank" rel="noopener">
+    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_a-small-realization-from-working-across-countries-activity-7461732261198200832-rb5W" target="_blank" rel="noopener noreferrer">
       <div class="meta">life &amp; learnings</div>
       <h3>A small realization from working across countries</h3>
       <span class="read">read on linkedin →</span>
     </a>
-    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_the-feedback-was-always-the-same-slow-down-activity-7458759789054046208-FpHb" target="_blank" rel="noopener">
+    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_the-feedback-was-always-the-same-slow-down-activity-7458759789054046208-FpHb" target="_blank" rel="noopener noreferrer">
       <div class="meta">life &amp; learnings</div>
       <h3>The note I kept getting: slow down</h3>
       <span class="read">read on linkedin →</span>
     </a>
-    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_ill-be-there-in-10-minutes-translation-activity-7347530101384724481-AQRw" target="_blank" rel="noopener">
+    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_ill-be-there-in-10-minutes-translation-activity-7347530101384724481-AQRw" target="_blank" rel="noopener noreferrer">
       <div class="meta">life &amp; learnings</div>
       <h3>“I’ll be there in 10 minutes” · lost in translation</h3>
       <span class="read">read on linkedin →</span>
     </a>
-    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_ai-gpt-machinelearning-activity-7306929411927298048-qVEH" target="_blank" rel="noopener">
+    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_ai-gpt-machinelearning-activity-7306929411927298048-qVEH" target="_blank" rel="noopener noreferrer">
       <div class="meta">life &amp; learnings</div>
       <h3>On AI, and buying back time</h3>
       <span class="read">read on linkedin →</span>
     </a>
-    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_jobapplications-carrers-student-activity-7283468327526498304-BCDE" target="_blank" rel="noopener">
+    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_jobapplications-carrers-student-activity-7283468327526498304-BCDE" target="_blank" rel="noopener noreferrer">
       <div class="meta">life &amp; learnings</div>
       <h3>Job applications · notes for students</h3>
       <span class="read">read on linkedin →</span>
     </a>
-    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_hilti-outperformer-careers-activity-7276652611502501888-3quT" target="_blank" rel="noopener">
+    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_hilti-outperformer-careers-activity-7276652611502501888-3quT" target="_blank" rel="noopener noreferrer">
       <div class="meta">life &amp; learnings</div>
       <h3>Inside a global rotation programme</h3>
       <span class="read">read on linkedin →</span>
     </a>
-    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_cv-recruitment-student-activity-7258745404173828096-88YP" target="_blank" rel="noopener">
+    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_cv-recruitment-student-activity-7258745404173828096-88YP" target="_blank" rel="noopener noreferrer">
       <div class="meta">life &amp; learnings</div>
       <h3>Your CV · notes for students</h3>
       <span class="read">read on linkedin →</span>
     </a>
-    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_waitam-i-reading-that-correct-possibly-activity-7230868537437818880-YdAv" target="_blank" rel="noopener">
+    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_waitam-i-reading-that-correct-possibly-activity-7230868537437818880-YdAv" target="_blank" rel="noopener noreferrer">
       <div class="meta">life &amp; learnings</div>
       <h3>Wait, am I reading that correctly?</h3>
       <span class="read">read on linkedin →</span>
     </a>
-    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_just-ask-reach-out-a-lot-of-amazing-folks-activity-7219756954825437185-ak_M" target="_blank" rel="noopener">
+    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_just-ask-reach-out-a-lot-of-amazing-folks-activity-7219756954825437185-ak_M" target="_blank" rel="noopener noreferrer">
       <div class="meta">life &amp; learnings</div>
       <h3>Just ask</h3>
       <span class="read">read on linkedin →</span>
     </a>
-    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_leadership-teamwork-growth-activity-7209895336432037888-H-zV" target="_blank" rel="noopener">
+    <a class="post reveal" href="https://www.linkedin.com/posts/ornkarthik_leadership-teamwork-growth-activity-7209895336432037888-H-zV" target="_blank" rel="noopener noreferrer">
       <div class="meta">life &amp; learnings</div>
       <h3>On leadership and teams</h3>
       <span class="read">read on linkedin →</span>
@@ -1117,6 +1188,9 @@ a.app-card:hover .app-go{ text-decoration:underline; }
      ESSAY PAGE 01 · ✏️ EDIT: replace every paragraph with your piece.
      copy this whole section + a tile above to add more essays
      ================================================================ -->
+<!-- ESSAY PAGE 01 · hidden until written (the placeholder text below used to be
+     live and visible). To publish: replace the ✏️ paragraphs with your piece,
+     then remove this wrapper AND the one around the "originals" tile above.
 <section class="page essay" id="essay-1">
   <a class="back" data-page="writing" href="#writing">← back to writing</a>
   <h2>What five countries taught me about how people decide<span class="dot">.</span></h2>
@@ -1126,6 +1200,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
   <p>✏️ A good length for a field note is 600 to 900 words. Hook first. One idea. End with the reframe.</p>
   <a class="back" data-page="writing" href="#writing">← back to writing</a>
 </section>
+-->
 
 <!-- ================================================================
      PAGE: NOW · ✏️ EDIT the date each time you update
@@ -1198,9 +1273,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal">
-      <img class="cover"
-           src="img/covers/sex-ecology-spirituality.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/sex-ecology-spirituality.jpg" alt="Sex, Ecology, Spirituality">
       <h3>Sex, Ecology, Spirituality</h3>
       <div class="author">Ken Wilber · Jun '26</div>
       <p class="take">currently reading · the takeaway lands when the last page does 📖</p>
@@ -1209,9 +1282,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal">
-      <img class="cover"
-           src="img/covers/the-defining-decade.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/the-defining-decade.jpg" alt="The Defining Decade">
       <h3>The Defining Decade</h3>
       <div class="author">Meg Jay · May '26</div>
       <p class="take">We think it's too late to change. Meg says the 20s are exactly the right age to choose your partner, lifestyle, work and happiness. Glad I read it inside mine</p>
@@ -1220,9 +1291,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal">
-      <img class="cover"
-           src="img/covers/spies-lies-and-cybercrime.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/spies-lies-and-cybercrime.jpg" alt="Spies, Lies, and Cybercrime">
       <h3>Spies, Lies, and Cybercrime</h3>
       <div class="author">Eric O'Neill · Apr '26</div>
       <p class="take">Wow, scary how vulnerable we all are in this online world. Big fan of Bitwarden after this!</p>
@@ -1231,9 +1300,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal rec">
-      <img class="cover"
-           src="img/covers/leonardo-da-vinci.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/leonardo-da-vinci.jpg" alt="Leonardo Da Vinci">
       <h3>Leonardo Da Vinci</h3>
       <div class="author">Walter Isaacson · Mar '26</div>
       <p class="take">One of my absolute favourite picks! Engineer, architect, artist, surgeon... the list goes on. Proof of how far curiosity and flow state can push one human. Anything is possible</p>
@@ -1242,9 +1309,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal rec">
-      <img class="cover"
-           src="img/covers/million-dollar-weekend.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/million-dollar-weekend.jpg" alt="Million Dollar Weekend">
       <h3>Million Dollar Weekend</h3>
       <div class="author">Noah Kagan · Feb '26</div>
       <p class="take">Main idea: find a paying customer, take a deposit, then start building. Your idea gets validated, accountability gets created, and Action &gt; Idea stops being a quote</p>
@@ -1253,9 +1318,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal">
-      <img class="cover"
-           src="img/covers/show-your-work.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/show-your-work.jpg" alt="Show Your Work!">
       <h3>Show Your Work!</h3>
       <div class="author">Austin Kleon · Jan '26</div>
       <p class="take">Quick read. Core takeaway: why are you hiding work you've already put the effort into? Push it into the world. Build credibility, trust and an audience</p>
@@ -1264,9 +1327,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal">
-      <img class="cover"
-           src="img/covers/the-world-atlas-of-coffee.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/the-world-atlas-of-coffee.jpg" alt="The World Atlas of Coffee">
       <h3>The World Atlas of Coffee</h3>
       <div class="author">James Hoffmann · Dec '25</div>
       <p class="take">Singapore and my curiosity got the best of me. One weekend, cover to cover, just to understand what coffee people are actually into. Learned an Americano is just espresso with hot water, named for the Americans in Italy who kept asking for it that way</p>
@@ -1275,9 +1336,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal rec">
-      <img class="cover"
-           src="img/covers/the-world-for-sale.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/the-world-for-sale.jpg" alt="The World for Sale">
       <h3>The World for Sale</h3>
       <div class="author">Javier Blas · Nov '25</div>
       <p class="take">Crazy read! Loved every page. The earth's resources are traded daily behind closed doors by people most of us have never heard of, quietly steering the geopolitics of the world. HIGHLY RECOMMENDED!</p>
@@ -1286,20 +1345,16 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal">
-      <img class="cover"
-           src="img/covers/the-four-agreements.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/the-four-agreements.jpg" alt="The Four Agreements">
       <h3>The Four Agreements</h3>
       <div class="author">Don Miguel Ruiz · Nov '25</div>
-      <p class="take">✏️ takeaway coming, re-reading my notes</p>
+      <p class="take">still re-reading my notes on this one - the takeaway is coming</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal rec">
-      <img class="cover"
-           src="img/covers/culture-map.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/culture-map.jpg" alt="Culture Map">
       <h3>Culture Map</h3>
       <div class="author">Erin Meyer · Jun '25</div>
       <p class="take">We're all more or less the same humans everywhere. What makes us unique is culture and its nuances. Essential for anyone planning a global career and leading global teams. Someone like me</p>
@@ -1308,9 +1363,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal">
-      <img class="cover"
-           src="img/covers/the-wealth-money-cant-buy.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/the-wealth-money-cant-buy.jpg" alt="The Wealth Money Can't Buy">
       <h3>The Wealth Money Can't Buy</h3>
       <div class="author">Robin Sharma · Jun '25</div>
       <p class="take">A good weekend read. The teachings may feel obvious, but it's a solid collection of what actually makes a human the richest in life</p>
@@ -1319,9 +1372,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal">
-      <img class="cover"
-           src="img/covers/how-to-know-a-person.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/how-to-know-a-person.jpg" alt="How to Know a Person">
       <h3>How to Know a Person</h3>
       <div class="author">David Brooks · Dec '24</div>
       <p class="take">Look deeper at people. Make them feel heard, make them included. And don't wait for the right moment to know someone better. Every person has a story to tell. I always try to know that story</p>
@@ -1330,9 +1381,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal rec">
-      <img class="cover"
-           src="img/covers/taxtopia.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/taxtopia.jpg" alt="Taxtopia">
       <h3>Taxtopia</h3>
       <div class="author">The Rebel Accountant · Sept '24</div>
       <p class="take">Curiosity about how taxation works led me here, and boy, was I shocked and left in awe. Taxes stay complex and jargon-filled for a reason: if everyone understood and started asking questions, the world's gonna be a mayhem</p>
@@ -1341,9 +1390,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal">
-      <img class="cover"
-           src="img/covers/101-essays-that-will-change-the-way-you-think.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/101-essays-that-will-change-the-way-you-think.jpg" alt="101 Essays That Will Change The Way You Think">
       <h3>101 Essays That Will Change The Way You Think</h3>
       <div class="author">Brianna Wiest · Apr '24</div>
       <p class="take">Another gem. Biggest takeaway: most of our suffering comes not from our circumstances, but from the way we've been taught to interpret them</p>
@@ -1352,9 +1399,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal rec">
-      <img class="cover"
-           src="img/covers/the-psychology-of-money.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/the-psychology-of-money.jpg" alt="The Psychology of Money">
       <h3>The Psychology of Money</h3>
       <div class="author">Morgan Housel · Nov '23</div>
       <p class="take">It's the small decisions and the discipline that keep people broke, or quietly build them</p>
@@ -1363,9 +1408,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal rec">
-      <img class="cover"
-           src="img/covers/night.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/night.jpg" alt="Night">
       <h3>Night</h3>
       <div class="author">Elie Wiesel · Sept '23</div>
       <p class="take">Reinforced the power of hope for survival, and to cherish the life I've been gifted. Death is destined for every one of us, but only a few muster the courage to make the most of it</p>
@@ -1374,9 +1417,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal">
-      <img class="cover"
-           src="img/covers/becoming-better-grownups.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/becoming-better-grownups.jpg" alt="Becoming Better Grownups">
       <h3>Becoming Better Grownups</h3>
       <div class="author">Brad Montague · Feb '23</div>
       <p class="take">Don't let the mundaneness of adult life get to me. Keep the curiosity of a kid: take risks, see more of the world, appreciate the little things</p>
@@ -1385,9 +1426,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal rec">
-      <img class="cover"
-           src="img/covers/meditations.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/meditations.jpg" alt="Meditations">
       <h3>Meditations</h3>
       <div class="author">Marcus Aurelius · Mar '22</div>
       <p class="take">My Bible. My most recommended book, period. The private ruminations of the most powerful man of his time, never meant to be published. Every excuse for vice was available to him, and he chose purpose over everything. Memento mori: remember death</p>
@@ -1396,9 +1435,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal rec">
-      <img class="cover"
-           src="img/covers/mans-search-for-meaning.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/mans-search-for-meaning.jpg" alt="Man's Search For Meaning">
       <h3>Man's Search For Meaning</h3>
       <div class="author">Viktor E. Frankl · Jun '20</div>
       <p class="take">One of the books that changed my life. The suffering I used to complain about was nothing compared to what people endured in the Holocaust. And still, hope survived. My condolences to every soul who lived those times. My whole POV on life changed after this</p>
@@ -1407,9 +1444,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal">
-      <img class="cover"
-           src="img/covers/steve-jobs.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/steve-jobs.jpg" alt="Steve Jobs">
       <h3>Steve Jobs</h3>
       <div class="author">Walter Isaacson · Jun '20</div>
       <p class="take">Invention, I learned, isn't only a matter of technical skill. The real magic happens where engineering meets creativity, taste and art. That intersection is exactly where Jobs chose to stand</p>
@@ -1418,9 +1453,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal">
-      <img class="cover"
-           src="img/covers/elon-musk.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/elon-musk.jpg" alt="Elon Musk">
       <h3>Elon Musk</h3>
       <div class="author">Ashlee Vance · Feb '20</div>
       <p class="take">The lesson that stuck: find something you're genuinely passionate about, hold a vision bigger than feels reasonable, and push yourself past every limit to reach it, no matter what it takes</p>
@@ -1429,20 +1462,16 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal">
-      <img class="cover"
-           src="img/covers/flow.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/flow.jpg" alt="Flow">
       <h3>Flow</h3>
       <div class="author">Mihaly Csikszentmihalyi · Dec '19</div>
-      <p class="take">✏️ takeaway coming, re-reading my notes</p>
+      <p class="take">still re-reading my notes on this one - the takeaway is coming</p>
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal">
-      <img class="cover"
-           src="img/covers/cant-hurt-me.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/cant-hurt-me.jpg" alt="Can't Hurt Me">
       <h3>Can't Hurt Me</h3>
       <div class="author">David Goggins · Nov '19</div>
       <p class="take">Helped me push myself harder, in personal life and professional life alike</p>
@@ -1451,9 +1480,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal rec">
-      <img class="cover"
-           src="img/covers/cosmos.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/cosmos.jpg" alt="Cosmos">
       <h3>Cosmos</h3>
       <div class="author">Carl Sagan · Oct '19</div>
       <p class="take">Made me fall in love with space. Cosmic insignificance: race, colour, religion, caste, all man-made. We're not that significant in this vast universe anyway, so take more risks and explore</p>
@@ -1462,9 +1489,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal rec">
-      <img class="cover"
-           src="img/covers/the-kite-runner.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/the-kite-runner.jpg" alt="The Kite Runner">
       <h3>The Kite Runner</h3>
       <div class="author">Khaled Hosseini · Aug '19</div>
       <p class="take">The book that instilled in my teenage world the idea of seeing more of it. Go travel</p>
@@ -1473,9 +1498,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal rec">
-      <img class="cover"
-           src="img/covers/deep-work.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/deep-work.jpg" alt="Deep Work">
       <h3>Deep Work</h3>
       <div class="author">Cal Newport · Oct '18</div>
       <p class="take">My first step into conscious digital consumption. The algorithms are not your friends, and the ability to FOCUS is what will set one apart</p>
@@ -1484,9 +1507,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal rec">
-      <img class="cover"
-           src="img/covers/quiet.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/quiet.jpg" alt="Quiet">
       <h3>Quiet</h3>
       <div class="author">Susan Cain · Apr '18</div>
       <p class="take">One of the books that changed my life, found at exactly the right time. Late teens, still trying to understand myself and my personality. That's where I met the word ambivert. I guess I am one</p>
@@ -1495,9 +1516,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal rec">
-      <img class="cover"
-           src="img/covers/sapiens.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/sapiens.jpg" alt="Sapiens">
       <h3>Sapiens</h3>
       <div class="author">Yuval Noah Harari · Mar '18</div>
       <p class="take">Came into my life right when I was asking the existential questions: who am I? why are we here? Sure, I'm here today, but how did we get here? Our lifespans are a blink against Earth's origins</p>
@@ -1506,9 +1525,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal rec">
-      <img class="cover"
-           src="img/covers/thinking-fast-and-slow.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/thinking-fast-and-slow.jpg" alt="Thinking, Fast and Slow">
       <h3>Thinking, Fast and Slow</h3>
       <div class="author">Daniel Kahneman · Feb '18</div>
       <p class="take">This book rewired my brain, how I perceive the world and every interaction in it. It exposed how vulnerable our minds are to bias. I now consciously catch myself, daily</p>
@@ -1517,9 +1534,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal rec">
-      <img class="cover"
-           src="img/covers/atomic-habits.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/atomic-habits.jpg" alt="Atomic Habits">
       <h3>Atomic Habits</h3>
       <div class="author">James Clear · Jan '18</div>
       <p class="take">The power of consistency. Small actions, compounding over time</p>
@@ -1528,9 +1543,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
 
     <!-- ┌─────────────────── BOOK ───────────────────┐ -->
     <div class="book reveal">
-      <img class="cover"
-           src="img/covers/get-smart.jpg"
-           alt="book cover">
+      <img class="cover" loading="lazy" width="400" height="600" src="img/covers/get-smart.jpg" alt="Get Smart!">
       <h3>Get Smart!</h3>
       <div class="author">Brian Tracy · Nov '17</div>
       <p class="take">My first ever book! Found by pure chance, back when I didn't even know how a library worked. It opened my mind to endless possibilities. And teenage me believed every single word</p>
@@ -1567,7 +1580,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
   <!-- ═════════ category: health & training ═════════ -->
   <div class="app-group reveal" style="padding-top:4px">health &amp; training <span class="sparkle">✦</span></div>
   <div class="apps-grid">
-    <a class="app-card reveal" href="https://www.strava.com" target="_blank" rel="noopener">
+    <a class="app-card reveal" href="https://www.strava.com" target="_blank" rel="noopener noreferrer">
       <div class="app-icon logo"><img src="img/logos/strava.png" alt="Strava logo" loading="lazy"></div>
       <div class="app-body">
         <div class="app-top"><h3>Strava</h3><span class="app-pill tag">running</span></div>
@@ -1575,7 +1588,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
         <span class="app-go">strava.com →</span>
       </div>
     </a>
-    <a class="app-card reveal" href="https://www.hevyapp.com" target="_blank" rel="noopener">
+    <a class="app-card reveal" href="https://www.hevyapp.com" target="_blank" rel="noopener noreferrer">
       <div class="app-icon logo"><img src="img/logos/hevy.png" alt="Hevy logo" loading="lazy"></div>
       <div class="app-body">
         <div class="app-top"><h3>Hevy</h3><span class="app-pill tag">gym</span></div>
@@ -1583,7 +1596,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
         <span class="app-go">hevyapp.com →</span>
       </div>
     </a>
-    <a class="app-card reveal" href="https://www.myfitnesspal.com" target="_blank" rel="noopener">
+    <a class="app-card reveal" href="https://www.myfitnesspal.com" target="_blank" rel="noopener noreferrer">
       <div class="app-icon logo"><img src="img/logos/myfitnesspal.png" alt="MyFitnessPal logo" loading="lazy"></div>
       <div class="app-body">
         <div class="app-top"><h3>MyFitnessPal</h3><span class="app-pill tag">nutrition</span></div>
@@ -1596,7 +1609,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
   <!-- ═════════ category: money ═════════ -->
   <div class="app-group reveal">money <span class="sparkle">✦</span></div>
   <div class="apps-grid">
-    <a class="app-card reveal" href="https://wise.com" target="_blank" rel="noopener">
+    <a class="app-card reveal" href="https://wise.com" target="_blank" rel="noopener noreferrer">
       <div class="app-icon logo"><img src="img/logos/wise.png" alt="Wise logo" loading="lazy"></div>
       <div class="app-body">
         <div class="app-top"><h3>Wise</h3><span class="app-pill tag">transfers</span></div>
@@ -1604,7 +1617,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
         <span class="app-go">wise.com →</span>
       </div>
     </a>
-    <a class="app-card reveal" href="https://www.realbyteapps.com" target="_blank" rel="noopener">
+    <a class="app-card reveal" href="https://www.realbyteapps.com" target="_blank" rel="noopener noreferrer">
       <div class="app-icon logo"><img src="img/logos/money-manager.png" alt="Money Manager logo" loading="lazy"></div>
       <div class="app-body">
         <div class="app-top"><h3>Money Manager</h3><span class="app-pill tag">budgeting</span></div>
@@ -1617,7 +1630,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
   <!-- ═════════ category: mind · learn, read, reflect ═════════ -->
   <div class="app-group reveal">mind · learn, read, reflect <span class="sparkle">✦</span></div>
   <div class="apps-grid">
-    <a class="app-card reveal" href="https://www.duolingo.com" target="_blank" rel="noopener">
+    <a class="app-card reveal" href="https://www.duolingo.com" target="_blank" rel="noopener noreferrer">
       <div class="app-icon logo"><img src="img/logos/duolingo.png" alt="Duolingo logo" loading="lazy"></div>
       <div class="app-body">
         <div class="app-top"><h3>Duolingo</h3><span class="app-pill tag">language</span></div>
@@ -1625,15 +1638,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
         <span class="app-go">duolingo.com →</span>
       </div>
     </a>
-    <a class="app-card reveal" href="https://journey.cloud" target="_blank" rel="noopener">
-      <div class="app-icon logo"><img src="img/logos/journey.png" alt="Journey logo" loading="lazy"></div>
-      <div class="app-body">
-        <div class="app-top"><h3>Journey</h3><span class="app-pill tag">journaling</span></div>
-        <p>a quiet place to journal. where the day gets a few honest lines before it slips away</p>
-        <span class="app-go">journey.cloud →</span>
-      </div>
-    </a>
-    <a class="app-card reveal" href="https://books.apple.com" target="_blank" rel="noopener">
+    <a class="app-card reveal" href="https://books.apple.com" target="_blank" rel="noopener noreferrer">
       <div class="app-icon logo"><img src="img/logos/apple-books.png" alt="Apple Books logo" loading="lazy"></div>
       <div class="app-body">
         <div class="app-top"><h3>Apple Books</h3><span class="app-pill tag">books</span></div>
@@ -1646,7 +1651,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
   <!-- ═════════ category: work & play ═════════ -->
   <div class="app-group reveal">work &amp; play <span class="sparkle">✦</span></div>
   <div class="apps-grid">
-    <a class="app-card reveal" href="https://wisprflow.ai" target="_blank" rel="noopener">
+    <a class="app-card reveal" href="https://wisprflow.ai" target="_blank" rel="noopener noreferrer">
       <div class="app-icon logo"><img src="img/logos/wispr-flow.png" alt="Wispr Flow logo" loading="lazy"></div>
       <div class="app-body">
         <div class="app-top"><h3>Wispr Flow</h3><span class="app-pill tag">dictation</span></div>
@@ -1654,7 +1659,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
         <span class="app-go">wisprflow.ai →</span>
       </div>
     </a>
-    <a class="app-card reveal" href="https://claude.ai" target="_blank" rel="noopener">
+    <a class="app-card reveal" href="https://claude.ai" target="_blank" rel="noopener noreferrer">
       <div class="app-icon logo"><img src="img/logos/claude.png" alt="Claude logo" loading="lazy"></div>
       <div class="app-body">
         <div class="app-top"><h3>Claude</h3><span class="app-pill tag">coding</span></div>
@@ -1662,7 +1667,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
         <span class="app-go">claude.ai →</span>
       </div>
     </a>
-    <a class="app-card reveal" href="https://calendar.google.com" target="_blank" rel="noopener">
+    <a class="app-card reveal" href="https://calendar.google.com" target="_blank" rel="noopener noreferrer">
       <div class="app-icon logo"><img src="img/logos/google-calendar.png" alt="Google Calendar logo" loading="lazy"></div>
       <div class="app-body">
         <div class="app-top"><h3>Google Calendar</h3><span class="app-pill tag">planning</span></div>
@@ -1670,7 +1675,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
         <span class="app-go">calendar.google.com →</span>
       </div>
     </a>
-    <a class="app-card reveal" href="https://tasks.google.com" target="_blank" rel="noopener">
+    <a class="app-card reveal" href="https://tasks.google.com" target="_blank" rel="noopener noreferrer">
       <!-- Google Tasks has no standalone site; its icon is self-hosted in img/logos/ -->
       <div class="app-icon logo"><img src="img/logos/google-tasks.png" alt="Google Tasks logo" loading="lazy"></div>
       <div class="app-body">
@@ -1679,7 +1684,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
         <span class="app-go">tasks.google.com →</span>
       </div>
     </a>
-    <a class="app-card reveal" href="https://music.youtube.com" target="_blank" rel="noopener">
+    <a class="app-card reveal" href="https://music.youtube.com" target="_blank" rel="noopener noreferrer">
       <div class="app-icon logo"><img src="img/logos/youtube-music.png" alt="YouTube Music logo" loading="lazy"></div>
       <div class="app-body">
         <div class="app-top"><h3>YouTube Music</h3><span class="app-pill tag">music</span></div>
@@ -1690,7 +1695,43 @@ a.app-card:hover .app-go{ text-decoration:underline; }
   </div>
 
   <!-- ✏️ MORE: send any other apps (+ a one-line why) and I'll slot them into the right category -->
+
+  <p class="toolkit-cta">these are the tools I lean on. want to talk stacks, careers, or moving countries? <a data-page="connect" href="#connect">let's connect →</a></p>
 </section>
+
+<!-- ================================================================
+     PAGE: BUILDS · the things Karthik designs + ships.
+     READY TO ENABLE — kept commented on purpose. Before going live:
+       1. confirm the product NAME (Warmly may be renamed) and a public URL
+          you're happy to show (these are .workers.dev dev links for now)
+       2. un-comment this whole <section> below, AND
+       3. un-comment the "builds" link in the nav near the top
+     ================================================================
+<section class="page" id="builds">
+  <div class="page-head">
+    <h2>Things I build<span class="dot">.</span></h2>
+    <p class="page-intro">engineer turned salesperson — I still build the tools I wish existed. a couple I'm working on now</p>
+  </div>
+  <div class="apps-grid">
+    <a class="app-card reveal" href="https://warmly.karthikonteddu306.workers.dev" target="_blank" rel="noopener noreferrer">
+      <div class="app-icon"><svg viewBox="0 0 60 60" width="60" height="60"><rect width="60" height="60" rx="14" fill="#045145"/><text x="30" y="41" font-family="Fraunces, Georgia, serif" font-size="30" font-weight="600" fill="#FAFAF6" text-anchor="middle">W</text></svg></div>
+      <div class="app-body">
+        <div class="app-top"><h3>Warmly</h3><span class="app-pill live">live</span></div>
+        <p>a private, keep-in-touch CRM — remember the people who matter without handing your contacts to the cloud</p>
+        <span class="app-go">open it →</span>
+      </div>
+    </a>
+    <a class="app-card reveal" href="https://areawise-site.karthikonteddu306.workers.dev/app" target="_blank" rel="noopener noreferrer">
+      <div class="app-icon"><svg viewBox="0 0 60 60" width="60" height="60"><rect width="60" height="60" rx="14" fill="#BB8FDC"/><text x="30" y="41" font-family="Fraunces, Georgia, serif" font-size="30" font-weight="600" fill="#FAFAF6" text-anchor="middle">A</text></svg></div>
+      <div class="app-body">
+        <div class="app-top"><h3>AreaWise</h3><span class="app-pill live">live</span></div>
+        <p>draw any neighbourhood on a map of India and get a livability + price-per-sqft read in seconds</p>
+        <span class="app-go">open it →</span>
+      </div>
+    </a>
+  </div>
+</section>
+-->
 
 <!-- ================================================================
      PAGE: CONNECT
@@ -1715,7 +1756,7 @@ a.app-card:hover .app-go{ text-decoration:underline; }
       <h3>Pick my brains</h3>
       <p>15, 20, or 30 minutes on your calendar, free. ask anything. sales, moving countries, books, getting unstuck, or just a chat over coffee somewhere in the world</p>
       <!-- 🔗 LINK: your Cal.com URL -->
-      <a class="btn" href="https://cal.com/kihtrak-ulta-ryirrl" target="_blank" rel="noopener">grab a slot on my calendar →</a>
+      <a class="btn" href="https://cal.com/kihtrak-ulta-ryirrl" target="_blank" rel="noopener noreferrer">grab a slot on my calendar →</a>
       <!-- ✏️ EDIT: bump this number as sessions happen -->
       <p class="funded-note"><strong>4 conversations funded so far</strong> · counted honestly, from day one</p>
     </div>
@@ -1726,8 +1767,8 @@ a.app-card:hover .app-go{ text-decoration:underline; }
       <div class="tip-btns">
         <!-- COFFEE PAUSED until a Buy Me a Coffee page exists:
              re-add by uncommenting the next line and pasting the real URL. -->
-        <!-- <a class="btn-soft" href="https://buymeacoffee.com/YOUR-PAGE" target="_blank" rel="noopener">☕ buy me a coffee</a> -->
-        <a class="btn-soft" href="https://buymeachai.ezee.li/Karthikonteddu" target="_blank" rel="noopener">🫖 buy me a chai</a>
+        <!-- <a class="btn-soft" href="https://buymeacoffee.com/YOUR-PAGE" target="_blank" rel="noopener noreferrer">☕ buy me a coffee</a> -->
+        <a class="btn-soft" href="https://buymeachai.ezee.li/Karthikonteddu" target="_blank" rel="noopener noreferrer">🫖 buy me a chai</a>
       </div>
       <p class="funded-note">a chai via UPI is optional · matched one-for-one · same purpose</p>
     </div>
@@ -1788,17 +1829,33 @@ const CONFIG = {
 /* ============== end of safe config · machinery below ============== */
 
 /* page switching */
+const DEFAULT_TITLE = document.title;
+const REDUCE_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const pages = document.querySelectorAll('.page');
 function show(id){
   pages.forEach(p => p.classList.toggle('visible', p.id === id));
-  document.querySelectorAll('.nav-links a').forEach(a =>
-    a.classList.toggle('active', a.dataset.page === id));
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    const on = a.dataset.page === id;
+    a.classList.toggle('active', on);
+    if(on) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');
+  });
   window.scrollTo({top:0});
   if(location.hash !== '#'+id) history.pushState(null,'','#'+id);
   requestAnimationFrame(observeReveals);
+  /* a11y: name the page in the tab, announce it to screen readers, move focus to its heading */
+  const sec = document.getElementById(id);
+  const heading = sec && sec.querySelector('h1, h2');
+  const label = heading ? heading.textContent.replace(/[.\s]+$/,'').trim() : id;
+  document.title = (id === 'home') ? DEFAULT_TITLE : 'Karthik Onteddu — ' + label;
+  const live = document.getElementById('route-announce');
+  if(live) live.textContent = label;
+  if(heading){ heading.setAttribute('tabindex','-1'); heading.focus({preventScroll:true}); }
 }
 document.querySelectorAll('[data-page]').forEach(el =>
-  el.addEventListener('click', e => { e.preventDefault(); show(el.dataset.page); }));
+  el.addEventListener('click', e => {
+    e.preventDefault();
+    if(document.getElementById(el.dataset.page)) show(el.dataset.page);   /* guard: ignore unknown pages */
+  }));
 /* browser back/forward + direct links like karthikonteddu.com#books */
 window.addEventListener('hashchange', () => {
   const id = location.hash.replace('#','') || 'home';
@@ -1839,14 +1896,16 @@ window.addEventListener('resize', () => {
   clearTimeout(resizeTimer); resizeTimer = setTimeout(lockHeroHeight, 200);
 });
 let phraseIdx = 0;
-setInterval(() => {
-  living.classList.add('swap');
-  setTimeout(() => {
-    phraseIdx = (phraseIdx + 1) % CONFIG.phrases.length;
-    living.textContent = CONFIG.phrases[phraseIdx];
-    living.classList.remove('swap');
-  }, 450);
-}, 3800);
+if(!REDUCE_MOTION){            /* hold on the first phrase for reduced-motion visitors */
+  setInterval(() => {
+    living.classList.add('swap');
+    setTimeout(() => {
+      phraseIdx = (phraseIdx + 1) % CONFIG.phrases.length;
+      living.textContent = CONFIG.phrases[phraseIdx];
+      living.classList.remove('swap');
+    }, 450);
+  }, 3800);
+}
 
 /* time-aware greeting (visitor's local clock) */
 const h = new Date().getHours();
@@ -1860,6 +1919,7 @@ document.getElementById('greeting').textContent = `${slot[1]} ${slot[0]} ${CONFI
 function countUp(el){
   const target = parseInt(el.dataset.count, 10);
   if(isNaN(target)) return;            /* safety: skip anything misconfigured */
+  if(REDUCE_MOTION){ el.textContent = target; return; }   /* respect reduced-motion */
   const dur = 900; const t0 = performance.now();
   function tick(t){
     const p = Math.min((t - t0) / dur, 1);
@@ -1879,12 +1939,22 @@ if(quipEl) quipEl.textContent = CONFIG.quips[Math.floor(Math.random() * CONFIG.q
 /* dark mode (remembers the visitor's choice) */
 const themeBtn = document.getElementById('themeBtn');
 const saved = localStorage.getItem('theme');
-if(saved === 'dark'){ document.documentElement.dataset.theme = 'dark'; themeBtn.textContent = '☀'; }
+function syncThemeBtn(){
+  const dark = document.documentElement.dataset.theme === 'dark';
+  themeBtn.textContent = dark ? '☀' : '☾';
+  themeBtn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+  themeBtn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+}
+/* honour a saved choice; with none, follow the visitor's OS preference */
+if(saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)){
+  document.documentElement.dataset.theme = 'dark';
+}
+syncThemeBtn();
 themeBtn.addEventListener('click', () => {
   const dark = document.documentElement.dataset.theme === 'dark';
   document.documentElement.dataset.theme = dark ? '' : 'dark';
-  themeBtn.textContent = dark ? '☾' : '☀';
   localStorage.setItem('theme', dark ? 'light' : 'dark');
+  syncThemeBtn();
 });
 
 /* ===== tic-tac-toe (visitor = green X, site = lavender O) ===== */
@@ -1898,14 +1968,19 @@ if(tttCells){
 
   function cellXY(i){ return [ (i%3)*72 + 48, Math.floor(i/3)*72 + 48 ]; }
 
+  function addMark(d, stroke){
+    const p = document.createElementNS('http://www.w3.org/2000/svg','path');
+    p.setAttribute('d', d); p.setAttribute('stroke', stroke); p.setAttribute('stroke-width','6');
+    tttMarks.appendChild(p);   /* build SVG nodes directly · no innerHTML re-parse */
+  }
   function drawX(i){
     const [x,y] = cellXY(i);
-    tttMarks.innerHTML += `<path d="M${x-16} ${y-15} C ${x-6} ${y-5}, ${x+8} ${y+7}, ${x+15} ${y+16}" stroke="#045145" stroke-width="6"/>` +
-      `<path d="M${x+15} ${y-16} C ${x+6} ${y-4}, ${x-8} ${y+6}, ${x-16} ${y+15}" stroke="#045145" stroke-width="6"/>`;
+    addMark(`M${x-16} ${y-15} C ${x-6} ${y-5}, ${x+8} ${y+7}, ${x+15} ${y+16}`, '#045145');
+    addMark(`M${x+15} ${y-16} C ${x+6} ${y-4}, ${x-8} ${y+6}, ${x-16} ${y+15}`, '#045145');
   }
   function drawO(i){
     const [x,y] = cellXY(i);
-    tttMarks.innerHTML += `<path d="M${x+16} ${y-3} C ${x+17} ${y-16}, ${x-14} ${y-19}, ${x-17} ${y-1} C ${x-19} ${y+15}, ${x+13} ${y+19}, ${x+16} ${y+2}" stroke="#BB8FDC" stroke-width="6"/>`;
+    addMark(`M${x+16} ${y-3} C ${x+17} ${y-16}, ${x-14} ${y-19}, ${x-17} ${y-1} C ${x-19} ${y+15}, ${x+13} ${y+19}, ${x+16} ${y+2}`, '#BB8FDC');
   }
   function winner(b){
     for(const [a,c,d] of LINES) if(b[a] && b[a]===b[c] && b[a]===b[d]) return b[a];
@@ -1944,7 +2019,7 @@ if(tttCells){
   function reset(){
     board = Array(9).fill(null); done = false;
     tttMarks.innerHTML = ''; tttCells.innerHTML = '';
-    tttStatus.textContent = "you're green. tap a square";
+    tttStatus.textContent = "you're green. tap or press Enter on a square";
     const after = document.getElementById('tttAfter');
     after.classList.remove('in'); after.innerHTML = '';
     for(let i=0;i<9;i++){
@@ -1953,7 +2028,10 @@ if(tttCells){
       r.setAttribute('x', x-34); r.setAttribute('y', y-34);
       r.setAttribute('width', 68); r.setAttribute('height', 68);
       r.setAttribute('fill', 'transparent');
-      r.addEventListener('click', () => {
+      /* keyboard + screen-reader support for each square */
+      r.setAttribute('role', 'button'); r.setAttribute('tabindex', '0');
+      r.setAttribute('aria-label', 'row ' + (Math.floor(i/3)+1) + ', column ' + (i%3+1));
+      const play = () => {
         if(done || board[i]) return;
         board[i]='X'; drawX(i);
         if(endCheck()) return;
@@ -1961,7 +2039,9 @@ if(tttCells){
         setTimeout(() => {
           const m = siteMove(); board[m]='O'; drawO(m); endCheck();
         }, 380);
-      });
+      };
+      r.addEventListener('click', play);
+      r.addEventListener('keydown', e => { if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); play(); } });
       tttCells.appendChild(r);
     }
   }
@@ -1981,6 +2061,7 @@ if(wool){
 /* sparkle easter egg on the wordmark's pink period */
 document.getElementById('dotEgg').addEventListener('click', e => {
   e.stopPropagation();
+  if(REDUCE_MOTION) return;
   const r = e.target.getBoundingClientRect();
   for(let i = 0; i < 10; i++){
     const s = document.createElement('span');
@@ -2020,7 +2101,7 @@ document.getElementById('dotEgg').addEventListener('click', e => {
   });
 </script>
 <script data-goatcounter="https://karthikonteddu.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+        async src="https://gc.zgo.at/count.js"></script>
 
 </body>
 </html>
