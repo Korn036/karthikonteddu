@@ -587,7 +587,12 @@ h2{
 .book{ background:var(--cream-2); border-radius:14px; padding:12px; box-shadow:var(--shadow-tile); transition:transform .2s, box-shadow .2s; }
 .book:hover{ transform:translateY(-4px); box-shadow:var(--shadow-tile-h); }
 .book .cover{
-  width:100%; aspect-ratio:2/3; border-radius:7px; object-fit:cover;
+  /* height:auto is REQUIRED, not cosmetic: the <img> carries a height="600"
+     attribute, and Safari/WebKit only lets aspect-ratio govern when a side is
+     auto. Without this, iOS Safari renders every cover a literal 600px tall
+     (Chromium quietly honours the ratio anyway, which is why it looked fine on
+     desktop). See the iPad-Safari cover bug, 2026-06-28. */
+  width:100%; height:auto; aspect-ratio:2/3; border-radius:7px; object-fit:cover;
   background:var(--cream); border:0.5px solid var(--hairline); margin-bottom:10px;
   box-shadow:0 2px 8px rgba(42,41,37,0.14);  /* the cover lifts off its card */
 }
@@ -702,6 +707,9 @@ a.app-card:hover .app-go{ text-decoration:underline; }
   .wool{ left:24px; width:300px; }
 }
 @media (max-width:430px){ .book-grid{ grid-template-columns:1fr 1fr; } }
+/* tablets (iPad portrait ~768-834px) fell into the 4-col desktop grid because
+   the only other breakpoint was max-width:760px; give them a roomier 3-col. */
+@media (min-width:761px) and (max-width:1024px){ .book-grid{ grid-template-columns:repeat(3, 1fr); } }
 
 @media (max-width:760px){
   .essence-why .why-open .why-belief{ font-size:15px; line-height:1.55; }
