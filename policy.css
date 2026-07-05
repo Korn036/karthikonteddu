@@ -191,6 +191,30 @@ hr{ border:0; border-top:1px solid var(--hairline); margin:40px 0; }
 .foot-fine{ margin:0; line-height:1.6; }
 .foot-fine .sep{ color:var(--ink-faint); margin:0 7px; }
 
+/* 7b. ASK AI ABOUT ME · matches the block on the home page ------- */
+.ask-ai{
+  display:flex; flex-direction:column; align-items:center; gap:11px;
+  text-align:center; margin:0 0 24px; padding-bottom:22px;
+  border-bottom:1px solid var(--hairline);
+}
+.ask-ai-label{
+  margin:0; font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase;
+  color:var(--label); font-weight:600;
+}
+.ask-ai-label .spk{ color:var(--pink); }
+.ask-ai-row{ display:flex; flex-wrap:wrap; justify-content:center; gap:9px; }
+.ai-pill{
+  display:inline-flex; align-items:center; gap:7px;
+  background:var(--cream); border:1px solid var(--hairline); border-radius:999px;
+  font-family:var(--sans); font-size:0.82rem; font-weight:500; color:var(--ink-soft);
+  padding:8px 16px; text-decoration:none; cursor:pointer;
+  transition:border-color .15s ease, color .15s ease, background .15s ease, transform .15s ease;
+}
+.ai-pill:hover{
+  color:#2A2925; background:var(--lav); border-color:#2A2925;
+  transform:translateY(-2px); text-decoration:none;
+}
+
 /* 8. RESPONSIVE -------------------------------------------------- */
 @media (max-width:560px){
   body{ font-size:16px; }
