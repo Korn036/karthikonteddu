@@ -675,6 +675,7 @@ h2{
    reuses the same cream-2 tile, hover-lift, serif heading and pink
    accent language as the rest of the site, so it feels native. */
 .apps-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; padding-bottom:60px; }
+#ai-corner .apps-grid{ grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); }
 .app-card{
   display:flex; gap:18px; align-items:flex-start;
   background:var(--cream-2); border-radius:16px; padding:24px;
@@ -839,8 +840,7 @@ button.wordmark{ background:none; border:none; padding:0; color:inherit; text-al
         <a data-page="now" href="#now">now</a>
         <a data-page="books" href="#books">books</a>
         <a data-page="toolkit" href="#toolkit">toolkit</a>
-        <!-- builds: un-comment the line below (and the BUILDS section near the bottom) when ready -->
-        <!-- <a data-page="builds" href="#builds">builds</a> -->
+        <a data-page="ai-corner" href="#ai-corner">ai corner</a>
         <!-- <a data-page="lab" href="#lab">lab</a> -->
         <a data-page="connect" href="#connect">connect</a>
       </nav>
@@ -1766,39 +1766,22 @@ button.wordmark{ background:none; border:none; padding:0; color:inherit; text-al
   <p class="toolkit-cta">these are the tools I lean on. want to talk stacks, careers, or moving countries? <a data-page="connect" href="#connect">let's connect →</a></p>
 </section>
 
-<!-- ================================================================
-     PAGE: BUILDS · the things Karthik designs + ships.
-     READY TO ENABLE — kept commented on purpose. Before going live:
-       1. confirm the product NAME (Warmly may be renamed) and a public URL
-          you're happy to show (these are .workers.dev dev links for now)
-       2. un-comment this whole <section> below, AND
-       3. un-comment the "builds" link in the nav near the top
-     ================================================================
-<section class="page" id="builds">
-  <div class="page-head">
-    <h2>Things I build<span class="dot">.</span></h2>
-    <p class="page-intro">engineer turned salesperson — I still build the tools I wish existed. a couple I'm working on now</p>
+<section class="page" id="ai-corner">
+  <div class="page-head reveal">
+    <h2>AI Corner<span class="dot">.</span></h2>
+    <p class="page-intro">engineer turned salesperson, I still build the tools I wish existed. one I'm actually proud of, below.</p>
   </div>
   <div class="apps-grid">
-    <a class="app-card reveal" href="https://warmly.karthikonteddu306.workers.dev" target="_blank" rel="noopener noreferrer">
-      <div class="app-icon"><svg viewBox="0 0 60 60" width="60" height="60"><rect width="60" height="60" rx="14" fill="#045145"/><text x="30" y="41" font-family="Fraunces, Georgia, serif" font-size="30" font-weight="600" fill="#FAFAF6" text-anchor="middle">W</text></svg></div>
+    <a class="app-card reveal" href="https://sovenn.app" target="_blank" rel="noopener noreferrer">
+      <div class="app-icon logo"><img src="img/logos/sovenn.png" alt="Sovenn logo" loading="lazy"></div>
       <div class="app-body">
-        <div class="app-top"><h3>Warmly</h3><span class="app-pill live">live</span></div>
-        <p>a private, keep-in-touch CRM — remember the people who matter without handing your contacts to the cloud</p>
-        <span class="app-go">open it →</span>
-      </div>
-    </a>
-    <a class="app-card reveal" href="https://areawise-site.karthikonteddu306.workers.dev/app" target="_blank" rel="noopener noreferrer">
-      <div class="app-icon"><svg viewBox="0 0 60 60" width="60" height="60"><rect width="60" height="60" rx="14" fill="#BB8FDC"/><text x="30" y="41" font-family="Fraunces, Georgia, serif" font-size="30" font-weight="600" fill="#FAFAF6" text-anchor="middle">A</text></svg></div>
-      <div class="app-body">
-        <div class="app-top"><h3>AreaWise</h3><span class="app-pill live">live</span></div>
-        <p>draw any neighbourhood on a map of India and get a livability + price-per-sqft read in seconds</p>
-        <span class="app-go">open it →</span>
+        <div class="app-top"><h3>Sovenn.</h3><span class="app-pill live">live</span></div>
+        <p>a private, keep-in-touch CRM. remember the people who matter without handing your contacts to the cloud.</p>
+        <span class="app-go">sovenn.app →</span>
       </div>
     </a>
   </div>
 </section>
--->
 
 <!-- ================================================================
      PAGE: CONNECT
