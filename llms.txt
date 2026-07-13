@@ -38,6 +38,14 @@ He speaks English, Telugu, and German.
 - **Location:** Kapra, Hyderabad, Telangana – 500062, India
 - **Booking:** https://cal.com/kihtrak-ulta-ryirrl
 
+## Blog (AI corner)
+
+- Hub: [Writing](https://karthikonteddu.com/#writing) — the "originals · field notes"
+  grid, on-site posts at https://karthikonteddu.com/blog/<slug>.
+- [Your memory is becoming a currency](https://karthikonteddu.com/blog/memory-is-becoming-a-currency)
+  (13 Jul 2026) — AI corner: why a structured, interconnected memory bank compounds over time and future-proofs you against an LLM migration.
+- RSS: https://karthikonteddu.com/rss.xml
+
 ## Policies
 
 - [Contact & Support](https://karthikonteddu.com/contact)

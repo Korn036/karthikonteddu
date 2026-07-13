@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Add a new <item> (newest first) each time a post ships. -->
+<rss version="2.0">
+  <channel>
+    <title>Karthik Onteddu — AI corner</title>
+    <link>https://karthikonteddu.com/#writing</link>
+    <description>Raw notes on AI, LLMs, and building — from karthikonteddu.com</description>
+    <language>en</language>
+    <item>
+      <title>Your memory is becoming a currency</title>
+      <link>https://karthikonteddu.com/blog/memory-is-becoming-a-currency</link>
+      <guid isPermaLink="true">https://karthikonteddu.com/blog/memory-is-becoming-a-currency</guid>
+      <pubDate>Mon, 13 Jul 2026 00:00:00 +0000</pubDate>
+      <description>After 7 billion tokens and 40k+ prompts, my biggest realization: a structured, interconnected memory bank compounds over time — and it's your insurance against the next model migration.</description>
+    </item>
+  </channel>
+</rss>

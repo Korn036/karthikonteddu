@@ -2,3 +2,5 @@
 .assetsignore
 wrangler.toml
 README.md
+_post-template.html
+banner-template.html

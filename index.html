@@ -65,6 +65,7 @@
 <meta name="twitter:description" content="Sales and strategy across five countries and a 50+ book shelf. Field notes on selling, moving, and why education matters.">
 <meta name="twitter:image" content="https://karthikonteddu.com/og.png">
 <link rel="canonical" href="https://karthikonteddu.com/">
+<link rel="alternate" type="application/rss+xml" title="Karthik Onteddu — AI corner" href="/rss.xml">
 <meta name="theme-color" content="#FAFAF6">
 
 <!-- structured data: tells Google + AI assistants exactly who this site belongs to -->
@@ -447,6 +448,37 @@ a.w:hover{ transform:translateY(-3px); box-shadow:var(--shadow-tile-h); }
 .capture input:focus{ outline:2px solid var(--green); outline-offset:2px; border-color:var(--green); }
 .capture input::placeholder{ color:var(--ink-faint); }
 
+/* blog subscribe · compact card version of blog.css .subscribe, scoped
+   with the same class names but restyled to this page's own tokens so it
+   sits naturally under the #writing blog-grid */
+.subscribe{
+  background:var(--cream-2); border:1px solid var(--hairline); border-radius:16px;
+  padding:28px 30px; margin:26px 0 0; box-shadow:var(--shadow-tile);
+}
+.sub-kick{
+  margin:0 0 8px; font-size:12px; letter-spacing:0.14em; text-transform:uppercase;
+  color:var(--label); font-weight:600;
+}
+.sub-title{
+  font-family:var(--serif); font-weight:var(--head-weight); font-size:22px;
+  letter-spacing:-0.01em; color:var(--ink); margin:0 0 6px;
+}
+.sub-copy{ font-size:13.5px; color:var(--ink-soft); margin:0 0 18px; max-width:52ch; }
+.sub-form{ display:flex; gap:10px; }
+.sub-input{
+  flex:1; min-width:0; font-family:var(--sans); font-size:14px; color:var(--ink);
+  background:var(--cream); border:1px solid var(--hairline);
+  border-radius:10px; padding:13px 16px; transition:border-color .2s;
+}
+.sub-input:focus{ outline:2px solid var(--green); outline-offset:2px; border-color:var(--green); }
+.sub-input::placeholder{ color:var(--ink-faint); }
+.sub-btn{
+  flex-shrink:0; font-family:var(--sans); font-size:14px; font-weight:600;
+  color:#FAFAF6; background:var(--green); border:none; border-radius:10px;
+  padding:13px 22px; cursor:pointer; transition:background .2s, transform .2s;
+}
+.sub-btn:hover{ background:var(--ink); transform:translateY(-1px); }
+
 /* ===== tic-tac-toe break zone ===== */
 .break-zone{ padding:34px 0 8px; }
 .ttt-row{ display:flex; gap:36px; align-items:center; flex-wrap:wrap; }
@@ -552,6 +584,37 @@ footer .left{ display:flex; align-items:center; gap:16px; }
 .wool:hover .strand, .wool.unwound .strand{ stroke-dashoffset:0; }
 .wool:hover .ball, .wool.unwound .ball{ transform:rotate(260deg); animation:none; }
 @keyframes woolbob{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-3px);} }
+
+/* ===== blog hub: live "Originals" card grid on the writing page =====
+   scoped to #writing; reuses the same :root tokens as everything else.
+   Cards link OUT to real /blog/<slug> pages (see _post-template.html). */
+#writing .blog-grid{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:22px; margin-bottom:14px;
+}
+#writing .blog-card{
+  display:block; border-radius:16px; overflow:hidden;
+  background:var(--cream-2); box-shadow:var(--shadow-tile);
+  text-decoration:none; transition:transform .2s, box-shadow .2s;
+}
+#writing .blog-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-tile-h); }
+#writing .blog-card .bc-cap{
+  padding:22px; min-height:120px; display:flex; flex-direction:column; justify-content:flex-end;
+}
+#writing .blog-card .bc-kick{
+  font-size:10.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase;
+  color:rgba(255,255,255,.8); margin-bottom:8px;
+}
+#writing .blog-card .bc-cap h3{
+  font-family:var(--serif); font-weight:var(--head-weight); color:#fff;
+  font-size:19px; line-height:1.2; letter-spacing:-0.01em; margin:0;
+}
+#writing .blog-card .bc-body{ padding:18px 22px 20px; }
+#writing .blog-card .bc-body p{ font-size:13.5px; color:var(--ink-soft); margin-bottom:10px; }
+#writing .blog-card .bc-meta{ font-size:11.5px; letter-spacing:0.04em; color:var(--label); }
+#writing .blog-card.g1 .bc-cap{ background:linear-gradient(140deg,#0a6b5b,#045145 45%,#5b3d78); }
+#writing .blog-card.g2 .bc-cap{ background:linear-gradient(140deg,#BB8FDC,#7b5aa6 55%,#045145 120%); }
+#writing .blog-card.g3 .bc-cap{ background:linear-gradient(140deg,#2A2925,#3c4d47 55%,#0a6b5b 120%); }
 
 /* ===== original essays: the tile board on the writing page ===== */
 .tile-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:14px; }
@@ -742,6 +805,8 @@ a.app-card:hover .app-go{ text-decoration:underline; }
   .capture{ flex-direction:column; align-items:flex-start; }
   .capture form{ width:100%; flex-wrap:wrap; }
   .capture input{ flex:1; min-width:0; }
+  .sub-form{ flex-direction:column; }
+  .sub-btn{ width:100%; }
   .book-grid{ grid-template-columns:repeat(2, 1fr); gap:14px; }
   .tips{ flex-wrap:wrap; }
   .tips .quip{ margin-left:0; width:100%; }
@@ -1117,30 +1182,52 @@ button.wordmark{ background:none; border:none; padding:0; color:inherit; text-al
     <p class="page-intro">field notes from selling, moving countries, and figuring it out. originals live here, conversations happen on linkedin</p>
   </div>
 
-  <!-- ===== ORIGINALS: essays that live on this site =====
-       📋 TEMPLATE · to add essay #2:
-       1. copy a <a class="tile..."> block below, paste beside it,
-          change data-page + href to "essay-2" and edit the words
-       2. copy the whole <section id="essay-1"> at the bottom of this
-          writing section, paste below it, change its id to "essay-2",
-          and write your piece in the <p> paragraphs
+  <!-- ===== ORIGINALS: live blog hub. Cards link OUT to real pages at
+       /blog/<slug> (built from _post-template.html at the repo root),
+       NOT to in-page #essay-N hash sections.
+       📋 TEMPLATE · to add a post card:
+       1. copy one <a class="blog-card ..."> block below, paste it in,
+          rotate the gradient class (g1/g2/g3), edit kicker/title/excerpt/meta,
+          and point href at /blog/<real-slug>
+       2. build the real page: copy _post-template.html to blog/<slug>.html
+          and fill in its {{PLACEHOLDER}}s (see the 6-step comment at its top)
+       3. add the new URL to sitemap.xml and a line to llms.txt
   -->
-  <!-- ORIGINALS · on-site essays. Hidden until the first one is written so visitors
-       never land on a placeholder. The LinkedIn list below still shows. To bring it
-       back: write the piece in the #essay-1 section (kept below, also commented),
-       then remove this comment wrapper and the one around #essay-1.
   <div class="recent-label" style="margin-bottom:10px;">originals · field notes <span class="sparkle">✦</span></div>
-  <div class="tile-grid">
-    <a class="tile reveal" data-page="essay-1" href="#essay-1">
-      <div class="t-meta">field note · 01</div>
-      <h3>What five countries taught me about how people decide</h3>
-      <p>the same product, the same pitch, five different countries. what actually changes is everything around the decision</p>
-      <span class="read">read here →</span>
+  <div class="blog-grid">
+    <!-- 📋 TEMPLATE · BLOG CARD ▼ copy this block to add another post
+    <a class="blog-card g2 reveal" href="/blog/your-slug">
+      <div class="bc-cap">
+        <p class="bc-kick">Kicker</p>
+        <h3>Post title here</h3>
+      </div>
+      <div class="bc-body">
+        <p>One-line excerpt here.</p>
+        <div class="bc-meta">13 Jul 2026 · 4 min</div>
+      </div>
+    </a>
+    -->
+    <!-- first post, published 2026-07-13 -->
+    <a class="blog-card g1 reveal" href="/blog/memory-is-becoming-a-currency">
+      <div class="bc-cap">
+        <p class="bc-kick">AI corner</p>
+        <h3>Your memory is becoming a currency</h3>
+      </div>
+      <div class="bc-body">
+        <p>After 7 billion tokens and 40k+ prompts, my biggest realization: build a memory bank that compounds.</p>
+        <div class="bc-meta">13 Jul 2026 · 2 min</div>
+      </div>
     </a>
   </div>
-  -->
 
-  <div class="recent-label" style="margin:26px 0 0;">from linkedin <span class="sparkle">✦</span></div>
+  <section class="subscribe" aria-label="Subscribe to new posts">
+    <p class="sub-kick">✦ the ai corner</p>
+    <h2 class="sub-title">Get new posts by email</h2>
+    <p class="sub-copy">Occasional and raw — when I learn something worth keeping, you get it. No spam, unsubscribe anytime.</p>
+    <p class="sub-copy">Email signup is opening soon. For now, subscribe by <a href="/rss.xml">RSS</a> so you never miss a post.</p>
+  </section>
+
+  <div class="recent-label" style="margin:34px 0 0;">also on linkedin <span class="sparkle">✦</span></div>
   <div class="posts">
     <!-- 📋 TEMPLATE · POST ▼ copy this block, paste under the right
          category heading (newest on top), edit title + URL:
