@@ -1,0 +1,797 @@
+/* =================================================================
+   1. DESIGN SYSTEM · light + dark. Change a hex once, applies everywhere
+   ================================================================= */
+:root{
+  --cream:      #FAFAF6;
+  --cream-2:    #F2F0E8;
+  --ink:        #2A2925;
+  --ink-soft:   #6B6963;
+  --ink-faint:  #A8A69C;
+  --label:      #8B8980;
+  --lav:        #F0D7FF;          /* EXACT Wispr lavender (sampled) · fills, hovers, washes */
+  --pink:       #BB8FDC;          /* deeper lavender for small text/periods so it stays readable */
+  --green:      #045145;          /* EXACT Wispr deep green (sampled) · CTA + accents */
+  --hairline:   rgba(42,41,37,0.09);
+  --glow-pink:  rgba(240,215,255,0.5);
+  --glow-green: rgba(4,81,69,0.08);
+  /* retina depth · a tight contact shadow + a soft ambient one (iOS material) */
+  --shadow-tile:   0 1px 2px rgba(42,41,37,0.05), 0 8px 20px rgba(42,41,37,0.07);
+  --shadow-tile-h: 0 2px 6px rgba(42,41,37,0.07), 0 16px 34px rgba(42,41,37,0.11);
+
+  --serif: 'Fraunces', Georgia, serif;
+  --sans:  'Inter', -apple-system, sans-serif;
+  --head-weight: 600;
+  --max-width: 1100px;
+}
+/* dark mode · same soul, late-evening palette */
+[data-theme="dark"]{
+  --cream:      #1E1D1A;
+  --cream-2:    #28261F;
+  --ink:        #F2F0E8;
+  --ink-soft:   #C4C1B7;          /* lifted for WCAG AA body-text contrast on dark */
+  --ink-faint:  #7E7B72;
+  --label:      #8B8980;
+  --lav:        #F0D7FF;
+  --pink:       #D9B8F2;          /* lighter lavender for dark bg legibility */
+  --green:      #2E8C74;          /* lifted green so buttons read on dark */
+  --hairline:   rgba(242,240,232,0.10);
+  --glow-pink:  rgba(240,215,255,0.10);
+  --glow-green: rgba(46,140,116,0.10);
+  --shadow-tile:   0 1px 2px rgba(0,0,0,0.40), 0 10px 24px rgba(0,0,0,0.32);
+  --shadow-tile-h: 0 2px 8px rgba(0,0,0,0.45), 0 18px 38px rgba(0,0,0,0.40);
+}
+
+/* =================================================================
+   2. BASE · bigger type so content leads, distraction-free
+   ================================================================= */
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  background:var(--cream); color:var(--ink);
+  font-family:var(--sans); font-size:17px; line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  transition:background .35s ease, color .35s ease;
+}
+/* faint paper grain · the "not flat" secret */
+body::before{
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:1;
+  opacity:0.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.018 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+a{ color:inherit; text-decoration:none; }
+img{ max-width:100%; display:block; }
+.wrap{ max-width:var(--max-width); margin:0 auto; padding:0 36px; position:relative; z-index:2; }
+
+/* =================================================================
+   3. NAVIGATION (+ theme toggle)
+   ================================================================= */
+header{
+  position:sticky; top:0; z-index:50;
+  background:color-mix(in srgb, var(--cream) 88%, transparent);
+  backdrop-filter:blur(10px);
+  border-bottom:0.5px solid var(--hairline);
+}
+.nav{ display:flex; justify-content:space-between; align-items:center; padding-top:18px; padding-bottom:18px; gap:16px; }
+.wordmark{
+  font-family:var(--serif); font-weight:var(--head-weight);
+  font-size:21px; letter-spacing:-0.015em; cursor:pointer; white-space:nowrap;
+}
+.wordmark .dot{ color:var(--pink); cursor:pointer; display:inline-block; transition:transform .2s; }
+.wordmark .dot:hover{ transform:scale(1.4); }
+.nav-right{ display:flex; align-items:center; gap:20px; }
+.nav-links{ display:flex; gap:20px; font-size:13.5px; color:var(--ink-soft); }
+.nav-links a{ position:relative; padding-bottom:3px; cursor:pointer; transition:color .2s; }
+.nav-links a:not([data-page="connect"])::after{
+  content:''; position:absolute; left:0; bottom:0; width:0; height:1.5px;
+  background:var(--pink); transition:width .25s;
+}
+.nav-links a:hover{ color:var(--pink); }
+.nav-links a:not([data-page="connect"]):hover::after{ width:100%; }
+.nav-links a.active{ color:var(--ink); font-weight:500; }
+.theme-btn{
+  width:34px; height:34px; border-radius:50%; border:1px solid var(--hairline);
+  background:none; color:var(--ink-soft); cursor:pointer; font-size:15px;
+  display:flex; align-items:center; justify-content:center;
+  transition:border-color .2s, color .2s, transform .2s;
+}
+.theme-btn:hover{ border-color:var(--pink); color:var(--pink); transform:rotate(20deg); }
+
+/* =================================================================
+   4. PAGES + SCROLL REVEAL
+   ================================================================= */
+.page{ display:none; }
+.page.visible{ display:block; animation:fadein .4s ease; }
+@keyframes fadein{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:none;} }
+.reveal{ opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
+.reveal.in{ opacity:1; transform:none; }
+
+/* =================================================================
+   5. HOME · breathing hero
+   ================================================================= */
+.hero-grid{
+  display:grid; grid-template-columns:1.3fr 0.9fr; gap:44px;
+  align-items:center; padding:68px 0 52px; position:relative;
+}
+.hero-photo{ display:flex; justify-content:center; }
+.headshot-hero{
+  width:240px; height:240px; border-radius:50%; object-fit:cover;
+  box-shadow:0 10px 30px rgba(42,41,37,0.15); border:4px solid var(--cream);
+}
+.widgets-standalone{ margin-top:8px; }
+/* the slow-breathing warmth behind the hero */
+.hero-grid::before{
+  content:''; position:absolute; inset:-80px -120px -40px;
+  background:
+    radial-gradient(420px 300px at 18% 28%, var(--glow-pink), transparent 70%),
+    radial-gradient(380px 280px at 78% 70%, var(--glow-green), transparent 70%);
+  filter:blur(8px); z-index:-1;
+  animation:breathe 9s ease-in-out infinite;
+}
+@keyframes breathe{ 0%,100%{ opacity:.8; transform:scale(1);} 50%{ opacity:1; transform:scale(1.06);} }
+
+.greeting{
+  font-size:13px; color:var(--label); letter-spacing:0.03em; margin-bottom:16px;
+  display:flex; align-items:center; gap:7px;
+}
+h1{
+  font-family:var(--serif); font-weight:var(--head-weight);
+  font-size:clamp(42px, 5.4vw, 66px); line-height:1.05;
+  letter-spacing:-0.022em; margin-bottom:22px;
+}
+h1 .dot, h2 .dot{ color:var(--pink); }
+/* the living phrase · clean sans in deep Wispr green, no italics */
+#living{
+  display:inline; font-family:var(--sans); font-style:normal;
+  font-weight:600; font-size:0.78em; letter-spacing:-0.012em;
+  color:var(--green);
+  transition:opacity .45s ease;
+}
+#living.swap{ opacity:0; }
+/* h1 height is locked by the engine room (it measures the tallest phrase),
+   so the mission line below never jumps when phrases rotate */
+.mission{ font-size:16px; color:var(--ink-soft); max-width:380px; margin-bottom:24px; }
+.mission strong{ color:var(--ink); font-weight:500; }
+
+.socials{ display:flex; gap:14px; align-items:center; }
+.socials a{
+  display:flex; align-items:center; justify-content:center;
+  width:38px; height:38px; border-radius:50%;
+  border:1px solid var(--hairline); color:var(--ink-soft);
+  transition:color .2s, border-color .2s, transform .2s, background .2s;
+}
+.socials a:hover{ color:var(--pink); border-color:var(--pink); transform:translateY(-2px); background:var(--glow-pink); }
+.socials svg{ width:17px; height:17px; fill:currentColor; }
+
+/* ===== the widget grid (iPhone-style) ===== */
+.widgets{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+.w{
+  background:linear-gradient(180deg, color-mix(in srgb, var(--cream-2) 92%, #ffffff), var(--cream-2));
+  border-radius:20px; padding:18px 16px;
+  box-shadow:var(--shadow-tile); display:block;
+  transition:transform .2s, box-shadow .2s;
+}
+[data-theme="dark"] .w{
+  background:linear-gradient(180deg, color-mix(in srgb, var(--cream-2) 86%, #ffffff), var(--cream-2));
+}
+a.w{ cursor:pointer; }
+a.w:hover{ transform:translateY(-3px); box-shadow:var(--shadow-tile-h); }
+.w-wide{ grid-column:1 / -1; }
+.metric-num{
+  font-family:var(--serif); font-weight:var(--head-weight);
+  font-size:40px; line-height:1; letter-spacing:-0.01em;
+}
+.metric-num .plus{ font-size:0.55em; color:var(--pink); font-weight:600; }
+.metric-label{ font-size:10.5px; letter-spacing:0.03em; color:var(--label); margin-top:8px; line-height:1.45; }
+.w-link{ font-size:11px; color:var(--pink); margin-top:4px; display:block; }
+.rightnow-label{
+  font-size:11.5px; letter-spacing:0.04em; color:var(--label);
+  margin-bottom:9px; display:flex; align-items:center; gap:6px;
+}
+.sparkle{ color:var(--pink); font-size:12px; }
+.pulse-line{ display:flex; align-items:center; gap:11px; }
+.pulse{ position:relative; width:9px; height:9px; flex-shrink:0; }
+.pulse::before,.pulse::after{ content:''; position:absolute; inset:0; border-radius:50%; background:var(--green); }
+.pulse::before{ animation:ring 1.8s ease-out infinite; }
+.pulse::after{ animation:dotp 1.8s ease-in-out infinite; }
+@keyframes dotp{ 0%,100%{opacity:1; transform:scale(1);} 50%{opacity:.45; transform:scale(.82);} }
+@keyframes ring{ 0%{opacity:.55; transform:scale(1);} 100%{opacity:0; transform:scale(2.6);} }
+.city{ font-size:15.5px; font-weight:500; }
+.sub-line{ font-size:12.5px; color:var(--ink-soft); font-style:italic; margin-top:5px; padding-left:20px; }
+.reading-line{ font-size:12.5px; color:var(--ink-soft); }
+.reading-line .lbl{ font-size:11.5px; letter-spacing:0.04em; color:var(--label); display:block; margin-bottom:4px; }
+.reading-line em{ color:var(--ink); font-style:italic; font-family:var(--serif); font-size:15px; }
+
+.rule{ height:0.5px; background:var(--hairline); }
+
+/* CTA · the color-popping button */
+.cta-grid{ display:grid; grid-template-columns:1fr 1.1fr; gap:44px; padding:42px 0; }
+.btn{
+  display:inline-block; background:var(--green); color:#FAFAF6;
+  font-weight:600; font-size:14.5px; padding:14px 28px; border-radius:12px;
+  border:1.5px solid transparent; cursor:pointer; letter-spacing:0.02em;
+  box-shadow:0 1px 1px rgba(4,81,69,0.18), 0 6px 16px rgba(4,81,69,0.22), inset 0 1px 0 rgba(255,255,255,0.18);
+  transition:background .25s, color .25s, border-color .25s, transform .2s, box-shadow .25s;
+}
+.btn:hover{
+  background:var(--lav); color:#2A2925; border-color:#2A2925;
+  transform:translateY(-2px);
+  box-shadow:0 6px 18px var(--glow-pink);
+}
+.cta-note{ font-size:13.5px; color:var(--ink-soft); font-style:italic; margin-top:15px; max-width:330px; }
+.cta-note a{ color:var(--pink); font-style:normal; }
+.cta-note a:hover{ text-decoration:underline; }
+
+/* ===== the essence block - replaces the homepage CTA. soft, typographic, no buttons ===== */
+.essence{ max-width:380px; }
+.essence-quote{
+  font-family:var(--serif); font-weight:var(--head-weight);
+  font-size:24px; line-height:1.45; letter-spacing:-0.012em;
+  color:var(--ink); margin-bottom:22px;
+}
+.essence-quote .dot{ color:var(--pink); }
+.essence-why{
+  font-size:14px; line-height:1.7; color:var(--ink-soft);
+}
+.essence-why .why-open{
+  display:block; margin-bottom:22px;
+  padding:6px 0 6px 18px;
+  border-left:3px solid var(--green);
+}
+.essence-why .why-open .why-label{
+  font-family:var(--sans); font-style:normal;
+  font-size:11px; letter-spacing:0.1em; text-transform:uppercase;
+  font-weight:600; color:var(--pink);
+  display:block; margin-bottom:8px;
+}
+.essence-why .why-open .why-label::before{ content:'✦ '; }
+.essence-why .why-open .why-belief{
+  font-family:var(--serif); font-style:normal; font-weight:500;
+  font-size:18px; line-height:1.55; letter-spacing:-0.005em;
+  color:var(--ink); display:block;
+}
+.essence-why .why-mech{ display:block; max-width:380px; }
+.essence-why a{
+  color:var(--pink); border-bottom:0.5px dashed var(--pink);
+  padding-bottom:1px; transition:color .2s, border-color .2s;
+}
+.essence-why a:hover{ color:var(--green); border-bottom-color:var(--green); }
+
+/* the homepage hero button - same green/lavender pattern as Connect's button */
+.hero-btn{ margin:6px 0 22px; }
+
+/* ===== Connect nav · just a small blinking pink dot to the right of the word.
+   Subtle signal that this is the "active warm" tab. ===== */
+.nav-links a[data-page="connect"]{
+  display:inline-flex; align-items:center; gap:7px;
+}
+.nav-links a[data-page="connect"]::after{
+  content:''; width:6px; height:6px; border-radius:50%;
+  background:var(--pink);
+  position:static; transform:none; padding:0;
+  animation:connectBlink 2.2s ease-in-out infinite;
+  flex-shrink:0;
+}
+.nav-links a[data-page="connect"]:hover::after{ background:var(--pink); }
+@keyframes connectBlink{
+  0%, 60%, 100% { opacity:1; transform:scale(1); }
+  30%           { opacity:0.35; transform:scale(0.75); }
+}
+/* stop the dot blinking once you're actually on the Connect tab */
+.nav-links a.active[data-page="connect"]::after{ animation:none; opacity:1; transform:none; }
+
+/* ===== Connect page byline photo ===== */
+.connect-byline{ display:flex; align-items:center; gap:16px; margin:22px 0 4px; }
+.connect-byline img{
+  width:76px; height:76px; border-radius:50%; object-fit:cover;
+  border:3px solid var(--cream); box-shadow:var(--shadow-tile); flex-shrink:0;
+}
+.connect-byline p{
+  font-family:var(--serif); font-size:15px; color:var(--ink-soft);
+  max-width:440px; font-style:italic;
+}
+
+/* ===== transparency card on Connect page - the matching story, clearly told ===== */
+.transparent-card{
+  background:linear-gradient(165deg, rgba(240,215,255,0.35), var(--cream-2) 60%);
+  border:1px solid rgba(187,143,220,0.35);
+  border-radius:16px; padding:30px;
+  margin:8px 0 28px;
+  box-shadow:var(--shadow-tile);
+  max-width:none;
+}
+[data-theme="dark"] .transparent-card{
+  background:linear-gradient(165deg, rgba(240,215,255,0.08), var(--cream-2) 60%);
+}
+.transparent-card h3{
+  font-family:var(--serif); font-weight:var(--head-weight);
+  font-size:22px; margin-bottom:10px;
+}
+.transparent-card h3 span{ color:var(--pink); }
+.transparent-card p{ font-size:14.5px; line-height:1.75; color:var(--ink); margin-bottom:14px; }
+.transparent-card p:last-child{ margin-bottom:0; }
+.transparent-card strong{ color:var(--ink); font-weight:600; }
+.transparent-card .match-line{
+  font-family:var(--serif); font-style:italic; font-size:17px; color:var(--green);
+  padding:10px 0 4px;
+}
+.transparent-card .why-personal{
+  font-family:var(--serif); font-style:italic; font-size:17px;
+  color:var(--ink); line-height:1.55;
+  padding-bottom:6px; border-left:2px solid var(--pink);
+  padding-left:14px; margin:-4px 0 16px;
+}
+
+.recent-label{
+  font-size:11.5px; letter-spacing:0.04em; color:var(--label);
+  margin-bottom:5px; display:flex; align-items:center; gap:6px;
+}
+.recent a{
+  display:flex; justify-content:space-between; align-items:center; gap:12px;
+  font-size:14.5px; padding:11px 0;
+  border-bottom:0.5px dashed var(--hairline); transition:color .2s, padding-left .2s;
+}
+.recent a span:last-child{ color:var(--ink-faint); transition:color .2s; flex-shrink:0; }
+.recent a:hover{ color:var(--pink); padding-left:5px; }
+.recent a:hover span:last-child{ color:var(--pink); }
+.recent .see-all{ border:none; font-size:12.5px; font-style:italic; color:var(--ink-soft); padding-top:12px; }
+
+/* email capture */
+.capture{
+  background:var(--cream-2); border-radius:16px;
+  padding:32px 34px; margin:8px 0 42px;
+  display:flex; align-items:center; justify-content:space-between; gap:28px;
+  box-shadow:var(--shadow-tile);
+}
+.capture h3{
+  font-family:var(--serif); font-weight:var(--head-weight);
+  font-size:25px; letter-spacing:-0.01em; margin-bottom:4px;
+}
+.capture h3 span{ color:var(--pink); }
+.capture p{ font-size:13.5px; color:var(--ink-soft); }
+.capture form{ display:flex; gap:10px; flex-shrink:0; }
+.capture input{
+  font-family:var(--sans); font-size:14px; color:var(--ink);
+  background:var(--cream); border:1px solid var(--hairline);
+  border-radius:10px; padding:13px 16px; width:240px;
+  transition:border-color .2s;
+}
+.capture input:focus{ outline:2px solid var(--green); outline-offset:2px; border-color:var(--green); }
+.capture input::placeholder{ color:var(--ink-faint); }
+
+/* blog subscribe · compact card version of blog.css .subscribe, scoped
+   with the same class names but restyled to this page's own tokens so it
+   sits naturally under the #writing blog-grid */
+.subscribe{
+  background:var(--cream-2); border:1px solid var(--hairline); border-radius:16px;
+  padding:28px 30px; margin:26px 0 0; box-shadow:var(--shadow-tile);
+}
+.sub-kick{
+  margin:0 0 8px; font-size:12px; letter-spacing:0.14em; text-transform:uppercase;
+  color:var(--label); font-weight:600;
+}
+.sub-title{
+  font-family:var(--serif); font-weight:var(--head-weight); font-size:22px;
+  letter-spacing:-0.01em; color:var(--ink); margin:0 0 6px;
+}
+.sub-copy{ font-size:13.5px; color:var(--ink-soft); margin:0 0 18px; max-width:52ch; }
+.sub-form{ display:flex; gap:10px; }
+.sub-input{
+  flex:1; min-width:0; font-family:var(--sans); font-size:14px; color:var(--ink);
+  background:var(--cream); border:1px solid var(--hairline);
+  border-radius:10px; padding:13px 16px; transition:border-color .2s;
+}
+.sub-input:focus{ outline:2px solid var(--green); outline-offset:2px; border-color:var(--green); }
+.sub-input::placeholder{ color:var(--ink-faint); }
+.sub-btn{
+  flex-shrink:0; font-family:var(--sans); font-size:14px; font-weight:600;
+  color:#FAFAF6; background:var(--green); border:none; border-radius:10px;
+  padding:13px 22px; cursor:pointer; transition:background .2s, transform .2s;
+}
+.sub-btn:hover{ background:var(--ink); transform:translateY(-1px); }
+
+/* ===== tic-tac-toe break zone ===== */
+.break-zone{ padding:34px 0 8px; }
+.ttt-row{ display:flex; gap:36px; align-items:center; flex-wrap:wrap; }
+.ttt-wrap svg{ display:block; }
+#tttCells rect{ cursor:pointer; }
+.ttt-status{
+  font-family:var(--serif); font-weight:var(--head-weight);
+  font-size:21px; max-width:260px; margin-bottom:16px; line-height:1.3;
+}
+.ttt-after{
+  font-size:13px; font-style:italic; color:var(--ink-soft);
+  max-width:260px; margin-top:14px; opacity:0; transition:opacity .8s ease;
+}
+.ttt-after.in{ opacity:1; }
+.ttt-after a{ color:var(--pink); font-style:normal; }
+.ttt-after a:hover{ text-decoration:underline; }
+#tttMarks path{ stroke-linecap:round; fill:none; }
+
+/* coffee / chai */
+.tips{ display:flex; gap:14px; align-items:center; padding:26px 0; }
+.btn-soft{
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--cream); border:1px solid var(--hairline);
+  font-size:14px; font-weight:500; color:var(--ink);
+  padding:12px 22px; border-radius:10px; cursor:pointer;
+  transition:border-color .2s, color .2s, background .2s, transform .2s;
+}
+.btn-soft:hover{
+  border-color:#2A2925; color:var(--ink);
+  background:var(--lav); transform:translateY(-2px);
+}
+[data-theme="dark"] .btn-soft:hover{ color:#2A2925; border-color:var(--lav); }
+.tips .quip{ margin-left:auto; font-size:12.5px; font-style:italic; color:var(--ink-faint); }
+
+footer{
+  display:flex; justify-content:space-between; align-items:center;
+  padding:18px 0 14px; border-top:0.5px solid var(--hairline);
+  font-size:12.5px; color:var(--ink-faint);
+}
+footer a:hover{ color:var(--pink); }
+footer .socials a{ width:30px; height:30px; }
+footer .socials svg{ width:13px; height:13px; }
+footer .left{ display:flex; align-items:center; gap:16px; }
+/* subtle legal-links line under the footer (Stripe support/terms/privacy/refund) */
+.legal-links{
+  display:flex; flex-wrap:wrap; justify-content:center; gap:5px 9px;
+  padding:0 0 38px; font-size:11px; letter-spacing:0.01em; color:var(--ink-faint);
+}
+.legal-links a{ color:var(--ink-faint); text-decoration:none; }
+.legal-links a:hover{ color:var(--pink); }
+.legal-links .dot{ opacity:0.45; }
+
+/* "Ask AI about me" · hands visitors (and AI agents) a curated summary.
+   Each pill opens that assistant pre-loaded with a prompt about Karthik. */
+.ask-ai{
+  display:flex; flex-direction:column; align-items:center; gap:11px;
+  padding:2px 0 30px; text-align:center;
+}
+.ask-ai-label{
+  margin:0; font-size:11px; letter-spacing:0.14em; text-transform:uppercase;
+  color:var(--label); font-weight:500;
+}
+.ask-ai-label .spk{ color:var(--pink); }
+.ask-ai-row{ display:flex; flex-wrap:wrap; justify-content:center; gap:9px; }
+.ai-pill{
+  display:inline-flex; align-items:center; gap:7px;
+  background:var(--cream); border:1px solid var(--hairline); border-radius:999px;
+  font-family:var(--sans); font-size:13px; font-weight:500; color:var(--ink-soft);
+  padding:8px 16px; text-decoration:none; cursor:pointer;
+  transition:border-color .2s, color .2s, background .2s, transform .2s;
+}
+.ai-pill:hover{
+  color:#2A2925; background:var(--lav); border-color:#2A2925; transform:translateY(-2px);
+}
+[data-theme="dark"] .ai-pill:hover{ color:#2A2925; border-color:var(--lav); }
+.ask-ai-note{
+  margin:0; min-height:14px; font-size:11px; color:var(--pink);
+  opacity:0; transition:opacity .2s;
+}
+.ask-ai-note.show{ opacity:1; }
+
+/* sparkle burst (wordmark dot easter egg) */
+.spark{
+  position:fixed; z-index:99; pointer-events:none; color:var(--pink);
+  font-size:14px; animation:sparkfly 0.9s ease-out forwards;
+}
+@keyframes sparkfly{
+  from{ opacity:1; transform:translate(0,0) scale(1); }
+  to{ opacity:0; transform:translate(var(--dx), var(--dy)) scale(0.4); }
+}
+
+/* ===== the red wool ball on the divider (hover to unwind) ===== */
+.rule-wool{ position:relative; overflow:visible; }
+.wool{
+  position:absolute; left:72px; top:-31px; width:380px; height:62px;
+  cursor:pointer; z-index:5;
+}
+.wool .ball{ transform-origin:31px 31px; transition:transform 1.4s ease; animation:woolbob 3.4s ease-in-out infinite; }
+.wool .strand{
+  stroke-dasharray:360; stroke-dashoffset:360;
+  transition:stroke-dashoffset 1.4s ease;
+}
+.wool:hover .strand, .wool.unwound .strand{ stroke-dashoffset:0; }
+.wool:hover .ball, .wool.unwound .ball{ transform:rotate(260deg); animation:none; }
+@keyframes woolbob{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-3px);} }
+
+/* ===== blog hub: live "Originals" card grid on the writing page =====
+   scoped to #writing; reuses the same :root tokens as everything else.
+   Cards link OUT to real /blog/<slug> pages (see _post-template.html). */
+#writing .blog-grid{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:22px; margin-bottom:14px;
+}
+#writing .blog-card{
+  display:block; border-radius:16px; overflow:hidden;
+  background:var(--cream-2); box-shadow:var(--shadow-tile);
+  text-decoration:none; transition:transform .2s, box-shadow .2s;
+}
+#writing .blog-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-tile-h); }
+#writing .blog-card .bc-cap{
+  padding:22px; min-height:120px; display:flex; flex-direction:column; justify-content:flex-end;
+}
+#writing .blog-card .bc-kick{
+  font-size:10.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase;
+  color:rgba(255,255,255,.8); margin-bottom:8px;
+}
+#writing .blog-card .bc-cap h3{
+  font-family:var(--serif); font-weight:var(--head-weight); color:#fff;
+  font-size:19px; line-height:1.2; letter-spacing:-0.01em; margin:0;
+}
+#writing .blog-card .bc-body{ padding:18px 22px 20px; }
+#writing .blog-card .bc-body p{ font-size:13.5px; color:var(--ink-soft); margin-bottom:10px; }
+#writing .blog-card .bc-meta{ font-size:11.5px; letter-spacing:0.04em; color:var(--label); }
+#writing .blog-card.g1 .bc-cap{ background:linear-gradient(140deg,#0a6b5b,#045145 45%,#5b3d78); }
+#writing .blog-card.g2 .bc-cap{ background:linear-gradient(140deg,#BB8FDC,#7b5aa6 55%,#045145 120%); }
+#writing .blog-card.g3 .bc-cap{ background:linear-gradient(140deg,#2A2925,#3c4d47 55%,#0a6b5b 120%); }
+
+/* ===== original essays: the tile board on the writing page ===== */
+.tile-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:14px; }
+.tile{
+  background:var(--cream-2); border-radius:16px; padding:26px;
+  box-shadow:var(--shadow-tile); display:block;
+  transition:transform .2s, box-shadow .2s;
+}
+.tile:hover{ transform:translateY(-3px); box-shadow:var(--shadow-tile-h); }
+.tile .t-meta{ font-size:11.5px; letter-spacing:0.04em; color:var(--label); margin-bottom:8px; }
+.tile h3{
+  font-family:var(--serif); font-weight:var(--head-weight);
+  font-size:22px; line-height:1.18; letter-spacing:-0.01em; margin-bottom:8px;
+}
+.tile p{ font-size:13.5px; color:var(--ink-soft); margin-bottom:10px; }
+
+/* ===== essay pages ===== */
+.essay{ max-width:660px; padding-bottom:64px; }
+.essay .back{ font-size:13px; color:var(--ink-soft); display:inline-block; margin-top:48px; cursor:pointer; }
+.essay .back:hover{ color:var(--pink); }
+.essay h2{ margin-top:18px; }
+.essay .e-meta{ font-size:12.5px; color:var(--label); letter-spacing:0.04em; margin-bottom:30px; }
+.essay p{ font-size:16.5px; line-height:1.85; color:var(--ink); margin-bottom:20px; }
+.essay p:first-of-type::first-letter{
+  font-family:var(--serif); font-size:3.1em; line-height:0.8;
+  float:left; padding:6px 8px 0 0; color:var(--green);
+}
+
+/* ===== kind words (testimonials) ===== */
+.kind-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; padding-bottom:60px; }
+.kind{
+  background:var(--cream-2); border-radius:16px; padding:24px;
+  box-shadow:var(--shadow-tile);
+}
+.kind p{ font-family:var(--serif); font-size:17px; line-height:1.6; margin-bottom:12px; }
+.kind .who{ font-size:12.5px; color:var(--label); }
+
+/* =================================================================
+   6. INNER PAGES
+   ================================================================= */
+.page-head{ padding:58px 0 10px; max-width:660px; }
+h2{
+  font-family:var(--serif); font-weight:var(--head-weight);
+  font-size:clamp(34px, 4.2vw, 46px); line-height:1.08;
+  letter-spacing:-0.018em; margin-bottom:12px;
+}
+.page-intro{ font-size:15.5px; color:var(--ink-soft); margin-bottom:36px; }
+
+.chapter, .now-item{
+  display:grid; grid-template-columns:170px 1fr; gap:30px;
+  padding:28px 0; border-top:0.5px solid var(--hairline);
+}
+.chapter:last-of-type, .now-item:last-of-type{ margin-bottom:52px; }
+.when, .tag{ font-size:12.5px; color:var(--label); letter-spacing:0.04em; padding-top:5px; }
+.chapter h3{ font-family:var(--serif); font-weight:var(--head-weight); font-size:24px; margin-bottom:7px; }
+.now-item h3{ font-weight:500; font-size:17px; margin-bottom:5px; }
+.chapter p, .now-item p{ font-size:15px; color:var(--ink-soft); max-width:580px; }
+.countdown{ font-family:var(--serif); font-weight:var(--head-weight); color:var(--green); }
+
+/* writing */
+.post{ display:block; padding:26px 0; border-top:0.5px solid var(--hairline); }
+.post:hover h3{ color:var(--pink); }
+.post .meta{ font-size:12.5px; color:var(--label); letter-spacing:0.04em; margin-bottom:6px; }
+.post h3{
+  font-family:var(--serif); font-weight:var(--head-weight);
+  font-size:25px; letter-spacing:-0.01em; margin-bottom:7px; transition:color .2s;
+}
+.post p{ font-size:15px; color:var(--ink-soft); max-width:600px; margin-bottom:8px; }
+.post .read{ font-size:13px; color:var(--pink); }
+.posts{ margin-bottom:52px; }
+.post-group{
+  font-size:11.5px; letter-spacing:0.04em; color:var(--label);
+  padding:30px 0 4px; display:flex; align-items:center; gap:6px;
+}
+.post-group:first-child{ padding-top:0; }
+
+/* books */
+.book-grid{ display:grid; grid-template-columns:repeat(4, 1fr); gap:18px; padding-bottom:60px; }
+.book{ background:var(--cream-2); border-radius:14px; padding:12px; box-shadow:var(--shadow-tile); transition:transform .2s, box-shadow .2s; }
+.book:hover{ transform:translateY(-4px); box-shadow:var(--shadow-tile-h); }
+.book .cover{
+  /* height:auto is REQUIRED, not cosmetic: the <img> carries a height="600"
+     attribute, and Safari/WebKit only lets aspect-ratio govern when a side is
+     auto. Without this, iOS Safari renders every cover a literal 600px tall
+     (Chromium quietly honours the ratio anyway, which is why it looked fine on
+     desktop). See the iPad-Safari cover bug, 2026-06-28. */
+  width:100%; height:auto; aspect-ratio:2/3; border-radius:7px; object-fit:cover;
+  background:var(--cream); border:0.5px solid var(--hairline); margin-bottom:10px;
+  box-shadow:0 2px 8px rgba(42,41,37,0.14);  /* the cover lifts off its card */
+}
+.book h3{ font-family:var(--serif); font-weight:var(--head-weight); font-size:15px; line-height:1.22; margin-bottom:2px; }
+.book .author{ font-size:11.5px; color:var(--label); margin-bottom:6px; }
+.book .take{ font-size:12.5px; color:var(--ink-soft); line-height:1.55; }
+/* ✦ MY PICK · recommended books. To mark a book, change class="book reveal"
+   to class="book reveal rec" · that's the whole trick */
+.book.rec{
+  position:relative;
+  border:1px solid rgba(187,143,220,0.45);
+  background:linear-gradient(165deg, rgba(240,215,255,0.4), var(--cream-2) 58%);
+}
+.book.rec::before{
+  content:'✦ my pick';
+  position:absolute; top:18px; right:-1px;
+  background:var(--pink); color:#FAFAF6;
+  font-size:9.5px; font-weight:600; letter-spacing:0.06em;
+  padding:4px 9px 4px 10px; border-radius:8px 0 0 8px;
+  z-index:2;
+}
+[data-theme="dark"] .book.rec{ background:linear-gradient(165deg, rgba(240,215,255,0.08), var(--cream-2) 58%); }
+
+/* connect */
+.connect-grid{ display:grid; grid-template-columns:1fr 1fr; gap:32px; padding-bottom:60px; }
+.connect-card{ background:var(--cream-2); border-radius:16px; padding:30px; box-shadow:var(--shadow-tile); }
+.connect-card h3{ font-family:var(--serif); font-weight:var(--head-weight); font-size:24px; margin-bottom:9px; }
+.connect-card p{ font-size:14.5px; color:var(--ink-soft); margin-bottom:18px; }
+.tip-btns{ display:flex; gap:12px; flex-wrap:wrap; }
+.funded-note{ font-size:13px; font-style:italic; color:var(--ink-soft); margin-top:16px; }
+.funded-note strong{ color:var(--ink); font-style:normal; }
+
+/* ===== projects · the apps Karthik designs + ships (icon cards) =====
+   reuses the same cream-2 tile, hover-lift, serif heading and pink
+   accent language as the rest of the site, so it feels native. */
+.apps-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; padding-bottom:60px; }
+#ai-corner .apps-grid{ grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); }
+.app-card{
+  display:flex; gap:18px; align-items:flex-start;
+  background:var(--cream-2); border-radius:16px; padding:24px;
+  box-shadow:var(--shadow-tile);
+  transition:transform .2s, box-shadow .2s;
+}
+a.app-card{ cursor:pointer; }
+a.app-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-tile-h); }
+.app-icon{ flex-shrink:0; }
+.app-icon svg{
+  width:60px; height:60px; display:block; border-radius:14px;
+  box-shadow:0 4px 12px rgba(42,41,37,0.18);
+}
+.app-body{ flex:1; min-width:0; }
+.app-top{ display:flex; align-items:center; gap:10px; margin-bottom:7px; }
+.app-top h3{
+  font-family:var(--serif); font-weight:var(--head-weight);
+  font-size:22px; letter-spacing:-0.01em; line-height:1.1;
+}
+.app-card p{ font-size:13.5px; color:var(--ink-soft); line-height:1.6; margin-bottom:12px; }
+.app-go{ font-size:13px; color:var(--pink); }
+a.app-card:hover .app-go{ text-decoration:underline; }
+.app-pill{
+  font-size:9.5px; font-weight:600; letter-spacing:0.06em; text-transform:lowercase;
+  padding:3px 10px; border-radius:20px; white-space:nowrap; flex-shrink:0;
+}
+.app-pill.live{ background:var(--pink); color:#FAFAF6; }
+.app-pill.soon{ background:var(--cream); color:var(--label); border:1px solid var(--hairline); }
+.app-pill.tag{ background:var(--cream); color:var(--label); border:1px solid var(--hairline); }
+.app-icon.logo{
+  width:60px; height:60px; border-radius:13.5px; background:#fff;
+  display:flex; align-items:center; justify-content:center;
+  clip-path:url(#ios-squircle); -webkit-clip-path:url(#ios-squircle);  /* iOS squircle */
+  box-shadow:
+    inset 0 0 0 1px rgba(42,41,37,0.05),       /* crisp edge */
+    inset 0 1.6px 1.4px rgba(255,255,255,0.85), /* top highlight · lit from above */
+    inset 0 -4px 7px rgba(42,41,37,0.045);      /* soft inner floor */
+  filter:
+    drop-shadow(0 4px 8px rgba(42,41,37,0.22))
+    drop-shadow(0 1px 2px rgba(42,41,37,0.16)); /* squircle-shaped contact shadow */
+}
+.app-icon.logo img{ width:34px; height:34px; }
+.app-group{
+  font-size:11.5px; letter-spacing:0.04em; color:var(--label);
+  padding:30px 0 12px; display:flex; align-items:center; gap:6px;
+}
+@media (max-width:760px){ .apps-grid{ grid-template-columns:1fr; } }
+
+/* =================================================================
+   7. MOBILE
+   ================================================================= */
+@media (max-width:760px){
+  .wrap{ padding:0 26px; }                      /* roomier edges on phones */
+  body{ font-size:16px; }
+  .nav{ flex-wrap:wrap; padding-top:14px; padding-bottom:14px; row-gap:8px; }
+  .nav-links{ gap:15px; flex-wrap:wrap; font-size:13px; }
+  h1{ font-size:clamp(34px, 9.5vw, 44px); }
+  h2{ font-size:clamp(29px, 8vw, 38px); }
+  .greeting{ margin-bottom:12px; }
+  .mission{ font-size:15px; }
+  .hero-grid,.cta-grid,.connect-grid{ grid-template-columns:1fr; gap:30px; padding-top:36px; }
+  .cta-grid{ padding:32px 0; }
+  .chapter,.now-item{ grid-template-columns:1fr; gap:5px; }
+  .capture{ flex-direction:column; align-items:flex-start; }
+  .capture form{ width:100%; flex-wrap:wrap; }
+  .capture input{ flex:1; min-width:0; }
+  .sub-form{ flex-direction:column; }
+  .sub-btn{ width:100%; }
+  .book-grid{ grid-template-columns:repeat(2, 1fr); gap:14px; }
+  .tips{ flex-wrap:wrap; }
+  .tips .quip{ margin-left:0; width:100%; }
+  .widgets{ grid-template-columns:repeat(3,1fr); gap:9px; }
+  .w{ padding:13px 11px; border-radius:14px; }
+  .metric-num{ font-size:29px; }
+  .essence-quote{ font-size:21px; }
+  .essence{ max-width:none; }
+  .tile-grid, .kind-grid{ grid-template-columns:1fr; }
+  .wool{ left:24px; width:300px; }
+}
+@media (max-width:430px){ .book-grid{ grid-template-columns:1fr 1fr; } }
+/* tablets (iPad portrait ~768-834px) fell into the 4-col desktop grid because
+   the only other breakpoint was max-width:760px; give them a roomier 3-col. */
+@media (min-width:761px) and (max-width:1024px){ .book-grid{ grid-template-columns:repeat(3, 1fr); } }
+
+@media (max-width:760px){
+  .essence-why .why-open .why-belief{ font-size:15px; line-height:1.55; }
+}
+@media (prefers-reduced-motion:reduce){
+  *{ animation:none !important; transition:none !important; }
+  .reveal{ opacity:1; transform:none; }
+}
+
+/* =================================================================
+   8. ACCESSIBILITY · keyboard focus, skip link, screen-reader helpers
+   ================================================================= */
+/* a visible focus ring on every interactive element (was missing site-wide) */
+a:focus-visible, button:focus-visible, input:focus-visible,
+[tabindex]:focus-visible, [role="button"]:focus-visible{
+  outline:2.5px solid var(--green); outline-offset:3px; border-radius:4px;
+}
+[data-theme="dark"] a:focus-visible, [data-theme="dark"] button:focus-visible,
+[data-theme="dark"] input:focus-visible, [data-theme="dark"] [tabindex]:focus-visible,
+[data-theme="dark"] [role="button"]:focus-visible{ outline-color:var(--pink); }
+/* skip-to-content · hidden until a keyboard user tabs to it */
+.skip-link{
+  position:absolute; left:12px; top:-52px; z-index:100;
+  background:var(--green); color:#FAFAF6; padding:10px 16px;
+  border-radius:10px; font-size:13.5px; font-weight:600; transition:top .2s ease;
+}
+.skip-link:focus{ top:12px; }
+/* screen-reader-only text */
+.sr-only{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+}
+/* wordmark is now a real <button> · strip native button chrome */
+button.wordmark{ background:none; border:none; padding:0; color:inherit; text-align:left; }
+/* secondary hero link · quiet path for high-intent visitors */
+.hero-secondary{
+  display:inline-block; margin-left:18px; font-size:13.5px; color:var(--ink-soft);
+  border-bottom:1px dashed var(--hairline); padding-bottom:1px;
+  transition:color .2s, border-color .2s;
+}
+.hero-secondary:hover{ color:var(--pink); border-color:var(--pink); }
+/* toolkit closing line */
+.toolkit-cta{
+  font-size:15.5px; color:var(--ink-soft);
+  padding:30px 0 8px; margin-top:24px; border-top:0.5px solid var(--hairline);
+}
+.toolkit-cta a{ color:var(--pink); border-bottom:1px dashed var(--pink); }
+.toolkit-cta a:hover{ color:var(--green); border-color:var(--green); }
+/* --- standalone-page support (served as real URLs, no SPA router JS) --- */
+.page{ display:block; }           /* router normally hides .page; standalone pages show it */
+.reveal{ opacity:1; transform:none; } /* reveal-on-scroll JS is not loaded on standalone pages */
+a.wordmark{ color:inherit; text-decoration:none; } /* wordmark is a real link on standalone pages */
+/* "read full page" link that bridges a homepage summary to its standalone page */
+.read-full{ font-size:14px; color:var(--ink-soft); padding:22px 0 4px; margin-top:20px; }
+.read-full a{ color:var(--pink); border-bottom:1px dashed var(--pink); padding-bottom:1px; transition:color .2s, border-color .2s; }
+.read-full a:hover{ color:var(--green); border-color:var(--green); }
+/* /ornkarthik bio page */
+.bio-portrait{ margin:6px 0 30px; }
+.bio-portrait img{ width:160px; height:160px; border-radius:50%; object-fit:cover; border:1px solid var(--hairline); }
+.bio{ max-width:660px; }
+.bio p{ font-size:16px; line-height:1.75; color:var(--ink-soft); margin-bottom:18px; }
+.bio a{ color:var(--pink); border-bottom:1px dashed var(--pink); }
+.bio a:hover{ color:var(--green); border-color:var(--green); }

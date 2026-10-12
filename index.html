@@ -58,7 +58,7 @@
 <meta property="og:title" content="Karthik Onteddu · a curious soul">
 <meta property="og:description" content="Sales and strategy across five countries and a 50+ book shelf. Field notes on selling, moving, and why education matters.">
 <meta property="og:image" content="https://karthikonteddu.com/og.png">
-<meta property="og:url" content="https://karthikonteddu.com">
+<meta property="og:url" content="https://karthikonteddu.com/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Karthik Onteddu — Sales &amp; Strategy, Curious Soul">
@@ -73,18 +73,22 @@
 {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": "https://karthikonteddu.com/#person",
   "name": "Karthik Onteddu",
-  "alternateName": "O.R.N. Karthik",
-  "url": "https://karthikonteddu.com",
-  "jobTitle": "Sales and Marketing Strategist",
-  "image": "https://karthikonteddu.com/og.png",
-  "description": "A curious mind in sales and marketing strategy. Shaped by 5 countries lived in, 21+ traveled, and a 50+ book shelf. Driven by one why: access to education and knowledge.",
-  "knowsAbout": ["Sales Strategy", "Marketing Strategy", "Global Business", "Personal Development", "Books and Reading"],
+  "alternateName": ["O R N Karthik", "ORN Karthik", "O.R.N. Karthik", "ornkarthik"],
+  "url": "https://karthikonteddu.com/",
+  "mainEntityOfPage": "https://karthikonteddu.com/",
+  "image": "https://karthikonteddu.com/img/karthik-headshot.jpg",
+  "email": "mailto:hello@karthikonteddu.com",
+  "jobTitle": "Sales and Marketing Strategy",
+  "knowsAbout": ["Sales", "Sales strategy", "Go-to-market strategy", "Revenue operations", "B2B sales"],
   "knowsLanguage": ["English", "Telugu", "German"],
-  "sameAs": [
-    "https://www.linkedin.com/in/ornkarthik"
-  ],
-  "email": "hello@karthikonteddu.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Hyderabad",
+    "addressRegion": "Telangana",
+    "addressCountry": "IN"
+  },
   "contactPoint": {
     "@type": "ContactPoint",
     "contactType": "customer support",
@@ -92,10 +96,17 @@
     "areaServed": "Worldwide",
     "availableLanguage": ["English", "Telugu", "German"]
   },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://karthikonteddu.com/"
-  }
+  "sameAs": ["https://www.linkedin.com/in/ornkarthik", "https://cal.com/karthikonteddu", "https://sovenn.app"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://karthikonteddu.com/#website",
+  "url": "https://karthikonteddu.com/",
+  "name": "Karthik Onteddu",
+  "publisher": { "@id": "https://karthikonteddu.com/#person" }
 }
 </script>
 
@@ -886,6 +897,9 @@ button.wordmark{ background:none; border:none; padding:0; color:inherit; text-al
 }
 .toolkit-cta a{ color:var(--pink); border-bottom:1px dashed var(--pink); }
 .toolkit-cta a:hover{ color:var(--green); border-color:var(--green); }
+.read-full{ font-size:14px; color:var(--ink-soft); padding:16px 0 4px; }
+.read-full a{ color:var(--pink); border-bottom:1px dashed var(--pink); padding-bottom:1px; transition:color .2s, border-color .2s; }
+.read-full a:hover{ color:var(--green); border-color:var(--green); }
 </style>
 </head>
 <body>
@@ -1137,7 +1151,8 @@ button.wordmark{ background:none; border:none; padding:0; color:inherit; text-al
     <a href="/contact">Contact</a><span class="dot">·</span>
     <a href="/terms">Terms</a><span class="dot">·</span>
     <a href="/privacy">Privacy</a><span class="dot">·</span>
-    <a href="/refund">Refunds</a>
+    <a href="/refund">Refunds</a><span class="dot">·</span>
+    <a href="/ornkarthik">O R N Karthik</a>
   </nav>
 </section>
 
@@ -1199,6 +1214,7 @@ button.wordmark{ background:none; border:none; padding:0; color:inherit; text-al
       <p>hardware to software. sales to strategy. the arc continues, and I write about it as it happens</p>
     </div>
   </div>
+  <p class="read-full"><a href="/journey">read full page &rarr;</a></p>
 </section>
 
 <!-- ================================================================
@@ -1364,6 +1380,7 @@ button.wordmark{ background:none; border:none; padding:0; color:inherit; text-al
       <h3>On leadership and teams</h3>
       <span class="read">read on linkedin →</span>
     </a>
+    <p class="read-full"><a href="/writing">read full page &rarr;</a></p>
   </div>
 </section>
 
@@ -1418,6 +1435,7 @@ button.wordmark{ background:none; border:none; padding:0; color:inherit; text-al
       <p>A Guide to the Good Life</p>
     </div>
   </div>
+  <p class="read-full"><a href="/now">read full page &rarr;</a></p>
 </section>
 
 <!-- ████████████████████████████████████████████████████████████████
@@ -1751,6 +1769,7 @@ button.wordmark{ background:none; border:none; padding:0; color:inherit; text-al
     </div>
     <!-- └────────────────── END BOOK ─────────────────┘ -->
 
+    <p class="read-full"><a href="/books">read full page &rarr;</a></p>
   </div>
 </section>
 
@@ -1898,6 +1917,7 @@ button.wordmark{ background:none; border:none; padding:0; color:inherit; text-al
   <!-- ✏️ MORE: send any other apps (+ a one-line why) and I'll slot them into the right category -->
 
   <p class="toolkit-cta">these are the tools I lean on. want to talk stacks, careers, or moving countries? <a data-page="connect" href="#connect">let's connect →</a></p>
+  <p class="read-full"><a href="/toolkit">read full page &rarr;</a></p>
 </section>
 
 <section class="page" id="ai-corner">

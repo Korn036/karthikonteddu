@@ -54,21 +54,14 @@
   "headline": "{{TITLE}}",
   "description": "{{DESCRIPTION}}",
   "datePublished": "{{DATE_ISO}}",
-  "author": {
-    "@type": "Person",
-    "name": "Karthik Onteddu",
-    "url": "https://karthikonteddu.com"
-  },
+  "dateModified": "{{DATE_ISO}}",
+  "author": { "@id": "https://karthikonteddu.com/#person" },
   "image": "{{OG_IMAGE}}",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://karthikonteddu.com/blog/{{SLUG}}"
   },
-  "publisher": {
-    "@type": "Person",
-    "name": "Karthik Onteddu",
-    "url": "https://karthikonteddu.com"
-  }
+  "publisher": { "@id": "https://karthikonteddu.com/#person" }
 }
 </script>
 
@@ -82,10 +75,10 @@
 
 <header class="site-head">
   <div class="wrap-wide">
-    <a class="wordmark" href="/index.html" aria-label="Karthik Onteddu — home">k<span class="dot">.</span></a>
+    <a class="wordmark" href="/" aria-label="Karthik Onteddu — home">k<span class="dot">.</span></a>
     <nav class="nav" aria-label="Site">
-      <a href="/index.html#writing">Writing</a>
-      <a href="/contact.html">Contact</a>
+      <a href="/#writing">Writing</a>
+      <a href="/contact">Contact</a>
     </nav>
   </div>
 </header>
@@ -113,7 +106,7 @@
       <!--
       <form class="sub-form" action="https://formspree.io/f/YOUR_REAL_ID" method="POST">
         <input type="hidden" name="source" value="blog-newsletter">
-        <input type="hidden" name="_next" value="https://karthikonteddu.com/index.html#writing">
+        <input type="hidden" name="_next" value="https://karthikonteddu.com/#writing">
         <input class="sub-input" type="email" name="email" placeholder="you@email.com" required aria-label="Email address">
         <button class="sub-btn" type="submit">Subscribe</button>
       </form>
@@ -124,12 +117,12 @@
     <nav class="read-next" aria-label="More posts">
       <p class="rn-kick">Read next</p>
       <!-- as more posts exist, add sibling <a class="rn-card"> links here (newest first). -->
-      <a class="rn-link" href="/index.html#writing">Browse all writing &rarr;</a>
+      <a class="rn-link" href="/#writing">Browse all writing &rarr;</a>
     </nav>
 
     <div class="post-foot">
-      <p class="share-hint">If this was useful, the fastest way to reach me is <a href="/contact.html">email</a>.</p>
-      <p class="post-back"><a class="back-link" href="/index.html#writing">&larr; Writing</a></p>
+      <p class="share-hint">If this was useful, the fastest way to reach me is <a href="/contact">email</a>.</p>
+      <p class="post-back"><a class="back-link" href="/#writing">&larr; Writing</a></p>
     </div>
   </div>
 </main>
@@ -146,13 +139,14 @@
       </div>
     </div>
     <nav class="foot-links" aria-label="Footer">
-      <a href="/index.html">Home</a>
-      <a href="/contact.html">Contact</a>
-      <a href="/terms.html">Terms</a>
-      <a href="/privacy.html">Privacy</a>
-      <a href="/refund.html">Refunds</a>
+      <a href="/">Home</a>
+      <a href="/contact">Contact</a>
+      <a href="/terms">Terms</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/refund">Refunds</a>
+      <a href="/ornkarthik">O R N Karthik</a>
     </nav>
-    <p class="foot-fine">karthikonteddu.com <span class="sep">·</span> Individual / Sole Proprietor, India <span class="sep">·</span> &copy; 2026 Onteddu RangaNatha Karthik</p>
+    <p class="foot-fine">karthikonteddu.com <span class="sep">·</span> Individual / Sole Proprietor, India <span class="sep">·</span> &copy; 2026 Karthik Onteddu</p>
   </div>
 </footer>
 </body>

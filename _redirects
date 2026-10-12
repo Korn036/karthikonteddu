@@ -1,0 +1,17 @@
+# 301 redirects: force the .html variants to their clean/extensionless URLs.
+# Cloudflare static-assets serves clean URLs automatically; these make the
+# .html form a permanent 301 instead of the platform default, and consolidate
+# link equity on the canonical URL.
+
+/index.html                                    /                                      301
+/journey.html                                  /journey                               301
+/writing.html                                  /writing                               301
+/now.html                                      /now                                   301
+/books.html                                    /books                                 301
+/toolkit.html                                  /toolkit                               301
+/ornkarthik.html                               /ornkarthik                            301
+/contact.html                                  /contact                               301
+/terms.html                                    /terms                                 301
+/privacy.html                                  /privacy                               301
+/refund.html                                   /refund                                301
+/blog/memory-is-becoming-a-currency.html       /blog/memory-is-becoming-a-currency    301
