@@ -237,14 +237,13 @@ header{
 .widgets-standalone{ margin-top:8px; }
 /* the slow-breathing warmth behind the hero */
 .hero-grid::before{
-  content:''; position:absolute; inset:-80px -120px -40px;
+  content:''; position:absolute; inset:-80px max(-120px, calc(50% - 50vw + 30px)) -40px;
   background:
     radial-gradient(420px 300px at 18% 28%, var(--glow-pink), transparent 70%),
     radial-gradient(380px 280px at 78% 70%, var(--glow-green), transparent 70%);
   filter:blur(8px); z-index:-1;
   animation:breathe 9s ease-in-out infinite;
 }
-#home{ overflow-x:clip; }
 @keyframes breathe{ 0%,100%{ opacity:.8; transform:scale(1);} 50%{ opacity:1; transform:scale(1.06);} }
 
 .greeting{
