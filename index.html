@@ -761,6 +761,96 @@ h2{
 .funded-note{ font-size:13px; font-style:italic; color:var(--ink-soft); margin-top:16px; }
 .funded-note strong{ color:var(--ink); font-style:normal; }
 
+/* ===== connect · four doors (avant-garde) ===== */
+.doors-label{
+  font-size:11.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase;
+  color:var(--label); margin-bottom:16px;
+}
+.doors-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; padding-bottom:32px; }
+.door{
+  display:flex; flex-direction:column;
+  background:var(--cream-2); border-radius:16px; padding:26px 24px;
+  box-shadow:var(--shadow-tile); text-decoration:none; color:var(--ink);
+  border:1.5px solid transparent;
+  transition:transform .2s, box-shadow .2s, border-color .25s;
+}
+.door:hover{ transform:translateY(-3px); box-shadow:var(--shadow-tile-h); border-color:var(--pink); }
+.door-primary{
+  border-color:var(--green);
+  background:linear-gradient(165deg, rgba(4,81,69,0.04), var(--cream-2) 60%);
+}
+[data-theme="dark"] .door-primary{ background:linear-gradient(165deg, rgba(46,140,116,0.08), var(--cream-2) 60%); }
+.door-primary:hover{ border-color:var(--green); }
+
+.door-icon-row{ display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
+.door-icon{ display:block; width:36px; height:36px; color:var(--green); }
+.door-icon svg{ width:100%; height:100%; }
+.door-arrow{
+  font-size:16px; color:var(--ink-faint);
+  transition:color .2s, transform .2s;
+}
+.door:hover .door-arrow{ color:var(--pink); transform:translateX(3px); }
+.door h3{ font-family:var(--serif); font-weight:var(--head-weight); font-size:19px; margin-bottom:6px; letter-spacing:-0.01em; }
+.door p{ font-size:13.5px; color:var(--ink-soft); line-height:1.6; flex:1; margin-bottom:0; }
+.door-how{ font-size:12px; color:var(--pink); margin-top:14px; font-weight:500; }
+
+/* door SVG animations */
+/* steam: gentle float */
+.door .steam{ opacity:0.5; transition:opacity .3s; }
+.door:hover .steam{ opacity:1; }
+.door:hover .steam.s1{ animation:steamFloat 1.6s ease-in-out infinite; }
+.door:hover .steam.s2{ animation:steamFloat 1.6s ease-in-out infinite .3s; }
+.door:hover .steam.s3{ animation:steamFloat 1.6s ease-in-out infinite .6s; }
+@keyframes steamFloat{
+  0%,100%{ transform:translateY(0); opacity:0.4; }
+  50%{ transform:translateY(-3px); opacity:1; }
+}
+/* compass: subtle wobble */
+.door .compass-needle{ transition:transform .4s ease; transform-origin:16px 16px; }
+.door:hover .compass-needle{ animation:compassWobble 1.2s ease-in-out infinite; }
+@keyframes compassWobble{
+  0%,100%{ transform:rotate(0deg); }
+  25%{ transform:rotate(12deg); }
+  75%{ transform:rotate(-8deg); }
+}
+/* bulb: rays pulse */
+.door .ray{ opacity:0.35; transition:opacity .3s; }
+.door:hover .ray{ animation:rayPulse 1.4s ease-in-out infinite; }
+.door:hover .ray.r2{ animation-delay:.15s; }
+.door:hover .ray.r3{ animation-delay:.3s; }
+.door:hover .ray.r4{ animation-delay:.15s; }
+.door:hover .ray.r5{ animation-delay:.3s; }
+@keyframes rayPulse{
+  0%,100%{ opacity:0.35; transform:scale(1); }
+  50%{ opacity:1; transform:scale(1.15); }
+}
+.door .ray{ transform-origin:16px 13px; }
+/* mic: sound waves expand */
+.door .wave{ opacity:0; transition:opacity .3s; }
+.door:hover .wave{ animation:waveExpand 1.5s ease-out infinite; }
+.door:hover .wave.w2{ animation-delay:0s; }
+.door:hover .wave.w3{ animation-delay:.3s; }
+.door:hover .wave.w4{ animation-delay:.3s; }
+@keyframes waveExpand{
+  0%{ opacity:0; transform:scale(0.9); }
+  30%{ opacity:0.7; }
+  100%{ opacity:0; transform:scale(1.1); }
+}
+.door .wave{ transform-origin:center; }
+
+/* give-back footnote */
+.giveback-line{
+  display:flex; flex-wrap:wrap; align-items:center; gap:12px;
+  font-size:13px; color:var(--ink-soft); font-style:italic;
+  padding:16px 0 40px; border-top:0.5px solid var(--hairline);
+}
+.giveback-line strong{ color:var(--ink); font-style:normal; }
+.giveback-line .btn-soft{ font-style:normal; }
+
+@media(max-width:680px){
+  .doors-grid{ grid-template-columns:1fr; }
+}
+
 /* ===== projects · the apps Karthik designs + ships (icon cards) =====
    reuses the same cream-2 tile, hover-lift, serif heading and pink
    accent language as the rest of the site, so it feels native. */
@@ -1917,12 +2007,12 @@ button.wordmark{ background:none; border:none; padding:0; color:inherit; text-al
 </section>
 
 <!-- ================================================================
-     PAGE: CONNECT
+     PAGE: CONNECT · four doors (avant-garde layout)
      ================================================================ -->
 <section class="page" id="connect">
   <div class="page-head">
     <h2>Let's talk<span class="dot">.</span></h2>
-    <p class="page-intro">careers, sales, moving countries, books, building things. if I can help, let's connect. no agenda, no fee</p>
+    <p class="page-intro">I'm open to conversations that go somewhere. pick the one that fits</p>
   </div>
 
   <!-- ✏️ EDIT: your photo, same file as the homepage -->
@@ -1931,37 +2021,96 @@ button.wordmark{ background:none; border:none; padding:0; color:inherit; text-al
     <p>a quick hello before you book — this is who you'd actually be talking to</p>
   </div>
 
-  <!-- ✦ the transparency card - the matching story, told clearly. This is the soul of the page. -->
-  <div class="transparent-card reveal">
-    <h3>How this works, transparently<span>.</span></h3>
-    <p class="why-personal">I was once in your shoes, looking for someone willing to actually talk and guide. giving back is the why.</p>
-    <p>Every call here is <strong>free</strong>. 15, 20, or 30 minutes, your agenda, genuinely no fee. We talk, and if any of it gave you something real, a small contribution toward a child's education is <strong>optional</strong>. only if you felt the value.</p>
-    <p class="match-line">whatever you contribute, I match. one-for-one, from my own pocket.</p>
-    <p>£1 from you becomes £2 toward a child's education. I do this because I believe in it, and because the matching keeps me honest. it pushes me to do my best work for you, every call. the counter below counts conversations funded, not money raised. counted from day one.</p>
-  </div>
+  <p class="doors-label reveal">I'm open to</p>
 
-  <div class="connect-grid">
-    <div class="connect-card reveal">
-      <h3>Pick my brains</h3>
-      <p>15, 20, or 30 minutes on your calendar, free. ask anything. sales, moving countries, books, getting unstuck, or just a chat over coffee somewhere in the world</p>
-      <!-- 🔗 LINK: your Cal.com URL -->
-      <a class="btn" href="https://cal.com/karthikonteddu" target="_blank" rel="noopener noreferrer">grab a slot on my calendar →</a>
-      <!-- ✏️ EDIT: bump this number as sessions happen -->
-      <p class="funded-note"><strong>4 conversations funded so far</strong> · counted honestly, from day one</p>
-    </div>
-
-    <div class="connect-card reveal">
-      <h3>If it helped, only if</h3>
-      <p>found something worth the time? a chai is optional, and matched by me one-for-one. every contribution sponsors a child's learning together</p>
-      <div class="tip-btns">
-        <!-- COFFEE PAUSED until a Buy Me a Coffee page exists:
-             re-add by uncommenting the next line and pasting the real URL. -->
-        <!-- <a class="btn-soft" href="https://buymeacoffee.com/YOUR-PAGE" target="_blank" rel="noopener noreferrer">☕ buy me a coffee</a> -->
-        <a class="btn-soft" href="https://buymeachai.ezee.li/Karthikonteddu" target="_blank" rel="noopener noreferrer">🫖 buy me a chai</a>
+  <div class="doors-grid">
+    <!-- 🔗 LINK: your Cal.com URL -->
+    <a class="door door-primary reveal" href="https://cal.com/karthikonteddu" target="_blank" rel="noopener noreferrer">
+      <div class="door-icon-row">
+        <span class="door-icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 26c0-2 2-3 6-3s6 1 6 3" class="cup-body"/>
+            <ellipse cx="16" cy="23" rx="6" ry="2"/>
+            <path d="M22 18c2.5 0 4-1 4-3s-1.5-3-4-3" class="cup-handle"/>
+            <path d="M12 12c0-3 1.5-4.5 1.5-4.5" class="steam s1"/>
+            <path d="M16 11c0-3 1.5-4.5 1.5-4.5" class="steam s2"/>
+            <path d="M20 12c0-3 1.5-4.5 1.5-4.5" class="steam s3"/>
+          </svg>
+        </span>
+        <span class="door-arrow">&rarr;</span>
       </div>
-      <p class="funded-note">a chai via UPI is optional · matched one-for-one · same purpose</p>
-    </div>
+      <h3>Coffee chat</h3>
+      <p>20 minutes, free, no agenda. careers, sales, books, getting unstuck, or just a hello</p>
+      <span class="door-how">Cal.com · free</span>
+    </a>
+
+    <!-- 🔗 LINK: your Cal.com URL -->
+    <a class="door reveal" href="https://cal.com/karthikonteddu" target="_blank" rel="noopener noreferrer">
+      <div class="door-icon-row">
+        <span class="door-icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="16" cy="16" r="11"/>
+            <path d="M16 8v3"/>
+            <path d="M16 21v3"/>
+            <path d="M8 16h3"/>
+            <path d="M21 16h3"/>
+            <path d="M16 16l-3-5" class="compass-needle"/>
+            <circle cx="16" cy="16" r="1.5" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="door-arrow">&rarr;</span>
+      </div>
+      <h3>Career move</h3>
+      <p>thinking about relocating, switching from engineering to sales, or navigating a global role? I've been there</p>
+      <span class="door-how">Cal.com · free</span>
+    </a>
+
+    <a class="door reveal" href="mailto:hello@karthikonteddu.com?subject=Advisory%20enquiry">
+      <div class="door-icon-row">
+        <span class="door-icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="16" cy="13" r="4" class="bulb-glass"/>
+            <path d="M13.5 16.5c-.8 1-1 2.5-1 3.5h7c0-1-.2-2.5-1-3.5"/>
+            <path d="M13 20h6"/>
+            <path d="M13.5 22h5"/>
+            <path d="M14.5 24h3"/>
+            <path d="M16 5v2" class="ray r1"/>
+            <path d="M22.5 7.5l-1.5 1.5" class="ray r2"/>
+            <path d="M25 13h-2" class="ray r3"/>
+            <path d="M9.5 7.5l1.5 1.5" class="ray r4"/>
+            <path d="M7 13h2" class="ray r5"/>
+          </svg>
+        </span>
+        <span class="door-arrow">&rarr;</span>
+      </div>
+      <h3>Advisory</h3>
+      <p>B2B sales strategy, cross-border GTM, field operations, construction tech. deeper conversations for teams or founders</p>
+      <span class="door-how">hello@karthikonteddu.com</span>
+    </a>
+
+    <a class="door reveal" href="mailto:hello@karthikonteddu.com?subject=Speaking%20or%20workshop%20enquiry">
+      <div class="door-icon-row">
+        <span class="door-icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="13" y="6" width="6" height="12" rx="3"/>
+            <path d="M10 14c0 3.3 2.7 6 6 6s6-2.7 6-6"/>
+            <path d="M16 20v4"/>
+            <path d="M12 24h8"/>
+            <path d="M8 11c-1.5 1-2 3-2 3" class="wave w1"/>
+            <path d="M24 11c1.5 1 2 3 2 3" class="wave w2"/>
+            <path d="M6 9c-2 1.5-3 4-3 4" class="wave w3"/>
+            <path d="M26 9c2 1.5 3 4 3 4" class="wave w4"/>
+          </svg>
+        </span>
+        <span class="door-arrow">&rarr;</span>
+      </div>
+      <h3>Talk or workshop</h3>
+      <p>speaking at your event or running a session for your team. cross-border sales, field operations, AI for operators</p>
+      <span class="door-how">hello@karthikonteddu.com</span>
+    </a>
   </div>
+
+  <p class="giveback-line reveal">if a call helped, a small optional contribution sponsors a child's education, and I match it one-for-one. <strong>4 conversations funded so far.</strong> <a class="btn-soft" href="https://buymeachai.ezee.li/Karthikonteddu" target="_blank" rel="noopener noreferrer">🫖 buy me a chai</a></p>
 
   <!-- ✂️ KIND WORDS (testimonials) · hidden for now.
        When you have 2 real quotes from calls:
