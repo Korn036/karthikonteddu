@@ -29,7 +29,7 @@ English, Telugu, and German.
 - [Books](https://karthikonteddu.com/books): the reading shelf (50+ books).
 - [Toolkit](https://karthikonteddu.com/toolkit): recommended apps and tools.
 - [AI Corner](https://karthikonteddu.com/#ai-corner): the apps he builds and ships, starting with Sovenn.
-- [Connect](https://karthikonteddu.com/#connect): ways to get in touch.
+- [Connect](https://karthikonteddu.com/connect): ways to get in touch.
 
 ## Contact
 

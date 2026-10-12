@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Let's talk · Karthik Onteddu</title>
+<meta name="description" content="four ways to start a conversation with karthik onteddu: a coffee chat, a career move, advisory, or a talk for your team.">
+<meta name="robots" content="all">
+<link rel="canonical" href="https://karthikonteddu.com/connect">
+<link rel="alternate" type="application/rss+xml" title="Karthik Onteddu, AI corner" href="/rss.xml">
+<meta name="theme-color" content="#FAFAF6">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Let's talk · Karthik Onteddu">
+<meta property="og:description" content="four ways to start a conversation with karthik onteddu: a coffee chat, a career move, advisory, or a talk for your team.">
+<meta property="og:url" content="https://karthikonteddu.com/connect">
+<meta property="og:image" content="https://karthikonteddu.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Let's talk · Karthik Onteddu">
+<meta name="twitter:description" content="four ways to start a conversation with karthik onteddu: a coffee chat, a career move, advisory, or a talk for your team.">
+<meta name="twitter:image" content="https://karthikonteddu.com/og.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://karthikonteddu.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Let's talk", "item": "https://karthikonteddu.com/connect" }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/site.css">
+<style>
+/* ===== connect · four doors (avant-garde) ===== */
+.doors-label{
+  font-size:11.5px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase;
+  color:var(--label); margin-bottom:16px;
+}
+.doors-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; padding-bottom:32px; }
+.door{
+  display:flex; flex-direction:column;
+  background:var(--cream-2); border-radius:16px; padding:26px 24px;
+  box-shadow:var(--shadow-tile); text-decoration:none; color:var(--ink);
+  border:1.5px solid transparent;
+  transition:transform .2s, box-shadow .2s, border-color .25s;
+}
+.door:hover{ transform:translateY(-3px); box-shadow:var(--shadow-tile-h); border-color:var(--pink); }
+.door-primary{
+  border-color:var(--green);
+  background:linear-gradient(165deg, rgba(4,81,69,0.04), var(--cream-2) 60%);
+}
+[data-theme="dark"] .door-primary{ background:linear-gradient(165deg, rgba(46,140,116,0.08), var(--cream-2) 60%); }
+.door-primary:hover{ border-color:var(--green); }
+
+.door-icon-row{ display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
+.door-icon{ display:block; width:36px; height:36px; color:var(--green); }
+.door-icon svg{ width:100%; height:100%; }
+.door-arrow{
+  font-size:16px; color:var(--ink-faint);
+  transition:color .2s, transform .2s;
+}
+.door:hover .door-arrow{ color:var(--pink); transform:translateX(3px); }
+.door h3{ font-family:var(--serif); font-weight:var(--head-weight); font-size:19px; margin-bottom:6px; letter-spacing:-0.01em; }
+.door p{ font-size:13.5px; color:var(--ink-soft); line-height:1.6; flex:1; margin-bottom:0; }
+.door-how{ font-size:12px; color:var(--pink); margin-top:14px; font-weight:500; }
+
+/* door SVG animations */
+/* steam: gentle float */
+.door .steam{ opacity:0.5; transition:opacity .3s; }
+.door:hover .steam{ opacity:1; }
+.door:hover .steam.s1{ animation:steamFloat 1.6s ease-in-out infinite; }
+.door:hover .steam.s2{ animation:steamFloat 1.6s ease-in-out infinite .3s; }
+.door:hover .steam.s3{ animation:steamFloat 1.6s ease-in-out infinite .6s; }
+@keyframes steamFloat{
+  0%,100%{ transform:translateY(0); opacity:0.4; }
+  50%{ transform:translateY(-3px); opacity:1; }
+}
+/* compass: subtle wobble */
+.door .compass-needle{ transition:transform .4s ease; transform-origin:16px 16px; }
+.door:hover .compass-needle{ animation:compassWobble 1.2s ease-in-out infinite; }
+@keyframes compassWobble{
+  0%,100%{ transform:rotate(0deg); }
+  25%{ transform:rotate(12deg); }
+  75%{ transform:rotate(-8deg); }
+}
+/* bulb: rays pulse */
+.door .ray{ opacity:0.35; transition:opacity .3s; }
+.door:hover .ray{ animation:rayPulse 1.4s ease-in-out infinite; }
+.door:hover .ray.r2{ animation-delay:.15s; }
+.door:hover .ray.r3{ animation-delay:.3s; }
+.door:hover .ray.r4{ animation-delay:.15s; }
+.door:hover .ray.r5{ animation-delay:.3s; }
+@keyframes rayPulse{
+  0%,100%{ opacity:0.35; transform:scale(1); }
+  50%{ opacity:1; transform:scale(1.15); }
+}
+.door .ray{ transform-origin:16px 13px; }
+/* mic: sound waves expand */
+.door .wave{ opacity:0; transition:opacity .3s; }
+.door:hover .wave{ animation:waveExpand 1.5s ease-out infinite; }
+.door:hover .wave.w2{ animation-delay:0s; }
+.door:hover .wave.w3{ animation-delay:.3s; }
+.door:hover .wave.w4{ animation-delay:.3s; }
+@keyframes waveExpand{
+  0%{ opacity:0; transform:scale(0.9); }
+  30%{ opacity:0.7; }
+  100%{ opacity:0; transform:scale(1.1); }
+}
+.door .wave{ transform-origin:center; }
+
+/* give-back footnote */
+.giveback-line{
+  display:flex; flex-wrap:wrap; align-items:center; gap:12px;
+  font-size:13px; color:var(--ink-soft); font-style:italic;
+  padding:16px 0 40px; border-top:0.5px solid var(--hairline);
+}
+.giveback-line strong{ color:var(--ink); font-style:normal; }
+.giveback-line .btn-soft{ font-style:normal; }
+
+@media(max-width:680px){
+  .doors-grid{ grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header>
+  <div class="wrap nav">
+    <a class="wordmark" href="/" aria-label="Karthik Onteddu, go to home">karthikonteddu<span class="dot" id="dotEgg" aria-hidden="true">.</span></a>
+    <div class="nav-right">
+      <nav class="nav-links">
+        <a href="/journey">journey</a>
+        <a href="/writing">writing</a>
+        <a href="/books">books</a>
+        <a href="/toolkit">toolkit</a>
+        <a href="/#ai-corner">ai corner</a>
+        <!-- <a data-page="lab" href="#lab">lab</a> -->
+        <a href="/#connect">connect</a>
+      </nav>
+      <button class="theme-btn" id="themeBtn" aria-pressed="false" aria-label="Switch to dark mode">☾</button>
+    </div>
+  </div>
+</header>
+
+
+<main class="wrap" id="main-content" tabindex="-1">
+<section class="page visible" id="connect">
+  <div class="page-head">
+    <h1>Let's talk<span class="dot">.</span></h1>
+    <p class="page-intro">I'm open to conversations that go somewhere. pick the one that fits</p>
+  </div>
+
+  <!-- ✏️ EDIT: your photo, same file as the homepage -->
+  <div class="connect-byline reveal">
+    <img src="/img/karthik-headshot.jpg" alt="Karthik Onteddu" width="76" height="76" loading="lazy">
+    <p>a quick hello before you book: this is who you'd actually be talking to</p>
+  </div>
+
+  <div class="connect-proof reveal">
+    <p class="doors-label">Before you book</p>
+    <p>I've worked in enterprise sales and field operations across five countries, from factory floors to boardrooms. These conversations come from what I've learned doing the work, not from a script.</p>
+  </div>
+
+  <p class="doors-label reveal">I'm open to</p>
+
+  <div class="doors-grid">
+    <a class="door door-primary reveal" href="https://cal.com/karthikonteddu/20min" target="_blank" rel="noopener noreferrer" data-gc-event="connect-coffee-chat" data-gc-title="Connect: coffee chat">
+      <div class="door-icon-row">
+        <span class="door-icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 26c0-2 2-3 6-3s6 1 6 3" class="cup-body"/>
+            <ellipse cx="16" cy="23" rx="6" ry="2"/>
+            <path d="M22 18c2.5 0 4-1 4-3s-1.5-3-4-3" class="cup-handle"/>
+            <path d="M12 12c0-3 1.5-4.5 1.5-4.5" class="steam s1"/>
+            <path d="M16 11c0-3 1.5-4.5 1.5-4.5" class="steam s2"/>
+            <path d="M20 12c0-3 1.5-4.5 1.5-4.5" class="steam s3"/>
+          </svg>
+        </span>
+        <span class="door-arrow">&rarr;</span>
+      </div>
+      <h3>Coffee chat</h3>
+      <p>20 minutes, free. bring one thing you're stuck on and we'll work through it together</p>
+      <span class="door-how">Cal.com · free</span>
+    </a>
+
+    <a class="door reveal" href="https://cal.com/karthikonteddu/1-1-w-karthik" target="_blank" rel="noopener noreferrer" data-gc-event="connect-career-move" data-gc-title="Connect: career move">
+      <div class="door-icon-row">
+        <span class="door-icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="16" cy="16" r="11"/>
+            <path d="M16 8v3"/>
+            <path d="M16 21v3"/>
+            <path d="M8 16h3"/>
+            <path d="M21 16h3"/>
+            <path d="M16 16l-3-5" class="compass-needle"/>
+            <circle cx="16" cy="16" r="1.5" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="door-arrow">&rarr;</span>
+      </div>
+      <h3>Career move</h3>
+      <p>relocating, switching tracks, or navigating a global role? I've done all three across five countries. you'll leave with a next step, not just advice</p>
+      <span class="door-how">Cal.com · free</span>
+    </a>
+
+    <a class="door reveal" href="mailto:hello@karthikonteddu.com?subject=Advisory%20enquiry" data-gc-event="connect-advisory" data-gc-title="Connect: advisory">
+      <div class="door-icon-row">
+        <span class="door-icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="16" cy="13" r="4" class="bulb-glass"/>
+            <path d="M13.5 16.5c-.8 1-1 2.5-1 3.5h7c0-1-.2-2.5-1-3.5"/>
+            <path d="M13 20h6"/>
+            <path d="M13.5 22h5"/>
+            <path d="M14.5 24h3"/>
+            <path d="M16 5v2" class="ray r1"/>
+            <path d="M22.5 7.5l-1.5 1.5" class="ray r2"/>
+            <path d="M25 13h-2" class="ray r3"/>
+            <path d="M9.5 7.5l1.5 1.5" class="ray r4"/>
+            <path d="M7 13h2" class="ray r5"/>
+          </svg>
+        </span>
+        <span class="door-arrow">&rarr;</span>
+      </div>
+      <h3>Advisory</h3>
+      <p>B2B sales strategy, cross-border GTM, field operations, construction tech. deeper conversations for teams or founders</p>
+      <span class="door-how">hello@karthikonteddu.com</span>
+    </a>
+
+    <a class="door reveal" href="mailto:hello@karthikonteddu.com?subject=Speaking%20or%20workshop%20enquiry" data-gc-event="connect-talk-workshop" data-gc-title="Connect: talk or workshop">
+      <div class="door-icon-row">
+        <span class="door-icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="13" y="6" width="6" height="12" rx="3"/>
+            <path d="M10 14c0 3.3 2.7 6 6 6s6-2.7 6-6"/>
+            <path d="M16 20v4"/>
+            <path d="M12 24h8"/>
+            <path d="M8 11c-1.5 1-2 3-2 3" class="wave w1"/>
+            <path d="M24 11c1.5 1 2 3 2 3" class="wave w2"/>
+            <path d="M6 9c-2 1.5-3 4-3 4" class="wave w3"/>
+            <path d="M26 9c2 1.5 3 4 3 4" class="wave w4"/>
+          </svg>
+        </span>
+        <span class="door-arrow">&rarr;</span>
+      </div>
+      <h3>Talk or workshop</h3>
+      <p>speaking at your event or running a session for your team. cross-border sales, field operations, AI for operators</p>
+      <span class="door-how">hello@karthikonteddu.com</span>
+    </a>
+  </div>
+
+  <p class="giveback-line reveal">if a call helped, a small optional contribution sponsors a child's education, and I match it one-for-one. <strong>4 conversations funded so far.</strong> <a class="btn-soft" href="https://buymeachai.ezee.li/Karthikonteddu" target="_blank" rel="noopener noreferrer" data-gc-event="connect-chai" data-gc-title="Connect: buy me a chai">🫖 buy me a chai</a></p>
+
+  <div class="capture reveal">
+    <div>
+      <h3>Not ready to book?</h3>
+      <p>field notes, monthly. one honest letter a month on sales, countries, books, and lessons from the field.</p>
+    </div>
+    <iframe data-tally-src="https://tally.so/embed/81vM95?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="150" frameborder="0" marginheight="0" marginwidth="0" title="Email signup"></iframe>
+  </div>
+</section>
+
+  <footer>
+    <div class="left">
+      <span>karthikonteddu.com</span>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/ornkarthik" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+        </a>
+      </div>
+    </div>
+    <!-- 🔗 LINK: your email -->
+    <a href="mailto:hello@karthikonteddu.com">say hello →</a>
+  </footer>
+
+  <!-- ✏️ EDIT: "Ask AI about me" · the prompt each button pre-loads lives in
+       data-prompt below. Buttons are plain links (work with no JS); a tiny script
+       in the ENGINE ROOM also copies the prompt so it can be pasted if a provider
+       ignores the pre-fill (mainly Gemini). -->
+  <div class="ask-ai" aria-label="Ask an AI about me">
+    <p class="ask-ai-label"><span class="spk">✦</span> Ask AI about me</p>
+    <div class="ask-ai-row" id="askAi"
+         data-prompt="Tell me about Karthik Onteddu (karthikonteddu.com). Summarize who he is, what he does, and how to get in touch.">
+      <a class="ai-pill" href="https://chatgpt.com/?q=Tell%20me%20about%20Karthik%20Onteddu%20%28karthikonteddu.com%29.%20Summarize%20who%20he%20is%2C%20what%20he%20does%2C%20and%20how%20to%20get%20in%20touch." target="_blank" rel="noopener noreferrer">ChatGPT</a>
+      <a class="ai-pill" href="https://claude.ai/new?q=Tell%20me%20about%20Karthik%20Onteddu%20%28karthikonteddu.com%29.%20Summarize%20who%20he%20is%2C%20what%20he%20does%2C%20and%20how%20to%20get%20in%20touch." target="_blank" rel="noopener noreferrer">Claude</a>
+      <a class="ai-pill" href="https://www.perplexity.ai/search?q=Tell%20me%20about%20Karthik%20Onteddu%20%28karthikonteddu.com%29.%20Summarize%20who%20he%20is%2C%20what%20he%20does%2C%20and%20how%20to%20get%20in%20touch." target="_blank" rel="noopener noreferrer">Perplexity</a>
+      <a class="ai-pill" href="https://gemini.google.com/app?q=Tell%20me%20about%20Karthik%20Onteddu%20%28karthikonteddu.com%29.%20Summarize%20who%20he%20is%2C%20what%20he%20does%2C%20and%20how%20to%20get%20in%20touch." target="_blank" rel="noopener noreferrer">Gemini</a>
+    </div>
+    <p class="ask-ai-note" id="askAiNote" aria-live="polite"></p>
+  </div>
+
+  <nav class="legal-links" aria-label="Legal">
+    <a href="/contact">Contact</a><span class="dot">·</span>
+    <a href="/terms">Terms</a><span class="dot">·</span>
+    <a href="/privacy">Privacy</a><span class="dot">·</span>
+    <a href="/refund">Refunds</a><span class="dot">·</span>
+    <a href="/ornkarthik">O R N Karthik</a>
+  </nav>
+</main>
+
+<script>
+const themeBtn = document.getElementById('themeBtn');
+const saved = localStorage.getItem('theme');
+function syncThemeBtn(){
+  const dark = document.documentElement.dataset.theme === 'dark';
+  themeBtn.textContent = dark ? '☀' : '☾';
+  themeBtn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+  themeBtn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+}
+/* honour a saved choice; with none, follow the visitor's OS preference */
+if(saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)){
+  document.documentElement.dataset.theme = 'dark';
+}
+syncThemeBtn();
+themeBtn.addEventListener('click', () => {
+  const dark = document.documentElement.dataset.theme === 'dark';
+  document.documentElement.dataset.theme = dark ? '' : 'dark';
+  localStorage.setItem('theme', dark ? 'light' : 'dark');
+  syncThemeBtn();
+});
+</script>
+<!-- click-event tracking: any element with data-gc-event is counted as a GoatCounter event.
+     one delegated listener; never throws, never blocks navigation (no preventDefault). -->
+<script>
+document.addEventListener('click', function(e){
+  try{
+    var el = e.target && e.target.closest ? e.target.closest('[data-gc-event]') : null;
+    if(!el) return;
+    var gc = window.goatcounter;
+    if(gc && typeof gc.count === 'function'){
+      gc.count({ path: el.getAttribute('data-gc-event'), title: el.getAttribute('data-gc-title') || el.getAttribute('data-gc-event'), event: true });
+    }
+  }catch(err){}
+});
+</script>
+<!-- Tally embed loader -->
+<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w;s.onload=v;s.onerror=v;d.body.appendChild(s)}</script>
+<!-- GoatCounter analytics -->
+<script data-goatcounter="https://karthikonteddu.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>
