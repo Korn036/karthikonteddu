@@ -244,6 +244,7 @@ header{
   filter:blur(8px); z-index:-1;
   animation:breathe 9s ease-in-out infinite;
 }
+#home{ overflow-x:clip; }
 @keyframes breathe{ 0%,100%{ opacity:.8; transform:scale(1);} 50%{ opacity:1; transform:scale(1.06);} }
 
 .greeting{
@@ -597,21 +598,6 @@ footer .left{ display:flex; align-items:center; gap:16px; }
   to{ opacity:0; transform:translate(var(--dx), var(--dy)) scale(0.4); }
 }
 
-/* ===== the red wool ball on the divider (hover to unwind) ===== */
-.rule-wool{ position:relative; overflow:visible; }
-.wool{
-  position:absolute; left:72px; top:-31px; width:380px; height:62px;
-  cursor:pointer; z-index:5;
-}
-.wool .ball{ transform-origin:31px 31px; transition:transform 1.4s ease; animation:woolbob 3.4s ease-in-out infinite; }
-.wool .strand{
-  stroke-dasharray:360; stroke-dashoffset:360;
-  transition:stroke-dashoffset 1.4s ease;
-}
-.wool:hover .strand, .wool.unwound .strand{ stroke-dashoffset:0; }
-.wool:hover .ball, .wool.unwound .ball{ transform:rotate(260deg); animation:none; }
-@keyframes woolbob{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-3px);} }
-
 /* ===== blog hub: live "Originals" card grid on the writing page =====
    scoped to #writing; reuses the same :root tokens as everything else.
    Cards link OUT to real /blog/<slug> pages (see _post-template.html). */
@@ -933,7 +919,6 @@ a.app-card:hover .app-go{ text-decoration:underline; }
   .essence-quote{ font-size:21px; }
   .essence{ max-width:none; }
   .tile-grid, .kind-grid{ grid-template-columns:1fr; }
-  .wool{ left:24px; width:300px; }
 }
 @media (max-width:430px){ .book-grid{ grid-template-columns:1fr 1fr; } }
 /* tablets (iPad portrait ~768-834px) fell into the 4-col desktop grid because
@@ -1105,23 +1090,7 @@ button.wordmark{ background:none; border:none; padding:0; color:inherit; text-al
     </div>
   </aside>
 
-  <div class="rule rule-wool">
-    <!-- the red wool ball · hover (or tap on phones) and it unwinds along the line.
-         to remove it someday: delete from <div class="wool"> to its </div> -->
-    <div class="wool" id="wool" aria-hidden="true">
-      <svg viewBox="0 0 380 62" width="380" height="62" xmlns="http://www.w3.org/2000/svg">
-        <path class="strand" d="M44 31 C 90 26, 130 37, 178 31 S 268 25, 316 31 S 352 35, 366 30"
-              fill="none" stroke="#D6503C" stroke-width="2.5" stroke-linecap="round"/>
-        <g class="ball">
-          <circle cx="31" cy="31" r="15" fill="#D6503C"/>
-          <path d="M18 26 Q31 18 44 27" fill="none" stroke="#B23A28" stroke-width="2" stroke-linecap="round"/>
-          <path d="M17 33 Q31 27 45 34" fill="none" stroke="#B23A28" stroke-width="2" stroke-linecap="round"/>
-          <path d="M20 40 Q31 35 42 41" fill="none" stroke="#B23A28" stroke-width="2" stroke-linecap="round"/>
-          <path d="M24 18 Q35 24 40 19" fill="none" stroke="#B23A28" stroke-width="1.6" stroke-linecap="round"/>
-        </g>
-      </svg>
-    </div>
-  </div>
+  <div class="rule"></div>
 
   <div class="cta-grid">
     <!-- ✦ THE ESSENCE - the heart of the homepage. No buttons here, no booking. Just
@@ -2404,15 +2373,6 @@ if(tttCells){
   }
   document.getElementById('tttReset').addEventListener('click', reset);
   reset();
-}
-
-/* wool ball: tap support for phones (hover handles desktop) */
-const wool = document.getElementById('wool');
-if(wool){
-  wool.addEventListener('touchstart', () => {
-    wool.classList.add('unwound');
-    setTimeout(() => wool.classList.remove('unwound'), 2600);
-  }, {passive:true});
 }
 
 /* sparkle easter egg on the wordmark's pink period */
