@@ -44,7 +44,7 @@ The file is organised top-to-bottom. Use your editor's search for the tags in th
 | Design system | colour tokens (light + dark), fonts, the `--shadow-tile` depth tokens | `1. DESIGN SYSTEM` |
 | Styles | base → nav → pages → home → inner pages → **mobile** (sections numbered 1–7) | `2. BASE`, `7. MOBILE` |
 | iOS squircle | the superellipse clip-path that makes toolkit icons feel like app icons | `ios-squircle` |
-| Pages | HOME · JOURNEY · WRITING · NOW · BOOKS · TOOLKIT · CONNECT | `PAGE: <NAME>` |
+| Pages | HOME · JOURNEY · WRITING · BOOKS · TOOLKIT · CONNECT | `PAGE: <NAME>` |
 | Engine room (JS) | hash routing, scroll reveal, rotating hero phrase, dark mode, count-ups, tic-tac-toe, sparkle/wool easter eggs, GoatCounter analytics | `ENGINE ROOM` |
 | Safe config | the bits you (a human) are meant to edit: hero phrases, city, footer quips | `SAFE CONFIG` |
 
@@ -92,7 +92,7 @@ blocked. Verify the live result at <https://securityheaders.com>.
 
 **Do**
 - Keep it static and single-file. No build tools, no framework, no CMS for core content.
-- Keep URLs stable (`/`, `#now`, `#books` …) so links never break.
+- Keep URLs stable (`/`, `#books` …) so links never break.
 - Keep the canonical copy in this repo, plus at least one off-GitHub backup.
 - Stay host-portable: because it's static, it can move to Netlify/Vercel/GitHub Pages/
   any bucket in minutes.

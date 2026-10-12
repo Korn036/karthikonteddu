@@ -26,7 +26,6 @@ English, Telugu, and German.
 - [O R N Karthik](https://karthikonteddu.com/ornkarthik): his professional profile, under the name used on LinkedIn.
 - [Journey](https://karthikonteddu.com/journey): the countries, chapters, and turning points.
 - [Writing](https://karthikonteddu.com/writing): essays and field notes on sales, moving, and learning.
-- [Now](https://karthikonteddu.com/now): what he is focused on at the moment.
 - [Books](https://karthikonteddu.com/books): the reading shelf (50+ books).
 - [Toolkit](https://karthikonteddu.com/toolkit): recommended apps and tools.
 - [AI Corner](https://karthikonteddu.com/#ai-corner): the apps he builds and ships, starting with Sovenn.
