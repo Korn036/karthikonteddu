@@ -777,5 +777,8 @@ a.wordmark{ color:inherit; text-decoration:none; } /* wordmark is a real link on
 .bio-portrait img{ width:160px; height:160px; border-radius:50%; object-fit:cover; border:1px solid var(--hairline); }
 .bio{ max-width:660px; }
 .bio p{ font-size:16px; line-height:1.75; color:var(--ink-soft); margin-bottom:18px; }
+.bio-roles{ list-style:none; padding:0; margin:0 0 18px; }
+.bio-roles li{ font-size:16px; line-height:1.75; color:var(--ink-soft); padding:6px 0 6px 18px; border-left:2px solid var(--hairline); margin-bottom:6px; }
+.bio-roles strong{ color:var(--green); font-weight:600; }
 .bio a{ color:var(--pink); border-bottom:1px dashed var(--pink); }
 .bio a:hover{ color:var(--green); border-color:var(--green); }
