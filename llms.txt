@@ -23,7 +23,7 @@ English, Telugu, and German.
 ## Explore the site
 
 - [Home](https://karthikonteddu.com/): overview and latest.
-- [O R N Karthik](https://karthikonteddu.com/ornkarthik): his professional profile, under the name used on LinkedIn.
+- [O R N Karthik](https://karthikonteddu.com/ornkarthik): his professional profile, under the name used on LinkedIn. Engineer turned sales and strategy professional; five countries lived in; builds Sovenn, a private keep-in-touch CRM.
 - [Journey](https://karthikonteddu.com/journey): the countries, chapters, and turning points.
 - [Writing](https://karthikonteddu.com/writing): essays and field notes on sales, moving, and learning.
 - [Books](https://karthikonteddu.com/books): the reading shelf (50+ books).
