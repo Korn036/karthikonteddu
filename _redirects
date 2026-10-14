@@ -2,6 +2,10 @@
 # Cloudflare static-assets serves clean URLs automatically; these make the
 # .html form a permanent 301 instead of the platform default, and consolidate
 # link equity on the canonical URL.
+#
+# HTTPS redirect: handled by Cloudflare dashboard (SSL/TLS > Edge Certificates >
+# "Always Use HTTPS" toggle). The _redirects file cannot intercept http:// requests
+# because Cloudflare terminates TLS at the edge before the worker sees the request.
 
 /index.html                                    /                                      301
 /journey.html                                  /journey                               301

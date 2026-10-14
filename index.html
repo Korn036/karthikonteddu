@@ -45,8 +45,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- ✏️ EDIT: browser tab title + Google description -->
-<title>Karthik Onteddu — Sales &amp; Strategy, Curious Soul</title>
-<meta name="description" content="Sales and strategy, shaped by five countries lived in and a 50+ book shelf. Honest field notes on selling, moving countries, and why education can change the world.">
+<title>Karthik Onteddu | Sales Strategy &amp; Field Notes from 5 Countries</title>
+<meta name="description" content="Sales strategy shaped by five countries and a 50-book shelf. Field notes on selling, cross-border GTM, and why education changes the world.">
 
 <!-- favicon: the little "k." in the browser tab (no extra file needed) -->
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
@@ -54,14 +54,14 @@
 
 <!-- social preview: the card LinkedIn/WhatsApp show when you share the link.
      NOTE: keep og.png in the same folder as this file when deploying -->
-<meta property="og:title" content="Karthik Onteddu · a curious soul">
-<meta property="og:description" content="Sales and strategy across five countries and a 50+ book shelf. Field notes on selling, moving, and why education matters.">
+<meta property="og:title" content="Karthik Onteddu | Sales Strategy & Field Notes from 5 Countries">
+<meta property="og:description" content="Sales strategy shaped by five countries and a 50-book shelf. Field notes on selling, cross-border GTM, and why education changes the world.">
 <meta property="og:image" content="https://karthikonteddu.com/og.png">
 <meta property="og:url" content="https://karthikonteddu.com/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Karthik Onteddu — Sales &amp; Strategy, Curious Soul">
-<meta name="twitter:description" content="Sales and strategy across five countries and a 50+ book shelf. Field notes on selling, moving, and why education matters.">
+<meta name="twitter:title" content="Karthik Onteddu | Sales Strategy &amp; Field Notes from 5 Countries">
+<meta name="twitter:description" content="Sales strategy shaped by five countries and a 50-book shelf. Field notes on selling, cross-border GTM, and why education changes the world.">
 <meta name="twitter:image" content="https://karthikonteddu.com/og.png">
 <link rel="canonical" href="https://karthikonteddu.com/">
 <link rel="alternate" type="application/rss+xml" title="Karthik Onteddu — AI corner" href="/rss.xml">
@@ -982,7 +982,7 @@ button.wordmark{ background:none; border:none; padding:0; color:inherit; text-al
 <!-- fallback for crawlers / visitors with JavaScript off (the tabs need JS to switch) -->
 <noscript>
   <div class="wrap" style="padding:40px 36px;">
-    <h1>Karthik Onteddu</h1>
+    <h2>Karthik Onteddu</h2>
     <p>Sales &amp; strategy across five countries — an engineer who learned to sell, now building things and writing about it.</p>
     <p>This site uses JavaScript to move between sections. In the meantime, you can reach me here:</p>
     <ul>
@@ -1124,7 +1124,7 @@ button.wordmark{ background:none; border:none; padding:0; color:inherit; text-al
 
   <div class="capture reveal">
     <div>
-      <h3>Field notes, monthly<span>.</span></h3>
+      <h2>Field notes, monthly<span>.</span></h2>
       <p>one honest letter a month · sales, countries, books, lessons from the field</p>
     </div>
     <a class="btn" href="https://tally.so/r/81vM95" target="_blank" rel="noopener noreferrer">count me in &rarr;</a>
@@ -2050,7 +2050,7 @@ button.wordmark{ background:none; border:none; padding:0; color:inherit; text-al
       </div>
       <h3>Advisory</h3>
       <p>B2B sales strategy, cross-border GTM, field operations, construction tech. deeper conversations for teams or founders</p>
-      <span class="door-how">hello@karthikonteddu.com</span>
+      <span class="door-how" data-e="hello" data-d="karthikonteddu.com"></span>
     </a>
 
     <a class="door reveal" href="mailto:hello@karthikonteddu.com?subject=Speaking%20or%20workshop%20enquiry" data-gc-event="connect-talk-workshop" data-gc-title="Connect: talk or workshop">
@@ -2071,7 +2071,7 @@ button.wordmark{ background:none; border:none; padding:0; color:inherit; text-al
       </div>
       <h3>Talk or workshop</h3>
       <p>speaking at your event or running a session for your team. cross-border sales, field operations, AI for operators</p>
-      <span class="door-how">hello@karthikonteddu.com</span>
+      <span class="door-how" data-e="hello" data-d="karthikonteddu.com"></span>
     </a>
   </div>
 
@@ -2149,6 +2149,11 @@ const CONFIG = {
   ]
 };
 /* ============== end of safe config · machinery below ============== */
+
+/* email obfuscation: assembles address from data attributes so bots can't scrape it */
+document.querySelectorAll('[data-e][data-d]').forEach(function(el){
+  el.textContent = el.dataset.e + '@' + el.dataset.d;
+});
 
 /* page switching */
 const DEFAULT_TITLE = document.title;
