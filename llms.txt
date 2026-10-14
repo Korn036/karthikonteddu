@@ -38,10 +38,20 @@ English, Telugu, and German.
 - **Location:** Kapra, Hyderabad, Telangana, 500062, India
 - **Booking:** https://cal.com/karthikonteddu
 
-## Blog (AI corner)
+## Blog (field notes and AI corner)
 
 - Hub: [Writing](https://karthikonteddu.com/writing): the "originals, field notes"
   grid, on-site posts at https://karthikonteddu.com/blog/<slug>.
+- [How to Reach the Decision Maker in B2B Sales (The VITO Rule)](https://karthikonteddu.com/blog/how-to-reach-the-decision-maker-in-b2b-sales)
+  (15 Oct 2026): Sales lesson on targeting the Very Important Top Officer instead of pitching to everyone below them.
+- [When to Walk Away From a Sales Deal](https://karthikonteddu.com/blog/when-to-walk-away-from-a-sales-deal)
+  (15 Oct 2026): 8 months of work and a 5-hour meeting, and why walking away was the right call when the customer only sees price.
+- [The 80/20 Rule in Sales: How I Went From Small Deals to Big Ones](https://karthikonteddu.com/blog/80-20-rule-in-sales-close-bigger-deals)
+  (15 Oct 2026): Applying the Pareto principle to daily sales activities to close bigger deals with less effort.
+- [How to Sell to Multiple Stakeholders: Reading the Room](https://karthikonteddu.com/blog/how-to-sell-to-multiple-stakeholders)
+  (15 Oct 2026): Tailoring your pitch to five stakeholders with different agendas, in real time, across languages.
+- [Sales to Strategy: 6 Big Shifts When You Change Roles](https://karthikonteddu.com/blog/sales-to-strategy-career-transition)
+  (15 Oct 2026): Moving from account management to strategic marketing and the six shifts that come with it.
 - [Your memory is becoming a currency](https://karthikonteddu.com/blog/memory-is-becoming-a-currency)
   (13 Jul 2026): AI corner, why a structured, interconnected memory bank compounds over time and future-proofs you against an LLM migration.
 - RSS: https://karthikonteddu.com/rss.xml
